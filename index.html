@@ -1315,8 +1315,6 @@ function buildGfList(){
     container.appendChild(div);
   });
 }
-buildGfList();
-
 function toggleGf(id){
   const el=document.getElementById(id);
   const wasOpen=el.classList.contains('open');
@@ -1926,7 +1924,11 @@ function drawSimpleQR(ctx, url, size) {
 if (document.getElementById('s-checkin').classList.contains('active')) {
   buildDayCards();
 }
-setTimeout(drawQR, 200);
+// ===== INIT (runs after all functions defined) =====
+window.addEventListener('DOMContentLoaded', function() {
+  buildGfList();
+  setTimeout(drawQR, 300);
+});
 </script>
 </body>
 </html>
