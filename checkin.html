@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>7天轻养打卡 · 夏季</title>
+<style>
+/* ==============================
+   TOKENS
+============================== */
+:root{
+  --bg:#FAFAF5;
+  --bg2:#F2F0E8;
+  --green-light:#E8F0E4;
+  --green-mid:#B8D4B0;
+  --green-dark:#4A5D3A;
+  --green-text:#3A4D2C;
+  --orange:#F0A05A;
+  --orange-light:#FDF0E4;
+  --orange-dark:#C47830;
+  --ink:#2A2A22;
+  --ink2:#5A5A50;
+  --ink3:#9A9A8A;
+  --sun:#F5C842;
+  --sun-bg:#FFFAE8;
+  --red-soft:#F0D0C8;
+  --r:14px;
+  --r-sm:10px;
+  --safe-b:env(safe-area-inset-bottom,20px);
+  --safe-t:env(safe-area-inset-top,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%;background:var(--bg);font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;color:var(--ink);line-height:1.6}
+
+/* ==============================
+   VIEWS
+============================== */
+.view{display:none;min-height:100vh}
+.view.active{display:block}
+
+/* ==============================
+   LANDING VIEW
+============================== */
+#v-landing{
+  background:var(--bg);
+  padding:calc(var(--safe-t) + 32px) 24px calc(var(--safe-b) + 32px);
+  display:flex;flex-direction:column;align-items:center;
+}
+.land-season{
+  font-size:12px;letter-spacing:.2em;color:var(--ink3);
+  margin-bottom:24px;
+}
+.land-sun-row{
+  display:flex;gap:6px;margin-bottom:28px;
+}
+.land-sun{
+  width:14px;height:14px;border-radius:50%;background:var(--sun);
+  opacity:.3;
+}
+.land-sun.lit{opacity:1}
+.land-title{
+  font-size:34px;font-weight:700;color:var(--green-dark);
+  text-align:center;line-height:1.2;margin-bottom:8px;
+  letter-spacing:-.01em;
+}
+.land-subtitle{
+  font-size:16px;color:var(--ink2);text-align:center;
+  margin-bottom:24px;line-height:1.6;
+}
+.land-tags{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  margin-bottom:32px;
+}
+.land-tag{
+  padding:6px 14px;border-radius:20px;font-size:13px;
+  background:var(--green-light);color:var(--green-dark);
+  border:1px solid var(--green-mid);
+}
+.land-illus{
+  width:160px;height:120px;margin-bottom:32px;
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+/* SVG illustration inline */
+.land-card{
+  width:100%;background:#fff;border-radius:16px;
+  border:1px solid var(--green-mid);padding:20px 22px;
+  margin-bottom:20px;
+}
+.land-card-title{font-size:13px;font-weight:600;color:var(--ink3);
+  letter-spacing:.06em;margin-bottom:10px;
+}
+.land-card-body{font-size:14px;color:var(--ink2);line-height:1.75}
+.disclaimer{
+  font-size:12px;color:var(--ink3);line-height:1.75;
+  text-align:center;padding:0 8px;margin-bottom:32px;
+}
+.start-btn{
+  width:100%;max-width:360px;
+  padding:17px;border-radius:var(--r);border:none;
+  background:var(--green-dark);color:#fff;
+  font-size:18px;font-weight:700;letter-spacing:.04em;
+  cursor:pointer;font-family:inherit;
+  box-shadow:0 4px 20px rgba(74,93,58,.25);
+  transition:opacity .15s,transform .15s;
+}
+.start-btn:active{opacity:.85;transform:scale(.98)}
+
+/* ==============================
+   MAIN VIEW (progress + days)
+============================== */
+#v-main{
+  padding:calc(var(--safe-t) + 0px) 0 calc(var(--safe-b) + 24px);
+}
+
+/* sticky header */
+.main-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(250,250,245,.95);
+  backdrop-filter:blur(10px);
+  padding:calc(var(--safe-t) + 12px) 20px 12px;
+  border-bottom:1px solid var(--green-light);
+}
+.mh-row{display:flex;align-items:center;justify-content:space-between}
+.mh-title{font-size:17px;font-weight:700;color:var(--green-dark)}
+.mh-sun-count{
+  display:flex;align-items:center;gap:5px;
+  font-size:14px;font-weight:600;color:var(--orange-dark);
+}
+.mh-sun-icon{font-size:18px}
+.progress-dots{
+  display:flex;gap:7px;margin-top:10px;align-items:center;
+}
+.prog-dot{
+  flex:1;height:6px;border-radius:3px;
+  background:var(--bg2);transition:background .4s;
+  position:relative;
+}
+.prog-dot.done{background:var(--green-dark)}
+.prog-dot.today{background:var(--orange)}
+.prog-dot-label{
+  position:absolute;top:10px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:var(--ink3);white-space:nowrap;
+}
+
+/* content padding */
+.main-content{padding:20px 20px 0}
+
+/* missed banner */
+.missed-banner{
+  background:var(--orange-light);border:1px solid #F0C898;
+  border-radius:var(--r-sm);padding:12px 16px;margin-bottom:16px;
+  font-size:13px;color:var(--orange-dark);line-height:1.65;display:none;
+}
+.missed-banner.show{display:block}
+
+/* daily reminder */
+.daily-reminder{
+  background:var(--green-light);border-radius:var(--r-sm);
+  padding:12px 16px;margin-bottom:16px;
+  font-size:13px;color:var(--green-text);line-height:1.65;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.dr-leaf{font-size:16px;flex-shrink:0}
+
+/* ==============================
+   DAY CARD
+============================== */
+.day-card{
+  background:#fff;border-radius:16px;
+  border:1.5px solid var(--green-light);
+  margin-bottom:14px;overflow:hidden;
+  transition:border-color .3s;
+}
+.day-card.today-card{border-color:var(--orange)}
+.day-card.done-card{border-color:var(--green-mid)}
+.day-card.locked-card{opacity:.5;pointer-events:none}
+
+.dc-header{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;cursor:pointer;
+}
+.dc-num{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:700;
+  background:var(--bg2);color:var(--ink3);
+  border:1.5px solid transparent;transition:all .3s;
+}
+.today-card .dc-num{background:var(--orange-light);color:var(--orange-dark);border-color:var(--orange)}
+.done-card .dc-num{background:var(--green-light);color:var(--green-dark);border-color:var(--green-mid)}
+.dc-meta{flex:1}
+.dc-day{font-size:11px;color:var(--ink3);letter-spacing:.06em;margin-bottom:2px}
+.dc-theme{font-size:16px;font-weight:700;color:var(--ink)}
+.dc-suns{display:flex;gap:3px;flex-shrink:0}
+.dc-sun{font-size:16px;opacity:.25}
+.dc-sun.lit{opacity:1}
+.dc-toggle{font-size:13px;color:var(--ink3);transition:transform .2s;margin-left:4px}
+.day-card.open .dc-toggle{transform:rotate(180deg)}
+
+.dc-body{display:none;padding:0 18px 18px}
+.day-card.open .dc-body{display:block}
+
+/* task rows */
+.task-section{margin-bottom:16px}
+.task-label{
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  color:var(--ink3);margin-bottom:8px;
+}
+.task-box{
+  background:var(--bg);border-radius:var(--r-sm);
+  padding:14px 16px;border:1px solid var(--green-light);
+}
+.task-box.optional{border-style:dashed}
+.task-name{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.task-desc{font-size:13px;color:var(--ink2);line-height:1.65}
+
+/* checkbox row */
+.check-row{
+  display:flex;align-items:center;gap:10px;
+  margin-top:12px;cursor:pointer;
+}
+.ck-box{
+  width:26px;height:26px;border-radius:6px;flex-shrink:0;
+  border:2px solid var(--green-mid);background:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:transparent;transition:all .2s;
+}
+.ck-box.checked{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+.ck-label{font-size:14px;color:var(--ink2)}
+
+/* feel select */
+.feel-section{margin-bottom:16px}
+.feel-grid{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.feel-btn{
+  padding:8px 14px;border-radius:20px;font-size:13px;
+  border:1.5px solid var(--green-light);background:#fff;
+  color:var(--ink2);cursor:pointer;font-family:inherit;
+  transition:all .18s;
+}
+.feel-btn.selected{
+  background:var(--green-light);border-color:var(--green-dark);
+  color:var(--green-dark);font-weight:600;
+}
+
+/* awareness */
+.awareness-section{margin-bottom:16px}
+.awareness-q{font-size:14px;color:var(--ink2);line-height:1.65;margin-bottom:8px}
+.awareness-input{
+  width:100%;min-height:70px;resize:none;
+  border:1.5px solid var(--green-light);border-radius:var(--r-sm);
+  padding:12px 14px;font-size:14px;color:var(--ink);
+  background:var(--bg);font-family:inherit;line-height:1.6;
+  outline:none;transition:border-color .2s;
+}
+.awareness-input:focus{border-color:var(--green-mid)}
+.awareness-input::placeholder{color:var(--ink3)}
+
+/* complete btn */
+.complete-btn{
+  width:100%;padding:15px;border-radius:var(--r);border:none;
+  background:var(--green-dark);color:#fff;
+  font-size:16px;font-weight:700;letter-spacing:.04em;
+  cursor:pointer;font-family:inherit;
+  transition:opacity .15s,transform .1s;
+  margin-top:4px;
+}
+.complete-btn:active{opacity:.85;transform:scale(.98)}
+.complete-btn:disabled{background:var(--green-mid);color:rgba(255,255,255,.7);pointer-events:none}
+
+/* done state */
+.done-summary{
+  background:var(--green-light);border-radius:var(--r-sm);
+  padding:14px 16px;text-align:center;
+}
+.done-summary-title{font-size:15px;font-weight:700;color:var(--green-dark);margin-bottom:4px}
+.done-summary-suns{font-size:22px;margin-bottom:6px}
+.done-summary-note{font-size:13px;color:var(--green-text)}
+
+/* ==============================
+   RESULT VIEW
+============================== */
+#v-result{
+  padding:calc(var(--safe-t) + 32px) 24px calc(var(--safe-b) + 32px);
+  background:var(--bg);
+}
+.result-top{text-align:center;margin-bottom:32px}
+.result-emoji{font-size:52px;margin-bottom:12px}
+.result-title{font-size:28px;font-weight:700;color:var(--green-dark);margin-bottom:8px;line-height:1.2}
+.result-sub{font-size:15px;color:var(--ink2);line-height:1.7}
+.sun-display{
+  background:var(--sun-bg);border:2px solid var(--sun);
+  border-radius:16px;padding:20px;text-align:center;margin-bottom:20px;
+}
+.sun-display-num{font-size:52px;font-weight:700;color:var(--orange-dark);line-height:1}
+.sun-display-label{font-size:14px;color:var(--orange-dark);margin-top:4px}
+.sun-display-row{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:12px}
+.result-msg{
+  background:#fff;border-radius:16px;border:1px solid var(--green-mid);
+  padding:20px;margin-bottom:20px;font-size:15px;color:var(--ink2);line-height:1.8;
+}
+.result-section-title{font-size:13px;font-weight:700;color:var(--ink3);letter-spacing:.08em;margin-bottom:12px}
+
+/* habit picker */
+.habit-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.habit-opt{
+  padding:14px 16px;border-radius:var(--r-sm);font-size:15px;
+  border:1.5px solid var(--green-light);background:#fff;
+  color:var(--ink2);cursor:pointer;font-family:inherit;
+  text-align:left;line-height:1.5;transition:all .18s;
+}
+.habit-opt.selected{
+  background:var(--green-light);border-color:var(--green-dark);
+  color:var(--green-dark);font-weight:600;
+}
+
+/* poster */
+.poster-wrap{margin-bottom:20px;text-align:center}
+#posterCanvas{
+  max-width:100%;border-radius:16px;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  display:block;margin:0 auto 12px;
+}
+.save-btn{
+  width:100%;padding:15px;border-radius:var(--r);border:none;
+  background:var(--orange);color:#fff;
+  font-size:16px;font-weight:700;
+  cursor:pointer;font-family:inherit;margin-bottom:10px;
+  transition:opacity .15s;
+}
+.save-btn:active{opacity:.85}
+.restart-btn{
+  width:100%;padding:13px;border-radius:var(--r);border:1.5px solid var(--green-mid);
+  background:#fff;color:var(--green-dark);
+  font-size:15px;font-weight:600;
+  cursor:pointer;font-family:inherit;
+  transition:opacity .15s;
+}
+.restart-btn:active{opacity:.8}
+
+/* utils */
+.mt8{margin-top:8px}
+.mt16{margin-top:16px}
+</style>
+</head>
+<body>
+
+<!-- ==============================
+     LANDING VIEW
+============================== -->
+<div class="view active" id="v-landing">
+  <div class="land-season">SUMMER · 夏季轻养</div>
+
+  <!-- Decorative sun row -->
+  <div class="land-sun-row">
+    <div class="land-sun lit"></div>
+    <div class="land-sun lit"></div>
+    <div class="land-sun lit"></div>
+    <div class="land-sun"></div>
+    <div class="land-sun"></div>
+    <div class="land-sun"></div>
+    <div class="land-sun"></div>
+  </div>
+
+  <!-- SVG Illustration -->
+  <div class="land-illus">
+    <svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- sun -->
+      <circle cx="80" cy="38" r="22" fill="#F5C842" opacity=".9"/>
+      <g stroke="#F5C842" stroke-width="2.5" stroke-linecap="round" opacity=".6">
+        <line x1="80" y1="8" x2="80" y2="2"/>
+        <line x1="80" y1="74" x2="80" y2="68"/>
+        <line x1="50" y1="38" x2="44" y2="38"/>
+        <line x1="116" y1="38" x2="110" y2="38"/>
+        <line x1="59" y1="17" x2="55" y2="13"/>
+        <line x1="105" y1="63" x2="101" y2="59"/>
+        <line x1="101" y1="17" x2="105" y2="13"/>
+        <line x1="55" y1="63" x2="59" y2="59"/>
+      </g>
+      <!-- ground / grass -->
+      <ellipse cx="80" cy="105" rx="55" ry="8" fill="#E8F0E4"/>
+      <!-- leaves -->
+      <path d="M42 100 Q36 84 50 82 Q48 96 42 100Z" fill="#B8D4B0"/>
+      <path d="M50 100 Q44 86 58 84 Q56 98 50 100Z" fill="#9AC490"/>
+      <path d="M110 100 Q116 84 102 82 Q104 96 110 100Z" fill="#B8D4B0"/>
+      <path d="M102 100 Q108 86 94 84 Q96 98 102 100Z" fill="#9AC490"/>
+      <!-- cup -->
+      <rect x="68" y="84" width="24" height="16" rx="4" fill="#fff" stroke="#E8F0E4" stroke-width="1.5"/>
+      <path d="M72 84 Q80 90 88 84" fill="none" stroke="#B8D4B0" stroke-width="1.5"/>
+      <!-- steam -->
+      <path d="M74 80 Q76 76 74 72" fill="none" stroke="#C8D8C4" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M80 79 Q82 75 80 71" fill="none" stroke="#C8D8C4" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M86 80 Q88 76 86 72" fill="none" stroke="#C8D8C4" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="land-title">7天轻养打卡</div>
+  <div class="land-subtitle">不是改变生活，<br>只是给身体多一点温柔对待</div>
+
+  <div class="land-tags">
+    <span class="land-tag">容易疲惫</span>
+    <span class="land-tag">睡眠不稳</span>
+    <span class="land-tag">胃口乱</span>
+    <span class="land-tag">情绪烦躁</span>
+    <span class="land-tag">常喝冰饮</span>
+    <span class="land-tag">身体被透支</span>
+  </div>
+
+  <div class="land-card">
+    <div class="land-card-title">这7天我们会做什么</div>
+    <div class="land-card-body">
+      每天 3 个小动作：一个核心习惯、一个可选加分、一个身体觉察问题。<br><br>
+      不要求完美，不要求连续。<br>
+      漏了一天，明天继续就好。
+    </div>
+  </div>
+
+  <div class="land-card" style="background:var(--sun-bg);border-color:var(--sun)">
+    <div class="land-card-title" style="color:var(--orange-dark)">☀️ 太阳积分</div>
+    <div class="land-card-body">
+      完成核心动作 → ☀️ 1 个太阳<br>
+      完成加分动作 → ☀️ 1 个太阳<br>
+      写下身体觉察 → ☀️ 1 个太阳<br><br>
+      7 天最多积累 <strong>21 个太阳</strong>。
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    本打卡仅供日常生活方式参考，不构成医疗诊断或治疗建议。如有健康问题请咨询医生。
+  </div>
+
+  <button class="start-btn" onclick="startCheckin()">开始我的 7 天轻养 →</button>
+</div>
+
+<!-- ==============================
+     MAIN VIEW
+============================== -->
+<div class="view" id="v-main">
+  <div class="main-header">
+    <div class="mh-row">
+      <div class="mh-title">7天轻养打卡</div>
+      <div class="mh-sun-count">
+        <span class="mh-sun-icon">☀️</span>
+        <span id="totalSunsDisplay">0</span>
+        <span style="font-weight:400;color:var(--ink3);font-size:12px"> / 21</span>
+      </div>
+    </div>
+    <div class="progress-dots" id="progressDots"></div>
+  </div>
+
+  <div class="main-content">
+    <div class="missed-banner" id="missedBanner">
+      漏了一天，不需要重来。明天继续，就算完成。🌿
+    </div>
+
+    <div class="daily-reminder" id="dailyReminder">
+      <span class="dr-leaf">🌿</span>
+      <span id="reminderText"></span>
+    </div>
+
+    <div id="dayCardList"></div>
+  </div>
+</div>
+
+<!-- ==============================
+     RESULT VIEW
+============================== -->
+<div class="view" id="v-result">
+  <div class="result-top">
+    <div class="result-emoji" id="resultEmoji">🌞</div>
+    <div class="result-title" id="resultTitle">你完成了</div>
+    <div class="result-sub" id="resultSub">7天轻养打卡</div>
+  </div>
+
+  <div class="sun-display">
+    <div class="sun-display-num" id="resultSunNum">0</div>
+    <div class="sun-display-label">个太阳</div>
+    <div class="sun-display-row" id="resultSunRow"></div>
+  </div>
+
+  <div class="result-msg" id="resultMsg"></div>
+
+  <div style="margin-bottom:20px">
+    <div class="result-section-title">我的夏季轻养关键词</div>
+    <div id="kwDisplay" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+  </div>
+
+  <div style="margin-bottom:24px">
+    <div class="result-section-title">我最想继续的习惯</div>
+    <div class="habit-list" id="habitList"></div>
+    <div id="customHabitWrap" style="display:none;margin-top:8px">
+      <textarea class="awareness-input" id="customHabit" placeholder="写下你自己想继续的习惯…" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div class="poster-wrap">
+    <div class="result-section-title">生成分享卡</div>
+    <canvas id="posterCanvas" width="540" height="960"></canvas>
+    <button class="save-btn" onclick="generateAndSave()">📥 保存分享卡到相册</button>
+    <button class="restart-btn" onclick="confirmRestart()">🔄 重新开始7天打卡</button>
+  </div>
+</div>
+
+<!-- ==============================
+     JAVASCRIPT
+============================== -->
+<script>
+// ── DATA ──────────────────────────────────────────────
+const STORE_KEY = 'summer_7day_v2';
+
+const DAYS = [
+  {
+    day: 1, theme: '给身体降耗',
+    core: { name: '少喝一杯冰饮或冷饮', desc: '今天遇到想喝冷饮的时刻，先停一停，换成温水或常温水。就这一次，不强求更多。' },
+    bonus: { name: '用温水或常温水替代', desc: '如果做到了，给自己一个小赞。温热的水，身体会悄悄感谢你。' },
+    question: '今天身体最想对我说什么？',
+    kw: '减少冷耗',
+  },
+  {
+    day: 2, theme: '吃一顿热饭',
+    core: { name: '至少吃一顿温热规律的正餐', desc: '不是外卖草草了事，不是边走边吃。坐下来，好好吃一顿热乎的饭。' },
+    bonus: { name: '吃饭时不刷手机', desc: '把手机翻过去或放远一点，感受一口一口的味道。' },
+    question: '我吃完后是更有力，还是更困？',
+    kw: '好好吃饭',
+  },
+  {
+    day: 3, theme: '微汗，不硬扛',
+    core: { name: '散步、拉伸或轻运动 15 分钟', desc: '不是逼自己去健身，是让身体微微动起来。走走路，拉拉筋，出一点点汗就够了。' },
+    bonus: { name: '户外接触 10 分钟自然光', desc: '找个有阳光的地方站一会儿，或者开窗透气。' },
+    question: '我的身体是在活动，还是在消耗？',
+    kw: '轻轻动起来',
+  },
+  {
+    day: 4, theme: '提前收工',
+    core: { name: '比平时早 30 分钟放下工作或手机', desc: '不是让你彻底断网，只是今晚提前 30 分钟把屏幕放下来，做点别的，或者什么都不做。' },
+    bonus: { name: '睡前泡脚或拉伸 5 分钟', desc: '热水泡脚，或者简单拉伸一下腿和背。身体会松一点。' },
+    question: '我真正需要休息的地方是什么？',
+    kw: '及时放下',
+  },
+  {
+    day: 5, theme: '让脾胃松一点',
+    core: { name: '晚饭七八分饱', desc: '吃到不撑，还有一点余地。不是节食，是让肠胃喘口气。' },
+    bonus: { name: '少吃一次重辣、油炸或甜食', desc: '今天遇到这类食物，可以少吃一口，或者换一个选择。' },
+    question: '我是在满足身体，还是安抚情绪？',
+    kw: '温柔进食',
+  },
+  {
+    day: 6, theme: '不把情绪憋成疲惫',
+    core: { name: '写下今天最耗能的一件事', desc: '不需要解决，不需要评判，只是把它写下来，让它离开你的脑子。' },
+    bonus: { name: '向一个人表达真实感受', desc: '发一条消息，打一个电话，或者对自己说出来，都算。' },
+    question: '我最近一直在硬撑什么？',
+    kw: '情绪出口',
+  },
+  {
+    day: 7, theme: '给自己留余地',
+    core: { name: '选一个最适合自己的习惯，下周继续做', desc: '回看这 7 天，哪一天感觉最好？把那个动作记下来，打算下周也做。' },
+    bonus: { name: '写下我的轻养承诺', desc: '不是宣誓，只是写给自己的一句话，关于如何对自己温柔一点。' },
+    question: '哪一个小改变最让我感觉被照顾？',
+    kw: '温柔承诺',
+  },
+];
+
+const FEELS = ['有点累', '还算平稳', '很烦躁', '身体沉沉的', '状态不错'];
+
+const REMINDERS = [
+  '不是要改变很多，只是多一点温柔对待自己。',
+  '身体很诚实，它知道你这几天的努力。',
+  '不完美的打卡，比完美的计划更有价值。',
+  '今天做到一点，就比昨天多一点。',
+  '你不需要状态很好才能开始，就从现在这一刻。',
+  '让身体休息，也是一种生产力。',
+  '夏天的疲惫，很多时候是在告诉你需要被照顾了。',
+  '小小的习惯，比大计划更容易坚持。',
+  '喝一杯温水，就是现在能做的最小的事。',
+  '今天允许自己慢下来。',
+];
+
+const HABITS = [
+  '少喝冷饮，换温水',
+  '每天好好吃一顿热饭',
+  '每天轻运动 15 分钟',
+  '睡前提前 30 分钟放下手机',
+  '晚饭七八分饱',
+  '写下最耗能的事',
+  '自己选一个…',
+];
+
+// ── STATE ─────────────────────────────────────────────
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+function saveState(s) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+  catch(e) {}
+}
+function getState() { return window._ckState || (window._ckState = loadState()); }
+function setState(updater) {
+  const s = getState();
+  updater(s);
+  window._ckState = s;
+  saveState(s);
+}
+
+// ── NAVIGATE ──────────────────────────────────────────
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── LANDING ───────────────────────────────────────────
+function startCheckin() {
+  setState(s => { if (!s.started) { s.started = true; s.startDate = today(); } });
+  showView('v-main');
+  renderMain();
+}
+
+function today() {
+  const d = new Date();
+  return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
+}
+
+// ── MAIN VIEW ─────────────────────────────────────────
+function renderMain() {
+  const s = getState();
+  const totalSuns = calcTotalSuns(s);
+  document.getElementById('totalSunsDisplay').textContent = totalSuns;
+
+  // Progress dots
+  const dotsEl = document.getElementById('progressDots');
+  dotsEl.innerHTML = '';
+  for (let i = 0; i < 7; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'prog-dot';
+    const dayData = s['d' + i] || {};
+    if (dayData.completed) dot.classList.add('done');
+    else if (i === currentDayIndex(s)) dot.classList.add('today');
+    const label = document.createElement('span');
+    label.className = 'prog-dot-label';
+    label.textContent = i + 1;
+    dot.appendChild(label);
+    dotsEl.appendChild(dot);
+  }
+
+  // Missed banner
+  const missed = hasMissed(s);
+  const banner = document.getElementById('missedBanner');
+  banner.classList.toggle('show', missed);
+
+  // Reminder
+  const ri = (new Date().getDate()) % REMINDERS.length;
+  document.getElementById('reminderText').textContent = REMINDERS[ri];
+
+  // Day cards
+  renderDayCards(s);
+
+  // Check if all done
+  const allDone = DAYS.every((_, i) => (s['d' + i] || {}).completed);
+  if (allDone) {
+    setTimeout(() => showResult(), 400);
+  }
+}
+
+function calcTotalSuns(s) {
+  let total = 0;
+  for (let i = 0; i < 7; i++) {
+    const d = s['d' + i] || {};
+    if (d.core) total++;
+    if (d.bonus) total++;
+    if (d.awareness && d.awareness.trim().length > 0) total++;
+  }
+  return total;
+}
+
+function currentDayIndex(s) {
+  for (let i = 0; i < 7; i++) {
+    if (!(s['d' + i] || {}).completed) return i;
+  }
+  return 6;
+}
+
+function hasMissed(s) {
+  if (!s.startDate) return false;
+  const start = new Date(s.startDate);
+  const now = new Date();
+  const daysPassed = Math.floor((now - start) / 86400000);
+  const completedCount = DAYS.filter((_, i) => (s['d' + i] || {}).completed).length;
+  return daysPassed > completedCount && completedCount < 7;
+}
+
+function renderDayCards(s) {
+  const list = document.getElementById('dayCardList');
+  list.innerHTML = '';
+  const curIdx = currentDayIndex(s);
+
+  DAYS.forEach((day, i) => {
+    const dayData = s['d' + i] || {};
+    const isCompleted = !!dayData.completed;
+    const isToday = i === curIdx && !isCompleted;
+    const isLocked = i > curIdx && !isCompleted;
+    const suns = daySuns(dayData);
+
+    const card = document.createElement('div');
+    card.className = 'day-card' + (isCompleted ? ' done-card' : '') + (isToday ? ' today-card' : '') + (isLocked ? ' locked-card' : '');
+    if (isToday) card.classList.add('open');
+    card.id = 'dc-' + i;
+
+    const sunIcons = [0,1,2].map(n => `<span class="dc-sun${suns > n ? ' lit' : ''}">☀️</span>`).join('');
+
+    card.innerHTML = `
+      <div class="dc-header" onclick="toggleCard(${i})">
+        <div class="dc-num">${isCompleted ? '✓' : (i + 1)}</div>
+        <div class="dc-meta">
+          <div class="dc-day">DAY ${i + 1}</div>
+          <div class="dc-theme">${day.theme}</div>
+        </div>
+        <div class="dc-suns">${sunIcons}</div>
+        <span class="dc-toggle">${isLocked ? '🔒' : '▾'}</span>
+      </div>
+      <div class="dc-body" id="dcb-${i}">
+        ${isCompleted ? renderDoneSummary(day, dayData) : renderDayForm(day, i, dayData)}
+      </div>`;
+
+    list.appendChild(card);
+  });
+
+  // scroll today into view
+  const todayCard = document.getElementById('dc-' + curIdx);
+  if (todayCard) setTimeout(() => todayCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
+function daySuns(dayData) {
+  let n = 0;
+  if (dayData.core) n++;
+  if (dayData.bonus) n++;
+  if (dayData.awareness && dayData.awareness.trim()) n++;
+  return n;
+}
+
+function renderDayForm(day, i, dayData) {
+  const coreChecked = !!dayData.core;
+  const bonusChecked = !!dayData.bonus;
+  const feelVal = dayData.feel || '';
+  const awarenessVal = dayData.awareness || '';
+
+  const feelBtns = FEELS.map(f =>
+    `<button class="feel-btn${feelVal === f ? ' selected' : ''}" onclick="setFeel(${i},'${f}')">${f}</button>`
+  ).join('');
+
+  return `
+    <div class="task-section">
+      <div class="task-label">✦ 核心打卡</div>
+      <div class="task-box">
+        <div class="task-name">${day.core.name}</div>
+        <div class="task-desc">${day.core.desc}</div>
+        <div class="check-row" onclick="toggleCore(${i})">
+          <div class="ck-box${coreChecked ? ' checked' : ''}" id="ck-core-${i}">${coreChecked ? '✓' : ''}</div>
+          <span class="ck-label">我今天做到了 ☀️</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-section">
+      <div class="task-label">◎ 加分动作（可选）</div>
+      <div class="task-box optional">
+        <div class="task-name">${day.bonus.name}</div>
+        <div class="task-desc">${day.bonus.desc}</div>
+        <div class="check-row" onclick="toggleBonus(${i})">
+          <div class="ck-box${bonusChecked ? ' checked' : ''}" id="ck-bonus-${i}">${bonusChecked ? '✓' : ''}</div>
+          <span class="ck-label">做到了，加一个太阳 ☀️</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feel-section">
+      <div class="task-label">今天的身体状态</div>
+      <div class="feel-grid">${feelBtns}</div>
+    </div>
+
+    <div class="awareness-section">
+      <div class="task-label">◐ 今日觉察（写几个字就好）</div>
+      <div class="awareness-q">${day.question}</div>
+      <textarea class="awareness-input" id="aw-${i}" placeholder="随手写几个字，不需要完整…" rows="3"
+        oninput="saveAwareness(${i})">${awarenessVal}</textarea>
+    </div>
+
+    <button class="complete-btn" id="cbtn-${i}" onclick="completeDay(${i})"
+      ${coreChecked ? '' : 'disabled'}>
+      完成今日打卡 ✓
+    </button>
+    <div style="font-size:12px;color:var(--ink3);text-align:center;margin-top:8px">完成核心动作后即可打卡</div>`;
+}
+
+function renderDoneSummary(day, dayData) {
+  const suns = daySuns(dayData);
+  const sunRow = [0,1,2].map(n => `<span style="font-size:20px;opacity:${suns > n ? 1 : .2}">☀️</span>`).join('');
+  return `<div class="done-summary">
+    <div class="done-summary-title">Day ${day.day} 完成 · ${day.theme}</div>
+    <div class="done-summary-suns">${sunRow}</div>
+    <div class="done-summary-note">收获 ${suns} 个太阳${dayData.awareness ? `<br><span style="font-size:12px;opacity:.8">觉察：${dayData.awareness.slice(0,40)}${dayData.awareness.length>40?'…':''}</span>` : ''}</div>
+  </div>`;
+}
+
+// ── INTERACTIONS ───────────────────────────────────────
+function toggleCard(i) {
+  const card = document.getElementById('dc-' + i);
+  if (card.classList.contains('locked-card')) return;
+  card.classList.toggle('open');
+}
+
+function toggleCore(i) {
+  setState(s => {
+    if (!s['d' + i]) s['d' + i] = {};
+    s['d' + i].core = !s['d' + i].core;
+  });
+  const s = getState();
+  const coreChecked = !!(s['d' + i] || {}).core;
+  const ckEl = document.getElementById('ck-core-' + i);
+  if (ckEl) { ckEl.className = 'ck-box' + (coreChecked ? ' checked' : ''); ckEl.textContent = coreChecked ? '✓' : ''; }
+  const btn = document.getElementById('cbtn-' + i);
+  if (btn) btn.disabled = !coreChecked;
+  updateSunDisplay(i);
+}
+
+function toggleBonus(i) {
+  setState(s => {
+    if (!s['d' + i]) s['d' + i] = {};
+    s['d' + i].bonus = !s['d' + i].bonus;
+  });
+  const s = getState();
+  const checked = !!(s['d' + i] || {}).bonus;
+  const ckEl = document.getElementById('ck-bonus-' + i);
+  if (ckEl) { ckEl.className = 'ck-box' + (checked ? ' checked' : ''); ckEl.textContent = checked ? '✓' : ''; }
+  updateSunDisplay(i);
+}
+
+function setFeel(i, feel) {
+  setState(s => { if (!s['d' + i]) s['d' + i] = {}; s['d' + i].feel = feel; });
+  document.querySelectorAll(`#dc-${i} .feel-btn`).forEach(btn => {
+    btn.classList.toggle('selected', btn.textContent === feel);
+  });
+}
+
+function saveAwareness(i) {
+  const val = document.getElementById('aw-' + i).value;
+  setState(s => { if (!s['d' + i]) s['d' + i] = {}; s['d' + i].awareness = val; });
+  updateSunDisplay(i);
+}
+
+function updateSunDisplay(i) {
+  const s = getState();
+  const suns = daySuns(s['d' + i] || {});
+  const card = document.getElementById('dc-' + i);
+  if (!card) return;
+  const sunEls = card.querySelectorAll('.dc-sun');
+  sunEls.forEach((el, n) => el.classList.toggle('lit', suns > n));
+  // Update total
+  document.getElementById('totalSunsDisplay').textContent = calcTotalSuns(s);
+}
+
+function completeDay(i) {
+  const s = getState();
+  if (!(s['d' + i] || {}).core) return;
+  setState(ss => {
+    if (!ss['d' + i]) ss['d' + i] = {};
+    ss['d' + i].completed = true;
+    ss['d' + i].completedDate = today();
+  });
+  renderMain();
+}
+
+// ── RESULT ────────────────────────────────────────────
+function showResult() {
+  const s = getState();
+  const totalSuns = calcTotalSuns(s);
+  showView('v-result');
+  renderResult(s, totalSuns);
+}
+
+function renderResult(s, totalSuns) {
+  // Emoji & title
+  let emoji, title, sub, msg;
+  if (totalSuns >= 18) {
+    emoji = '🌟'; title = '你做到了';
+    sub = '7天轻养，满满的太阳';
+    msg = '18个以上的太阳，说明这7天你真的在用心对待自己的身体。不是因为要"变好"，而是因为你开始相信，自己值得被温柔对待。这种感觉，带着它继续。';
+  } else if (totalSuns >= 12) {
+    emoji = '🌤'; title = '稳稳地走完了';
+    sub = '7天里，你一直在';
+    msg = '有些天做到了，有些天差点，但你没有放弃。这才是真实的生活节奏。12个以上的太阳，说明你已经在往好的方向走了——不是因为完美，而是因为你在继续。';
+  } else if (totalSuns >= 7) {
+    emoji = '⛅'; title = '你出现了';
+    sub = '有太阳，就算数';
+    msg = '7个太阳，意味着每一天你至少做了一件照顾自己的事。身体不需要完美，它只需要你出现。这7天，你出现了，这比你想象的更重要。';
+  } else {
+    emoji = '🌱'; title = '种下了一粒种子';
+    sub = '开始，就是意义';
+    msg = '也许这7天不够顺，也许状态不好，但你打开了这个页面，写下了自己的感受。这本身就是一种关注。种子需要时间，不着急，你随时可以重新来。';
+  }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSub').textContent = sub;
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultSunNum').textContent = totalSuns;
+
+  // Sun row
+  const sunRow = document.getElementById('resultSunRow');
+  sunRow.innerHTML = Array.from({length: 21}, (_, n) =>
+    `<span style="font-size:18px;opacity:${n < totalSuns ? 1 : .15}">☀️</span>`
+  ).join('');
+
+  // Keywords
+  const kws = DAYS.filter((_, i) => (s['d' + i] || {}).completed).map(d => d.kw);
+  const kwEl = document.getElementById('kwDisplay');
+  kwEl.innerHTML = kws.length
+    ? kws.map(k => `<span style="padding:7px 14px;border-radius:20px;background:var(--green-light);border:1px solid var(--green-mid);font-size:14px;color:var(--green-dark);font-weight:600">${k}</span>`).join('')
+    : `<span style="font-size:13px;color:var(--ink3)">完成更多天后解锁关键词</span>`;
+
+  // Habits
+  const habitList = document.getElementById('habitList');
+  habitList.innerHTML = '';
+  HABITS.forEach((h, hi) => {
+    const btn = document.createElement('button');
+    btn.className = 'habit-opt';
+    btn.textContent = h;
+    btn.onclick = () => {
+      document.querySelectorAll('.habit-opt').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      setState(ss => { ss.chosenHabit = h; });
+      const customWrap = document.getElementById('customHabitWrap');
+      customWrap.style.display = hi === HABITS.length - 1 ? 'block' : 'none';
+      drawPoster();
+    };
+    habitList.appendChild(btn);
+  });
+
+  drawPoster();
+}
+
+// ── POSTER ────────────────────────────────────────────
+function drawPoster() {
+  const canvas = document.getElementById('posterCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 540, H = 960;
+
+  const s = getState();
+  const totalSuns = calcTotalSuns(s);
+  const kws = DAYS.filter((_, i) => (s['d' + i] || {}).completed).map(d => d.kw);
+  const habitEl = document.querySelector('.habit-opt.selected');
+  let habit = habitEl ? habitEl.textContent : '';
+  if (habit === '自己选一个…') {
+    const cv = document.getElementById('customHabit');
+    habit = cv ? cv.value.trim() : '';
+  }
+
+  // BG
+  const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+  bgGrad.addColorStop(0, '#FDFDF8');
+  bgGrad.addColorStop(1, '#EFF5EC');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Top green bar
+  ctx.fillStyle = '#4A5D3A';
+  ctx.fillRect(0, 0, W, 10);
+
+  // Bottom green bar
+  ctx.fillStyle = '#4A5D3A';
+  ctx.fillRect(0, H - 10, W, 10);
+
+  // Decorative dots top
+  ctx.fillStyle = '#B8D4B0';
+  for (let x = 40; x < W - 40; x += 22) {
+    ctx.beginPath(); ctx.arc(x, 26, 2.5, 0, Math.PI*2); ctx.fill();
+  }
+
+  // Season label
+  ctx.font = '500 15px sans-serif';
+  ctx.fillStyle = '#9A9A8A';
+  ctx.textAlign = 'center';
+  ctx.fillText('SUMMER · 夏季轻养', W/2, 70);
+
+  // Main title
+  ctx.font = 'bold 44px serif';
+  ctx.fillStyle = '#4A5D3A';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的7天轻养打卡', W/2, 135);
+
+  // Subtitle
+  ctx.font = '500 18px sans-serif';
+  ctx.fillStyle = '#5A5A50';
+  ctx.fillText('不是改变很多，只是温柔对待自己', W/2, 170);
+
+  // Divider
+  ctx.strokeStyle = '#B8D4B0';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 190); ctx.lineTo(W-80, 190); ctx.stroke();
+
+  // Sun count section
+  ctx.font = 'bold 80px sans-serif';
+  ctx.fillStyle = '#F0A05A';
+  ctx.textAlign = 'center';
+  ctx.fillText(totalSuns, W/2, 290);
+
+  ctx.font = '500 22px sans-serif';
+  ctx.fillStyle = '#C47830';
+  ctx.fillText('个太阳 / 21 个', W/2, 330);
+
+  // Sun icons row
+  const sunStartX = W/2 - (10.5 * 22);
+  for (let n = 0; n < 21; n++) {
+    ctx.font = n < totalSuns ? '18px sans-serif' : '18px sans-serif';
+    ctx.globalAlpha = n < totalSuns ? 1 : 0.15;
+    ctx.textAlign = 'left';
+    ctx.fillText('☀️', sunStartX + n * 22, 368);
+  }
+  ctx.globalAlpha = 1;
+
+  // Divider
+  ctx.strokeStyle = '#B8D4B0';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 390); ctx.lineTo(W-80, 390); ctx.stroke();
+
+  // Keywords
+  ctx.font = 'bold 16px sans-serif';
+  ctx.fillStyle = '#9A9A8A';
+  ctx.textAlign = 'center';
+  ctx.fillText('我的夏季轻养关键词', W/2, 420);
+
+  if (kws.length > 0) {
+    const kwsToShow = kws.slice(0, 7);
+    const kw_y = 455;
+    const totalKwWidth = kwsToShow.reduce((acc, k) => acc + ctx.measureText(k).width + 40, 0) - 16;
+    let kx = W/2 - Math.min(totalKwWidth/2, W/2 - 40);
+
+    kwsToShow.forEach(kw => {
+      ctx.font = '500 16px sans-serif';
+      const tw = ctx.measureText(kw).width;
+      const pw = tw + 28, ph = 36;
+      // pill bg
+      ctx.fillStyle = '#E8F0E4';
+      roundRectPath(ctx, kx, kw_y - ph/2, pw, ph, ph/2);
+      ctx.fill();
+      ctx.strokeStyle = '#B8D4B0'; ctx.lineWidth = 1;
+      roundRectPath(ctx, kx, kw_y - ph/2, pw, ph, ph/2);
+      ctx.stroke();
+      ctx.fillStyle = '#4A5D3A';
+      ctx.textAlign = 'left';
+      ctx.fillText(kw, kx + 14, kw_y + 6);
+      kx += pw + 10;
+      if (kx > W - 40) kx = 40; // wrap (simple)
+    });
+  } else {
+    ctx.font = '500 15px sans-serif';
+    ctx.fillStyle = '#9A9A8A';
+    ctx.textAlign = 'center';
+    ctx.fillText('继续打卡后解锁更多关键词', W/2, 455);
+  }
+
+  // Divider
+  ctx.strokeStyle = '#B8D4B0';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 510); ctx.lineTo(W-80, 510); ctx.stroke();
+
+  // Habit
+  ctx.font = 'bold 16px sans-serif';
+  ctx.fillStyle = '#9A9A8A';
+  ctx.textAlign = 'center';
+  ctx.fillText('我最想继续的习惯', W/2, 545);
+
+  if (habit) {
+    // habit box
+    ctx.fillStyle = '#FDF0E4';
+    roundRectPath(ctx, 60, 560, W-120, 72, 14);
+    ctx.fill();
+    ctx.strokeStyle = '#F0A05A'; ctx.lineWidth = 1.5;
+    roundRectPath(ctx, 60, 560, W-120, 72, 14);
+    ctx.stroke();
+    ctx.font = 'bold 20px serif';
+    ctx.fillStyle = '#C47830';
+    ctx.textAlign = 'center';
+    ctx.fillText(habit.length > 16 ? habit.slice(0,16)+'…' : habit, W/2, 602);
+  } else {
+    ctx.font = '500 15px sans-serif';
+    ctx.fillStyle = '#9A9A8A';
+    ctx.textAlign = 'center';
+    ctx.fillText('在上方选择你想继续的习惯', W/2, 596);
+  }
+
+  // Quote
+  ctx.strokeStyle = '#B8D4B0';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(80, 658); ctx.lineTo(W-80, 658); ctx.stroke();
+
+  ctx.font = 'italic 500 18px serif';
+  ctx.fillStyle = '#7A8A72';
+  ctx.textAlign = 'center';
+  ctx.fillText('不是要改变很多，', W/2, 700);
+  ctx.fillText('只是给身体多一点温柔对待。', W/2, 730);
+
+  // Date
+  const now = new Date();
+  const ds = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
+  ctx.font = '500 15px sans-serif';
+  ctx.fillStyle = '#B0B0A0';
+  ctx.textAlign = 'center';
+  ctx.fillText(ds + ' 完成', W/2, 780);
+
+  // Bottom SVG-like decoration (leaves)
+  ctx.fillStyle = '#B8D4B0';
+  ctx.globalAlpha = 0.5;
+  ctx.beginPath(); ctx.ellipse(80, 870, 30, 14, -0.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(100, 890, 24, 11, -0.3, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(W-80, 870, 30, 14, 0.5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(W-100, 890, 24, 11, 0.3, 0, Math.PI*2); ctx.fill();
+  ctx.globalAlpha = 1;
+
+  ctx.font = '500 14px sans-serif';
+  ctx.fillStyle = '#B8D4B0';
+  ctx.textAlign = 'center';
+  ctx.fillText('7天轻养打卡 · 夏季', W/2, 940);
+}
+
+function roundRectPath(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y);
+  ctx.lineTo(x+w-r, y);
+  ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r);
+  ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h);
+  ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r);
+  ctx.quadraticCurveTo(x, y, x+r, y);
+  ctx.closePath();
+}
+
+function generateAndSave() {
+  drawPoster();
+  const canvas = document.getElementById('posterCanvas');
+  const link = document.createElement('a');
+  link.download = '夏季轻养打卡分享卡.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function confirmRestart() {
+  if (confirm('确认重置？所有打卡记录将清除。')) {
+    localStorage.removeItem(STORE_KEY);
+    window._ckState = {};
+    showView('v-landing');
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────
+(function init() {
+  const s = loadState();
+  if (s.started) {
+    showView('v-main');
+    renderMain();
+    // Check if all done
+    const allDone = DAYS.every((_, i) => (s['d' + i] || {}).completed);
+    if (allDone) showResult();
+  }
+})();
+</script>
+</body>
+</html>
