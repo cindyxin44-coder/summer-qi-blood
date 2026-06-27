@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>夏季养气血 · 中医情志学</title>
+<style>
+/* ===== ROOT ===== */
+:root{
+  --ink:#2D1F0E;
+  --ink2:#5A4030;
+  --ink3:#8B6345;
+  --paper:#F7F3EA;
+  --paper2:#F0EAD8;
+  --gold:#C4A882;
+  --gold2:#E8C97A;
+  --red:#8B2500;
+  --teal:#1D9E75;
+  --r:14px;
+  --safe-b:env(safe-area-inset-bottom,16px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--paper);font-family:-apple-system,'PingFang SC','Noto Serif SC',serif;color:var(--ink)}
+
+/* ===== APP SHELL ===== */
+#app{
+  position:fixed;inset:0;
+  display:flex;flex-direction:column;
+  background:var(--paper);
+  overflow:hidden;
+}
+
+/* ===== HEADER ===== */
+.h-bar{
+  flex-shrink:0;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 16px 10px;
+  background:var(--paper);
+  border-bottom:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;
+  z-index:10;
+}
+.h-title{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:.06em}
+.h-sub{font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-top:1px}
+.h-badge{
+  font-size:10px;padding:3px 9px;
+  border:1px solid var(--gold);
+  color:var(--ink3);border-radius:2px;
+  letter-spacing:.06em;
+}
+
+/* ===== TAB BAR ===== */
+.tab-bar{
+  flex-shrink:0;
+  display:flex;
+  background:var(--paper2);
+  border-bottom:1px solid var(--gold);
+  overflow-x:auto;scrollbar-width:none;
+  padding:0 4px;
+}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{
+  flex-shrink:0;
+  padding:10px 14px;
+  font-size:12px;font-weight:500;
+  color:var(--ink3);
+  border:none;background:none;
+  border-bottom:2.5px solid transparent;
+  cursor:pointer;white-space:nowrap;
+  transition:all .2s;letter-spacing:.04em;
+  font-family:inherit;
+}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--gold);}
+
+/* ===== SCREEN CONTAINER ===== */
+.screens{flex:1;overflow:hidden;position:relative}
+.screen{
+  position:absolute;inset:0;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:16px 16px calc(var(--safe-b) + 16px);
+  display:none;
+}
+.screen.active{display:block}
+
+/* ===== DECORATIVE SECTION TITLE ===== */
+.sec-head{margin-bottom:20px;position:relative;padding-bottom:12px}
+.sec-head::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:var(--gold)}
+.sec-title{font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.2}
+.sec-sub{font-size:13px;color:var(--ink3);margin-top:6px;line-height:1.7}
+.sec-eyebrow{font-size:10px;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
+
+/* ===== CARDS ===== */
+.card{
+  background:#fff;
+  border:1px solid var(--gold);
+  border-radius:var(--r);
+  padding:14px 16px;
+  margin-bottom:10px;
+}
+.card-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.card-body{font-size:13px;color:var(--ink2);line-height:1.75}
+
+/* ===== LEVEL PYRAMID ===== */
+.pyramid{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.level-row{
+  border-radius:10px;padding:12px 14px;border:1.5px solid;
+  cursor:pointer;transition:transform .15s;
+  display:flex;align-items:flex-start;gap:12px;
+  position:relative;
+}
+.level-row:active{transform:scale(.98)}
+.level-row.selected{box-shadow:0 0 0 3px rgba(196,168,130,.4)}
+.lv-badge{
+  width:30px;height:30px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;flex-shrink:0;
+}
+.lv-body{flex:1}
+.lv-name{font-size:14px;font-weight:600;margin-bottom:2px}
+.lv-desc{font-size:12px;line-height:1.55;opacity:.85}
+.lv-check{
+  position:absolute;right:12px;top:12px;
+  width:20px;height:20px;border:2px solid;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;transition:all .2s;
+}
+.level-row.selected .lv-check{background:var(--teal);border-color:var(--teal);color:#fff}
+
+.result-box{
+  background:#fff;border:2px solid var(--teal);border-radius:var(--r);
+  padding:16px;display:none;margin-bottom:12px;
+  animation:fadeUp .3s ease;
+}
+.result-box.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.result-title{font-size:16px;font-weight:700;color:#0F6E56;margin-bottom:8px}
+.result-body{font-size:13px;color:var(--ink2);line-height:1.7}
+.result-step{display:flex;gap:8px;padding:7px 0;border-top:1px solid rgba(0,0,0,.08);font-size:13px;align-items:flex-start}
+.step-dot{
+  width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;
+}
+
+/* ===== CHAIN ===== */
+.chain{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:12px 0}
+.chain-item{padding:5px 11px;border-radius:7px;font-size:12px;font-weight:500}
+.chain-arrow{color:var(--ink3);font-size:14px}
+
+/* ===== EMOTION ITEMS ===== */
+.emotion-item{
+  border-radius:12px;border:1px solid;padding:14px;margin-bottom:8px;
+  cursor:pointer;transition:all .2s;
+}
+.emotion-item:active{transform:scale(.99)}
+.emo-row{display:flex;align-items:flex-start;gap:10px}
+.emo-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.emo-main{flex:1}
+.emo-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.emo-mech{font-size:11px;font-weight:500;margin-bottom:4px}
+.emo-sym{font-size:12px;line-height:1.55;opacity:.85}
+.emo-arrow{font-size:13px;color:var(--ink3);transition:transform .2s;margin-top:12px}
+.emotion-item.open .emo-arrow{transform:rotate(180deg)}
+.emo-extra{
+  display:none;margin-top:10px;padding-top:10px;
+  border-top:1px solid rgba(0,0,0,.08);
+  font-size:12px;line-height:1.75;color:var(--ink2);
+}
+.emotion-item.open .emo-extra{display:block}
+
+/* ===== SYNDROME QUIZ ===== */
+.quiz-opt{
+  padding:11px 14px;background:#fff;border:1.5px solid var(--gold);
+  border-radius:10px;cursor:pointer;font-size:13px;
+  display:flex;align-items:center;gap:10px;margin-bottom:7px;
+  transition:all .18s;color:var(--ink2);
+}
+.quiz-opt:active{background:var(--paper2)}
+.quiz-opt input[type=checkbox]{accent-color:var(--teal);width:15px;height:15px;flex-shrink:0}
+.quiz-btn{
+  width:100%;padding:13px;background:var(--ink);color:var(--paper);
+  border:none;border-radius:10px;font-size:15px;font-weight:600;
+  cursor:pointer;margin-top:12px;letter-spacing:.05em;
+  font-family:inherit;transition:opacity .15s;
+}
+.quiz-btn:active{opacity:.8}
+.syn-result{display:none;animation:fadeUp .3s ease}
+.syn-result.show{display:block}
+.syn-card{border-radius:12px;padding:16px;border:2px solid;margin-bottom:10px}
+.syn-name{font-size:17px;font-weight:700;margin-bottom:6px}
+.syn-block{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.08)}
+.syn-block-label{font-size:10px;font-weight:700;letter-spacing:.08em;margin-bottom:4px;opacity:.7}
+.syn-block-body{font-size:12px;line-height:1.75}
+.dim-label{
+  font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--ink3);
+  padding-bottom:6px;border-bottom:1px solid var(--gold);margin-bottom:10px;
+}
+
+/* ===== GONGFA ===== */
+.gf-item{border-bottom:1px solid rgba(196,168,130,.35);padding:0}
+.gf-item:last-child{border-bottom:none}
+.gf-header{
+  display:flex;align-items:center;gap:12px;padding:14px 4px;
+  cursor:pointer;transition:background .15s;
+}
+.gf-header:active{background:var(--paper2);border-radius:8px}
+.gf-num{
+  width:30px;height:30px;border-radius:50%;background:var(--paper2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;color:var(--ink3);flex-shrink:0;
+  border:1px solid var(--gold);
+}
+.gf-meta{flex:1}
+.gf-name{font-size:14px;font-weight:600;color:var(--ink)}
+.gf-hint{font-size:11px;color:var(--ink3);margin-top:2px}
+.gf-toggle{color:var(--ink3);font-size:16px;transition:transform .2s}
+.gf-item.open .gf-toggle{transform:rotate(180deg)}
+.gf-body{display:none;padding:4px 4px 14px 42px}
+.gf-item.open .gf-body{display:block}
+.step-card{background:var(--paper2);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.step{display:flex;gap:8px;padding:5px 0;font-size:12px;line-height:1.65;color:var(--ink2);border-top:1px solid rgba(196,168,130,.3)}
+.step:first-child{border-top:none}
+.step strong{color:var(--ink)}
+.gf-note{
+  font-size:11px;color:var(--ink3);
+  background:rgba(196,168,130,.12);
+  border-left:3px solid var(--gold);padding:7px 11px;border-radius:0 7px 7px 0;
+}
+
+/* ===== BREATH TIMER ===== */
+.breath-timer{background:#fff;border:1px solid var(--gold);border-radius:var(--r);padding:18px;margin:8px 0;text-align:center}
+.breath-circle{
+  width:110px;height:110px;border-radius:50%;border:3px solid var(--paper2);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  margin:8px auto;position:relative;
+}
+.breath-circle svg{position:absolute;top:0;left:0;width:110px;height:110px;transform:rotate(-90deg)}
+.breath-circle circle{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round;stroke-dasharray:320;stroke-dashoffset:320;transition:stroke-dashoffset .1s linear}
+.breath-label{font-size:20px;font-weight:700;color:#0F6E56;z-index:1}
+.breath-count{font-size:11px;color:var(--ink3);z-index:1}
+.breath-phase{font-size:15px;color:var(--ink2);margin:6px 0;font-weight:500}
+.breath-controls{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.breath-btn{
+  padding:8px 18px;border-radius:18px;border:1.5px solid var(--teal);
+  background:transparent;color:#0F6E56;font-size:13px;font-weight:500;
+  cursor:pointer;font-family:inherit;transition:all .15s;
+}
+.breath-btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.breath-btn:active{opacity:.8}
+
+/* ===== VIDEO LINKS ===== */
+.video-links{margin:8px 0}
+.vlink{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  background:var(--paper2);border-radius:8px;text-decoration:none;
+  margin-bottom:6px;border:1px solid var(--gold);
+}
+.vlink-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.vlink-bili{background:#F28FB1}
+.vlink-yt{background:#EF5350}
+.vlink-info{flex:1}
+.vlink-name{font-size:12px;font-weight:600;color:var(--ink)}
+.vlink-platform{font-size:10px;color:var(--ink3);margin-top:1px}
+.vlink-arrow{font-size:14px;color:var(--ink3)}
+.video-link-title{font-size:11px;color:var(--ink3);letter-spacing:.06em;margin-bottom:6px;font-weight:600}
+
+/* ===== MERIDIAN ===== */
+.point-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.body-point{
+  background:#fff;border:1.5px solid var(--gold);border-radius:12px;
+  padding:12px;cursor:pointer;transition:all .2s;
+  display:flex;align-items:flex-start;gap:8px;
+}
+.body-point:active{background:var(--paper2)}
+.body-point.active{border-color:var(--teal);background:rgba(29,158,117,.06)}
+.pt-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.pt-name{font-size:13px;font-weight:600;color:var(--ink)}
+.pt-loc{font-size:10px;color:var(--ink3);margin-top:1px}
+.point-detail{
+  background:#fff;border:2px solid var(--teal);border-radius:var(--r);
+  padding:16px;margin-bottom:14px;display:none;animation:fadeUp .2s ease;
+}
+.point-detail.show{display:block}
+.pd-name{font-size:16px;font-weight:700;color:#0F6E56;margin-bottom:8px}
+.pd-svg-wrap{margin:10px 0;overflow:hidden;border-radius:10px;background:var(--paper2)}
+.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.pd-block{background:var(--paper2);border-radius:8px;padding:9px 11px}
+.pd-block-label{font-size:10px;color:var(--ink3);font-weight:700;letter-spacing:.06em;margin-bottom:3px}
+.pd-block-body{font-size:12px;color:var(--ink2);line-height:1.65}
+
+/* ===== GROUPS ===== */
+.group-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:14px}
+.group-tabs::-webkit-scrollbar{display:none}
+.group-tab{
+  flex-shrink:0;padding:6px 14px;font-size:12px;font-weight:500;
+  border-radius:18px;border:1px solid var(--gold);background:#fff;
+  color:var(--ink2);cursor:pointer;font-family:inherit;transition:all .15s;
+}
+.group-tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.group-panel{display:none}
+.group-panel.active{display:block;animation:fadeUp .2s ease}
+
+/* ===== INFO CARDS (chain insight boxes) ===== */
+.insight{
+  border-radius:12px;padding:14px 16px;border:1px solid;margin-bottom:10px;
+}
+
+/* ===== TAGS ===== */
+.tag-row{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+.tag{font-size:11px;padding:2px 8px;border-radius:10px;font-weight:500}
+
+/* ===== ALERT ===== */
+.alert{
+  background:rgba(196,168,130,.18);border:1px solid var(--gold);
+  border-radius:8px;padding:10px 14px;font-size:12px;color:var(--ink2);
+  line-height:1.65;margin-bottom:12px;
+}
+
+/* ===== FOUR-GRID (通化养补) ===== */
+.four-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.four-cell{border-radius:10px;padding:12px 14px;border:1px solid}
+
+/* ===== CHECKIN ===== */
+.ck-hero{
+  background:linear-gradient(135deg,#EAF3DE 0%,#E1F5EE 50%,#F7F3EA 100%);
+  border-radius:16px;padding:20px 18px;margin-bottom:16px;
+  border:1px solid var(--gold);text-align:center;
+}
+.ck-hero-title{font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.ck-hero-sub{font-size:13px;color:var(--ink3);margin-top:5px;line-height:1.6}
+.ck-progress-bar{height:6px;background:rgba(196,168,130,.25);border-radius:3px;margin:12px 0 4px;overflow:hidden}
+.ck-progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),#97C459);transition:width .5s ease}
+.ck-progress-text{font-size:11px;color:var(--ink3);text-align:right}
+
+.day-card{
+  border-radius:14px;border:1.5px solid var(--gold);
+  margin-bottom:12px;overflow:hidden;
+  background:#fff;transition:all .2s;
+}
+.day-card.locked{opacity:.55;pointer-events:none}
+.day-card.done{border-color:var(--teal)}
+.day-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;cursor:pointer;
+}
+.day-num{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:700;flex-shrink:0;
+  border:2px solid var(--gold);color:var(--ink3);background:var(--paper2);
+  transition:all .2s;
+}
+.day-card.done .day-num{background:var(--teal);border-color:var(--teal);color:#fff}
+.day-card.active .day-num{border-color:var(--ink);color:var(--ink)}
+.day-meta{flex:1}
+.day-title{font-size:15px;font-weight:700;color:var(--ink)}
+.day-sub{font-size:12px;color:var(--ink3);margin-top:2px}
+.day-status{font-size:13px;flex-shrink:0}
+
+.day-body{display:none;padding:0 16px 16px}
+.day-card.open .day-body{display:block}
+
+.task-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 0;border-top:1px solid rgba(196,168,130,.3);
+}
+.task-item:first-child{border-top:none;padding-top:6px}
+.task-checkbox{
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;cursor:pointer;
+  transition:all .2s;background:#fff;
+  font-size:13px;color:transparent;
+}
+.task-checkbox.checked{background:var(--teal);border-color:var(--teal);color:#fff}
+.task-body{flex:1}
+.task-time{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--gold);margin-bottom:3px}
+.task-name{font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
+.task-desc{font-size:12px;color:var(--ink3);margin-top:3px;line-height:1.6}
+
+.day-complete-btn{
+  width:100%;padding:13px;margin-top:12px;
+  background:var(--ink);color:var(--paper);
+  border:none;border-radius:10px;
+  font-size:15px;font-weight:600;letter-spacing:.04em;
+  cursor:pointer;font-family:inherit;
+  transition:opacity .15s;display:none;
+}
+.day-complete-btn:active{opacity:.8}
+.day-complete-btn.visible{display:block}
+
+.day-done-badge{
+  text-align:center;padding:10px;
+  font-size:13px;color:var(--teal);font-weight:600;
+  background:rgba(29,158,117,.08);border-radius:8px;margin-top:10px;
+}
+
+/* Disclaimer */
+.disclaimer{
+  background:var(--paper2);border:1px solid var(--gold);
+  border-radius:10px;padding:12px 14px;margin-bottom:16px;
+  font-size:11px;color:var(--ink3);line-height:1.75;
+}
+.disclaimer strong{color:var(--ink2)}
+
+/* Poster */
+.poster-section{
+  background:linear-gradient(135deg,#2D1F0E 0%,#5A4030 100%);
+  border-radius:14px;padding:20px 16px;margin-top:16px;
+  text-align:center;display:none;
+}
+.poster-section.visible{display:block}
+.poster-title{font-size:16px;font-weight:700;color:var(--gold2);margin-bottom:6px}
+.poster-sub{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:14px;line-height:1.6}
+#posterCanvas{border-radius:10px;max-width:100%;display:block;margin:0 auto}
+.poster-btn{
+  display:block;width:100%;padding:12px;margin-top:12px;
+  background:var(--gold);color:var(--ink);
+  border:none;border-radius:10px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:inherit;letter-spacing:.04em;
+  transition:opacity .15s;
+}
+.poster-btn:active{opacity:.8}
+
+/* QR section */
+.qr-section{
+  border:1px solid var(--gold);border-radius:12px;
+  padding:16px;margin-top:12px;text-align:center;
+  background:#fff;
+}
+.qr-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.qr-sub{font-size:11px;color:var(--ink3);margin-top:8px;line-height:1.6}
+#qrCanvas{border-radius:6px;display:block;margin:0 auto}
+
+/* ===== FOOTER WATERMARK ===== */
+.watermark{
+  text-align:center;font-size:11px;color:var(--ink3);
+  padding:12px 0 4px;opacity:.6;
+}
+
+/* ===== SECTION BG CHAR (decorative) ===== */
+.bg-char{
+  position:absolute;right:-8px;top:0;
+  font-size:120px;font-weight:700;color:var(--ink);opacity:.04;
+  line-height:1;pointer-events:none;letter-spacing:-.02em;
+  font-family:'PingFang SC',serif;user-select:none;
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- HEADER -->
+<div class="h-bar">
+  <div>
+    <div class="h-title">夏季养气血</div>
+    <div class="h-sub">中医情志学 · 完整指南</div>
+  </div>
+  <div class="h-badge">夏至</div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab(this,'s-level')">气血自测</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-emotion')">七情内伤</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-syndrome')">气血卡点</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-gongfa')">功法口诀</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-meridian')">经络穴位</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-groups')">分人群调养</button>
+  <button class="tab-btn" onclick="switchTab(this,'s-checkin')">🌿 7天打卡</button>
+</div>
+
+<!-- SCREENS -->
+<div class="screens">
+
+<!-- ===== SCREEN 1: LEVEL TEST ===== -->
+<div class="screen active" id="s-level">
+  <div style="position:relative">
+    <div class="bg-char">气</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">QI · BLOOD · LEVEL</div>
+      <div class="sec-title">气血七层级</div>
+      <div class="sec-sub">从第1层开始，找到你<strong>尚未完全达到</strong>的那层，点击获取专属调养方案。</div>
+    </div>
+  </div>
+
+  <div class="result-box" id="levelResult"></div>
+
+  <div class="pyramid">
+    <div class="level-row" style="background:#EAF3DE;border-color:#97C459" onclick="selectLevel(this,7)">
+      <div class="lv-badge" style="background:#27500A;color:#EAF3DE">7</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#27500A">脉象和缓有力</div>
+        <div class="lv-desc" style="color:#3B6D11">气血充盈至极，精气神俱足，极少生病。</div>
+      </div>
+      <div class="lv-check" style="border-color:#97C459">✓</div>
+    </div>
+    <div class="level-row" style="background:#E1F5EE;border-color:#5DCAA5" onclick="selectLevel(this,6)">
+      <div class="lv-badge" style="background:#0F6E56;color:#E1F5EE">6</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#085041">声音洪亮有力</div>
+        <div class="lv-desc" style="color:#0F6E56">气血足则发声器官得养，说话有力。</div>
+      </div>
+      <div class="lv-check" style="border-color:#5DCAA5">✓</div>
+    </div>
+    <div class="level-row" style="background:#E6F1FB;border-color:#85B7EB" onclick="selectLevel(this,5)">
+      <div class="lv-badge" style="background:#185FA5;color:#E6F1FB">5</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#0C447C">手足温暖</div>
+        <div class="lv-desc" style="color:#185FA5">气血可温煦四肢，末梢循环好。手脚冰凉→阳虚或气血不足。</div>
+      </div>
+      <div class="lv-check" style="border-color:#85B7EB">✓</div>
+    </div>
+    <div class="level-row" style="background:#FAEEDA;border-color:#EF9F27" onclick="selectLevel(this,4)">
+      <div class="lv-badge" style="background:#854F0B;color:#FAEEDA">4</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#633806">精力充沛</div>
+        <div class="lv-desc" style="color:#854F0B">日常活动不易疲倦，气血为身体活动提供足够支撑。</div>
+      </div>
+      <div class="lv-check" style="border-color:#EF9F27">✓</div>
+    </div>
+    <div class="level-row" style="background:#FBEAF0;border-color:#ED93B1" onclick="selectLevel(this,3)">
+      <div class="lv-badge" style="background:#993556;color:#FBEAF0">3</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#72243E">睡眠良好</div>
+        <div class="lv-desc" style="color:#993556">气血旺盛有助心神安宁。入睡难·多梦·易醒→心血不足。</div>
+      </div>
+      <div class="lv-check" style="border-color:#ED93B1">✓</div>
+    </div>
+    <div class="level-row" style="background:#EEEDFE;border-color:#AFA9EC" onclick="selectLevel(this,2)">
+      <div class="lv-badge" style="background:#534AB7;color:#EEEDFE">2</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#3C3489">双目有神</div>
+        <div class="lv-desc" style="color:#534AB7">眼睛灵动·视物清晰。眼干涩·眼神呆滞→肝血不足。</div>
+      </div>
+      <div class="lv-check" style="border-color:#AFA9EC">✓</div>
+    </div>
+    <div class="level-row" style="background:#F1EFE8;border-color:#B4B2A9" onclick="selectLevel(this,1)">
+      <div class="lv-badge" style="background:#2C2C2A;color:#F1EFE8">1</div>
+      <div class="lv-body">
+        <div class="lv-name" style="color:#2C2C2A">面色红润</div>
+        <div class="lv-desc" style="color:#5F5E5A">气血充盈首先体现在面色。面色萎黄·苍白·晦暗→最基础层不足。</div>
+      </div>
+      <div class="lv-check" style="border-color:#B4B2A9">✓</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title">⚠️ 气血失调演变链条</div>
+    <div class="card-body" style="margin-bottom:10px;font-size:12px">七情是上游触发器——情绪失和扰乱气机，是一切的起点：</div>
+    <div class="chain">
+      <div class="chain-item" style="background:#FBEAF0;color:#72243E">七情失和</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#EAF3DE;color:#27500A">气机紊乱</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#FAEEDA;color:#854F0B">气滞</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#FAECE7;color:#993C1D">血瘀</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#F7C1C1;color:#501313">结节·囊肿</div>
+    </div>
+    <div style="margin-top:8px;padding:9px 12px;background:var(--paper2);border-radius:8px">
+      <div style="font-size:11px;font-weight:700;color:#854F0B;margin-bottom:5px">气机紊乱→气滞的身体信号</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap">
+        <span style="font-size:11px;padding:2px 8px;background:#EAF3DE;color:#27500A;border-radius:5px">酸·胀 → 气滞</span>
+        <span style="font-size:11px;padding:2px 8px;background:#E6F1FB;color:#185FA5;border-radius:5px">麻 → 经脉失养</span>
+        <span style="font-size:11px;padding:2px 8px;background:#FAEEDA;color:#633806;border-radius:5px">痛 → 不通则痛</span>
+        <span style="font-size:11px;padding:2px 8px;background:#FBEAF0;color:#72243E;border-radius:5px">痒 → 血虚生风</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:0">
+    <div class="card-title">⏱️ 情绪的「30秒法则」</div>
+    <div class="card-body">30秒内觉察可拉回；30分钟后仍在波动，对应脏腑开始持续失衡；3年后仍在影响，已成具身症状。<br><br>那些被大脑压制下去的情绪，身体从未忘记。</div>
+  </div>
+
+  <div class="card" style="margin-top:0">
+    <div class="card-title">🌀 三大隐性耗气模式</div>
+    <div class="card-body">
+      · <strong>打字也耗气</strong>：思维路径流动本身就是耗损<br>
+      · <strong>假性积极</strong>：强撑高能量→心气涣散→莫名心悸<br>
+      · <strong>过度自律</strong>：过度运动·报复性熬夜，补的速度永远赶不上耗的速度
+    </div>
+  </div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+<!-- ===== SCREEN 2: EMOTION ===== -->
+<div class="screen" id="s-emotion">
+  <div style="position:relative">
+    <div class="bg-char">情</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">SEVEN EMOTIONS</div>
+      <div class="sec-title">七情内伤</div>
+      <div class="sec-sub">七情是正常情志反应，但「过度」或「长期压抑」就会内伤脏腑、耗损气血。点击展开。</div>
+    </div>
+  </div>
+
+  <div class="alert">💡 情绪本是正常反应，压抑它才是根本问题。每种情志都有正向价值，失衡才需要调。</div>
+
+  <div class="emotion-item" style="background:#FBEAF0;border-color:#F4C0D1" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#F4C0D1">😄</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#72243E">喜 → 伤心</div>
+        <div class="emo-mech" style="color:#993556">过喜则心气涣散</div>
+        <div class="emo-sym" style="color:#4B1528">→ 失眠·多梦·心神不宁</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>深层洞察：</strong>喜型人有时不是真开心——刻意维持高能量，强撑笑脸，内耗极大。典型案例（喜＋忧＋思叠加）：长期担当情绪、报喜不报忧，晚上用报复性熬夜麻痹自己，结果：失眠成常态·莫名心悸。中医诊断：<strong>心气不足，心神失养</strong>。<br><br>
+      <strong>调理：</strong>内关穴按揉；嘶字诀睡前引导；<strong>最关键：放下强迫性高能量，允许示弱</strong>；莲子心茶清心火。
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#FAECE7;border-color:#F5C4B3" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#F5C4B3">😡</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#712B13">怒 → 伤肝</div>
+        <div class="emo-mech" style="color:#993C1D">大怒则肝气上逆；怒则气上</div>
+        <div class="emo-sym" style="color:#4A1B0C">→ 头痛·面红·血压升高·胁肋疼痛</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>怒值低（6分以下）的真实含义：</strong>不是平和，而是压抑。怒气憋在肝经路径上，具体体现为：子宫/乳腺/甲状腺结节、痛经血块、太阳穴偏头痛。<br><br>
+      <strong>怒的正向价值：</strong>有力量·行动力强·有担当——压抑才是问题。<br><br>
+      <strong>调理：</strong>嘘字诀每日早起6次；按揉太冲穴；4-7-8呼吸法；玫瑰花+佛手柑+陈皮茶。<strong>怒气后绝不宜进食。</strong>
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#EAF3DE;border-color:#C0DD97" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#C0DD97">🤔</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#27500A">思 → 伤脾</div>
+        <div class="emo-mech" style="color:#3B6D11">思虑过度则脾气郁结；思则气滞</div>
+        <div class="emo-sym" style="color:#173404">→ 食欲差·腹胀·没精神·肌肉松软</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>焦虑≠单一问题，需辨证脏腑：</strong><br>
+      · 焦虑来自<strong>脾胃</strong>：思的情志爆棚，思则气结<br>
+      · 焦虑来自<strong>肾气不足</strong>：恐和惊的情志过剩<br>
+      · 焦虑来自<strong>肺气防御过强</strong>：过于敏感，「烟感报警器全开」<br><br>
+      <strong>调理：</strong>揉足三里+中脘；姜枣茶早起喝；每日20—30分钟有氧运动；减少信息摄入，每天给大脑留白。
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#E6F1FB;border-color:#B5D4F4" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#B5D4F4">😔</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#0C447C">忧 → 伤肺</div>
+        <div class="emo-mech" style="color:#185FA5">忧愁耗肺气</div>
+        <div class="emo-sym" style="color:#042C53">→ 干咳·气短·声音嘶哑</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>深层洞察：</strong>夏季贪凉（空调+冷饮）会加重忧伤肺的损耗。形寒饮冷伤肺，体质弱者尤其易出现咳喘痰多。<br><br>
+      <strong>调理：</strong>搭鹊桥生津养肺；按揉中府穴；夏季薄外套护腰肩；戒冰饮冷食；百合莲子粥润肺养心。
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#F1EFE8;border-color:#D3D1C7" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#D3D1C7">😢</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#2C2C2A">悲 → 伤肺</div>
+        <div class="emo-mech" style="color:#444441">悲损肺气，气不宣降</div>
+        <div class="emo-sym" style="color:#5F5E5A">→ 呼吸无力·语声低微·容易落泪</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>深层洞察：</strong>持续悲伤→肺气不降→气血运行无力→全身乏力。悲与忧常并见，持续的悲伤状态是气血消耗的无底洞。<br><br>
+      <strong>调理：</strong>适当流泪（情绪排泄，不压抑）后需补肺气；深呼吸练习；太渊穴按揉；补肺食物：白萝卜·百合·银耳。
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#EEEDFE;border-color:#CECBF6" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#CECBF6">😨</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#3C3489">恐 → 伤肾</div>
+        <div class="emo-mech" style="color:#534AB7">恐则气下，肾气下陷</div>
+        <div class="emo-sym" style="color:#26215C">→ 面色苍白·头晕，严重可二便失禁</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>深层洞察：</strong>长期焦虑恐慌→肾气下陷→腰膝酸软·夜尿频多·意志消沉·健忘耳鸣。强力久坐湿地亦可伤肾（负重劳损、寒湿侵腰）。<br><br>
+      <strong>调理：</strong>艾灸关元·肾俞；晚泡脚+揉涌泉100下；减少高刺激信息；规律作息固护肾气；黑豆·黑芝麻·核桃食补。
+    </div>
+  </div>
+
+  <div class="emotion-item" style="background:#FCEBEB;border-color:#F09595" onclick="toggleEmo(this)">
+    <div class="emo-row">
+      <div class="emo-icon" style="background:#F09595">😱</div>
+      <div class="emo-main">
+        <div class="emo-name" style="color:#791F1F">惊 → 伤心</div>
+        <div class="emo-mech" style="color:#A32D2D">惊吓扰乱心神</div>
+        <div class="emo-sym" style="color:#501313">→ 心悸·失眠·心神不安</div>
+      </div>
+      <div class="emo-arrow">▾</div>
+    </div>
+    <div class="emo-extra">
+      <strong>深层洞察：</strong>容易受惊者，多为心脾两虚或肾气不足。惊与恐常并见（恐惊伤肾），长期处于惊恐状态会同时损耗心气和肾气。<br><br>
+      <strong>调理：</strong>按揉神门穴（安心要穴）；嘶字诀睡前引导；减少突然的声音刺激；建立稳定的生活秩序感。
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:8px">
+    <div class="card-title">情志调养四字法则</div>
+    <div class="four-grid">
+      <div class="four-cell" style="background:rgba(29,158,117,.08);border-color:var(--teal)">
+        <div style="font-size:22px;font-weight:700;color:var(--teal)">通</div>
+        <div style="font-size:12px;color:#0F6E56;margin-top:3px;line-height:1.5">疏通为先，不压抑。痛则不通，郁则成病。</div>
+      </div>
+      <div class="four-cell" style="background:#E6F1FB;border-color:#B5D4F4">
+        <div style="font-size:22px;font-weight:700;color:#185FA5">化</div>
+        <div style="font-size:12px;color:#185FA5;margin-top:3px;line-height:1.5">用呼吸·运动将情绪能量转化排出。</div>
+      </div>
+      <div class="four-cell" style="background:#FAEEDA;border-color:#FAC775">
+        <div style="font-size:22px;font-weight:700;color:#854F0B">养</div>
+        <div style="font-size:12px;color:#854F0B;margin-top:3px;line-height:1.5">培养安全感，减少信息焦虑，规律作息。</div>
+      </div>
+      <div class="four-cell" style="background:#EAF3DE;border-color:#C0DD97">
+        <div style="font-size:22px;font-weight:700;color:#3B6D11">补</div>
+        <div style="font-size:12px;color:#3B6D11;margin-top:3px;line-height:1.5">情志稳定后，配合饮食·穴位调理脏腑。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px;background:#FFF8F3;border-color:#F5C4B3">
+    <div class="card-title" style="color:#712B13">💡 为什么方法不管用</div>
+    <div class="card-body">很多焦虑·失眠·消化问题，找错了脏腑「端点」，再多方法也是打地鼠。情绪是因，身体症状是果。只处理果而不回到因，就是补了半天没有用的根本原因。</div>
+  </div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+<!-- ===== SCREEN 3: SYNDROME ===== -->
+<div class="screen" id="s-syndrome">
+  <div style="position:relative">
+    <div class="bg-char">辨</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">PATTERN · RECOGNITION</div>
+      <div class="sec-title">气血卡点</div>
+      <div class="sec-sub">勾选近期症状，了解气血问题出在哪里。结果仅供参考，如有持续不适建议咨询中医师。</div>
+    </div>
+  </div>
+
+  <div class="alert">📌 分两个维度：<strong>气血虚实方向</strong>（缺什么）和<strong>气血循行障碍</strong>（堵在哪里）。两者常同时存在。</div>
+
+  <div style="margin-bottom:14px">
+    <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px">请勾选近期符合的症状（可多选）：</div>
+    <label class="quiz-opt"><input type="checkbox" value="wuxin"> 五心烦热（手心·脚心·心口热）</label>
+    <label class="quiz-opt"><input type="checkbox" value="dauhan"> 盗汗（夜间睡中出汗，醒后汗止）</label>
+    <label class="quiz-opt"><input type="checkbox" value="kougan"> 口干咽燥，喜饮水</label>
+    <label class="quiz-opt"><input type="checkbox" value="shimian"> 入睡困难，多梦，心烦不宁</label>
+    <label class="quiz-opt"><input type="checkbox" value="paoleng"> 畏寒怕冷，四肢冰凉</label>
+    <label class="quiz-opt"><input type="checkbox" value="shuye"> 夜尿频多（每夜起夜2次以上）</label>
+    <label class="quiz-opt"><input type="checkbox" value="yaosuan"> 腰膝酸软，耳鸣，脱发，记忆力减退</label>
+    <label class="quiz-opt"><input type="checkbox" value="bimen"> 胸胁胀闷，情绪抑郁或烦躁，喜叹气</label>
+    <label class="quiz-opt"><input type="checkbox" value="ruxian"> 乳房胀痛，随情绪波动加重（女性）</label>
+    <label class="quiz-opt"><input type="checkbox" value="tongjing"> 痛经，经色暗有血块，或月经不调（女性）</label>
+    <label class="quiz-opt"><input type="checkbox" value="xinkuang"> 心悸气短，面色淡白或萎黄</label>
+    <label class="quiz-opt"><input type="checkbox" value="shiyou"> 食欲不振，脘腹胀满，嗳气反酸</label>
+    <label class="quiz-opt"><input type="checkbox" value="danbian"> 大便溏薄或黏滞不爽</label>
+    <label class="quiz-opt"><input type="checkbox" value="kouku"> 口苦，晨起明显</label>
+    <label class="quiz-opt"><input type="checkbox" value="toufeng"> 头痛以两侧太阳穴为主</label>
+    <label class="quiz-opt"><input type="checkbox" value="shejiao"> 舌红少苔，或舌淡苔白</label>
+    <button class="quiz-btn" onclick="analyzeH5()">查看我的气血卡点 →</button>
+  </div>
+
+  <div class="syn-result" id="synResultH5"></div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+<!-- ===== SCREEN 4: GONGFA ===== -->
+<div class="screen" id="s-gongfa">
+  <div style="position:relative">
+    <div class="bg-char">功</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">DAILY · PRACTICE</div>
+      <div class="sec-title">功法口诀</div>
+      <div class="sec-sub">9个功法，点击展开步骤。嘘字诀（疏肝）与嘶字诀（助眠）请注意区分。</div>
+    </div>
+  </div>
+
+  <div id="gfList">
+    <!-- GF items injected by JS -->
+  </div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+<!-- ===== SCREEN 5: MERIDIAN ===== -->
+<div class="screen" id="s-meridian">
+  <div style="position:relative">
+    <div class="bg-char">穴</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">ACUPUNCTURE · POINTS</div>
+      <div class="sec-title">经络穴位</div>
+    </div>
+  </div>
+
+  <div class="point-detail" id="ptDetail"></div>
+
+  <div class="point-grid">
+    <div class="body-point" onclick="showPt('xuehai')">
+      <div class="pt-icon" style="background:#FBEAF0">🩸</div>
+      <div><div class="pt-name">血海穴</div><div class="pt-loc">髌骨内上缘2寸</div></div>
+    </div>
+    <div class="body-point" onclick="showPt('zusanli')">
+      <div class="pt-icon" style="background:#E1F5EE">💪</div>
+      <div><div class="pt-name">足三里</div><div class="pt-loc">膝眼下3寸</div></div>
+    </div>
+    <div class="body-point" onclick="showPt('sanyinjiao')">
+      <div class="pt-icon" style="background:#FBEAF0">🌸</div>
+      <div><div class="pt-name">三阴交</div><div class="pt-loc">内踝上3寸</div></div>
+    </div>
+    <div class="body-point" onclick="showPt('taichong')">
+      <div class="pt-icon" style="background:#EAF3DE">🌿</div>
+      <div><div class="pt-name">太冲穴</div><div class="pt-loc">足背第1·2跖骨间</div></div>
+    </div>
+    <div class="body-point" onclick="showPt('zhongwan')">
+      <div class="pt-icon" style="background:#FAEEDA">⚡</div>
+      <div><div class="pt-name">中脘穴</div><div class="pt-loc">脐上4寸</div></div>
+    </div>
+    <div class="body-point" onclick="showPt('guanyuan')">
+      <div class="pt-icon" style="background:#FAECE7">🔥</div>
+      <div><div class="pt-name">关元穴</div><div class="pt-loc">脐下3寸</div></div>
+    </div>
+  </div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+<!-- ===== SCREEN 6: GROUPS ===== -->
+<div class="screen" id="s-groups">
+  <div style="position:relative">
+    <div class="bg-char">养</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">PERSONALIZED · CARE</div>
+      <div class="sec-title">分人群调养</div>
+      <div class="sec-sub">不同人群的气血特点与调养侧重不同，选择你的类型。</div>
+    </div>
+  </div>
+
+  <div class="group-tabs">
+    <button class="group-tab active" onclick="showGroup(this,'gg-female')">👩 女性</button>
+    <button class="group-tab" onclick="showGroup(this,'gg-male')">👨 男性</button>
+    <button class="group-tab" onclick="showGroup(this,'gg-elder')">👴 老年人</button>
+    <button class="group-tab" onclick="showGroup(this,'gg-youth')">🧒 青少年</button>
+    <button class="group-tab" onclick="showGroup(this,'gg-preg')">🤱 孕产期</button>
+  </div>
+
+  <div class="group-panel active" id="gg-female">
+    <div class="card">
+      <div class="card-title">经期四阶段完整管理</div>
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:7px">
+        <div style="background:var(--paper2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:9px 12px">
+          <div style="font-weight:600;color:#993556;font-size:12px">经前7—10天：疏肝期</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6">玫瑰花+佛手柑+陈皮茶；避免上火失眠；勿大补；按揉太冲·期门。</div>
+        </div>
+        <div style="background:var(--paper2);border-left:3px solid #FAC775;border-radius:0 8px 8px 0;padding:9px 12px">
+          <div style="font-weight:600;color:#854F0B;font-size:12px">经期：温通保暖期</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6">红糖水（经前3天始）；益母草炖鸡蛋；避免寒凉；<strong>经期本身进补无效</strong>。</div>
+        </div>
+        <div style="background:var(--paper2);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:9px 12px">
+          <div style="font-weight:600;color:#0F6E56;font-size:12px">经后：补血养阴黄金期</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6">血海空虚，此时补最有效；大枣·桑葚·阿胶·猪肝；揉血海+三阴交。</div>
+        </div>
+        <div style="background:var(--paper2);border-left:3px solid #C0DD97;border-radius:0 8px 8px 0;padding:9px 12px">
+          <div style="font-weight:600;color:#3B6D11;font-size:12px">平时：疏肝通络日常</div>
+          <div style="font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6">嘘字诀每日6次；拍带脉；腹股沟推拿。<strong>怒气压抑→憋在子宫/乳腺→直接影响月经质量</strong>。</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">乳腺与激素问题</div>
+      <div class="card-body">根源是肝郁。调情志+疏肝是根本；揉太冲·膻中·期门；规律运动（快走·八段锦）。经前疏肝才能持续改善。</div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="gg-male">
+    <div class="card">
+      <div class="card-title">久坐办公族（最普遍）</div>
+      <div class="card-body">每小时起身5分钟做双手托天理三焦（6次）；揉足三里+委中缓解腰背；下班拍八虚排毒；久坐伤肉，脾主肌肉，需保持运动激活脾气。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">压力型肝郁（怒气压抑多）</div>
+      <div class="card-body">嘘字诀每日早起6次；拍腋窝极泉打通心气；4-7-8呼吸法情绪激动时用；玫瑰陈皮茶；减少表情管理的内耗。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">肾虚型（脱发·腰膝酸·夜尿多）</div>
+      <div class="card-body">晚泡脚+揉涌泉；艾灸关元+肾俞；早起姜枣茶；黑芝麻·核桃·黑豆食补；减少恐慌情绪（恐伤肾）。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">夏季贪凉注意</div>
+      <div class="card-body">戒冰饮冷食；空调房薄外套护腰肾；出汗后及时擦干避风；形寒饮冷伤肺是夏季男性最常见气血损耗。</div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="gg-elder">
+    <div class="card">
+      <div class="card-title">总体原则：固本培元，动静结合</div>
+      <div class="card-body">气血双虚为主。久卧伤气，久坐伤肉——每日保持适量活动（散步30分钟+坐式八段锦）。以维持第3—4层（睡眠良好·精力基本够用）为目标，争取手足温暖（第5层）。</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="card"><div class="card-title">脾胃弱者</div><div class="card-body" style="font-size:12px">揉腹+足三里；食物宜软烂温热；忌夏日冰饮；焦三仙茶助消化。</div></div>
+      <div class="card"><div class="card-title">肾虚明显</div><div class="card-body" style="font-size:12px">晚泡脚；黑芝麻·核桃·黑豆；避免长期恐慌情绪；艾灸关元。</div></div>
+      <div class="card"><div class="card-title">睡眠差</div><div class="card-body" style="font-size:12px">嘶字诀入睡；睡前揉神门+涌泉；亥时（21—23点）入睡。</div></div>
+      <div class="card"><div class="card-title">心脑供血不足</div><div class="card-body" style="font-size:12px">拍八虚；搭鹊桥随时做；每日散步；深呼吸。</div></div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="gg-youth">
+    <div class="card">
+      <div class="card-title">最大风险：久视伤血</div>
+      <div class="card-body">每用眼1小时，闭目养神5分钟；揉睛明·四白·太阳穴；嘘字诀明目（肝开窍于目）；减少深夜用眼（久视+熬夜双重耗血）。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">脾胃弱（厌食偏食）</div>
+      <div class="card-body">捏脊（由下向上）；揉足三里；焦三仙茶消食化积；三餐规律，暴饮暴食=大饱伤脾，根源是没有安全感。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">情绪管理</div>
+      <div class="card-body">情绪敏感·抵触压力→引导用运动排泄（羽毛球·跑步·游泳）；嘘字诀疏肝。肝郁高发期从25岁开始，青少年期打好基础很关键。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">夏季作息（最关键）</div>
+      <div class="card-body">22点前入睡，让气血充分修复。面色差·眼神无光（第1—2层）→最快的办法就是改善睡眠，而不是进补。</div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="gg-preg">
+    <div class="card">
+      <div class="card-title">孕期注意事项</div>
+      <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--ink2);line-height:1.6"><span style="color:#E53935;flex-shrink:0">⛔</span><span><strong>禁忌穴位：</strong>三阴交·合谷·至阴·昆仑等活血穴，可能引起宫缩</span></div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);flex-shrink:0">✅</span><span>可做：搭鹊桥·嘶字诀；轻柔顺时针揉腹；双手托天（幅度减小，不踮脚）</span></div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--ink2);line-height:1.6"><span style="flex-shrink:0">💛</span><span>情志调养最重要：母体情绪直接影响胎儿；思虑过重（思则气滞）对孕期伤害最大</span></div>
+        <div style="display:flex;gap:8px;font-size:13px;color:var(--ink2);line-height:1.6"><span style="flex-shrink:0">🌿</span><span>泡脚：可用艾叶代替花椒，水温38—40°C，不超过20分钟</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">产后调养</div>
+      <div class="card-body">
+        · <strong>产后血虚：</strong>红枣+阿胶+桑葚食补；产后42天后可揉血海+三阴交<br>
+        · <strong>产后肝郁（情绪低落）：</strong>玫瑰花茶+轻柔揉太冲；家人情感支持与功法同等重要<br>
+        · <strong>哺乳期：</strong>禁花椒等辛热（影响乳汁）；泡脚改用艾叶；饮食以温补为主
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:4px">
+    <div class="card-title">📅 夏季通用日程参考</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+      <div style="display:flex;gap:10px;font-size:12px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);font-weight:600;min-width:36px;flex-shrink:0">早起</span><span>姜枣茶 → 双手托天（6次）→ 嘘字诀（6次）→ 搭鹊桥</span></div>
+      <div style="display:flex;gap:10px;font-size:12px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);font-weight:600;min-width:36px;flex-shrink:0">上午</span><span>搭鹊桥随时 → 每小时起身拉伸 → 4-7-8呼吸（情绪波动时）</span></div>
+      <div style="display:flex;gap:10px;font-size:12px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);font-weight:600;min-width:36px;flex-shrink:0">午间</span><span>午休20分钟（养心气）· 避免11—14点太阳直射</span></div>
+      <div style="display:flex;gap:10px;font-size:12px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);font-weight:600;min-width:36px;flex-shrink:0">傍晚</span><span>拍八虚 → 揉太冲·足三里 → 揉腹法</span></div>
+      <div style="display:flex;gap:10px;font-size:12px;color:var(--ink2);line-height:1.6"><span style="color:var(--teal);font-weight:600;min-width:36px;flex-shrink:0">睡前</span><span>红花椒泡脚 → 揉涌泉 → 4-7-8呼吸 → 嘶字诀入睡</span></div>
+    </div>
+  </div>
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+
+<!-- ===== SCREEN 7: 7天打卡 ===== -->
+<div class="screen" id="s-checkin">
+  <div style="position:relative">
+    <div class="bg-char">养</div>
+    <div class="sec-head">
+      <div class="sec-eyebrow">7 DAYS · PRACTICE</div>
+      <div class="sec-title">7天轻养打卡</div>
+      <div class="sec-sub">每天3个小任务，早·午·晚各一个，坚持7天感受气血的变化。</div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>免责声明：</strong>本打卡内容仅供中医养生学习参考，不构成任何医疗诊断或治疗建议。若有具体健康问题，请咨询执业中医师。孕妇·严重疾病患者请在医师指导下参考使用。
+  </div>
+
+  <!-- Progress -->
+  <div class="ck-hero">
+    <div class="ck-hero-title" id="ckHeroTitle">开启夏养之旅</div>
+    <div class="ck-hero-sub" id="ckHeroSub">完成每日三个小任务，感受气血的细微变化</div>
+    <div class="ck-progress-bar"><div class="ck-progress-fill" id="ckProgressFill" style="width:0%"></div></div>
+    <div class="ck-progress-text" id="ckProgressText">0 / 21 个任务</div>
+  </div>
+
+  <!-- Day cards injected by JS -->
+  <div id="dayCards"></div>
+
+  <!-- Poster section (visible after Day 7 done) -->
+  <div class="poster-section" id="posterSection">
+    <div class="poster-title">🎉 恭喜完成7天夏养打卡</div>
+    <div class="poster-sub">根据你的打卡记录，生成专属「夏养关键词」分享海报</div>
+    <canvas id="posterCanvas" width="600" height="900"></canvas>
+    <button class="poster-btn" onclick="downloadPoster()">📥 保存海报到相册</button>
+    <button class="poster-btn" style="background:var(--ink2);color:var(--paper);margin-top:8px" onclick="resetCheckin()">🔄 重新开始打卡</button>
+  </div>
+
+  <!-- QR Code section -->
+  <div class="qr-section">
+    <div class="qr-title">📱 扫码分享给朋友</div>
+    <canvas id="qrCanvas" width="160" height="160"></canvas>
+    <div class="qr-sub">长按保存二维码，分享夏季养气血指南</div>
+  </div>
+
+  <div class="watermark">本页内容整理自梵滌老师中医情志学课程</div>
+</div>
+
+</div><!-- /screens -->
+</div><!-- /app -->
+
+<script>
+// ===== TAB SWITCH =====
+function switchTab(btn, id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  document.querySelector('.screens').scrollTop=0;
+  // scroll tab into view
+  btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+
+// ===== LEVEL TEST =====
+const levelData={
+  7:{name:'第7层：脉象和缓有力',steps:[
+    {label:'日常维持',text:'坚持嘘字诀·搭鹊桥·双手托天，保持气血持续流动'},
+    {label:'情志调养',text:'每天给情绪留出出口，觉察即拉回，不让情绪积累超过30分钟'},
+    {label:'季节顺应',text:'夏季顺应阳气，适当午休，不过度消耗'},
+  ]},
+  6:{name:'第6层：声音洪亮',steps:[
+    {label:'保护气血',text:'减少多言耗气；搭鹊桥随时做，生津润肺'},
+    {label:'日常功法',text:'嘘字诀·双手托天·搭鹊桥三式坚持'},
+    {label:'情志调和',text:'声音有力来自气血充盈，情志平和是关键'},
+  ]},
+  5:{name:'第5层：手足温暖',steps:[
+    {label:'温通经络',text:'晚红花椒水泡脚引火归元；揉涌泉100下'},
+    {label:'阳虚者',text:'艾灸关元·命门；早起姜枣茶温中'},
+    {label:'夏季禁忌',text:'戒冰饮冷食，空调房保暖腰腹'},
+    {label:'运动激活',text:'拍八虚每日100下，推动气血运行至四肢'},
+  ]},
+  4:{name:'第4层：精力充沛',steps:[
+    {label:'健脾补气',text:'早起姜枣茶；揉足三里+中脘（每日各3分钟）；双手托天6次'},
+    {label:'减少耗散',text:'减少多言；避免久坐，每小时起身活动；午休20分钟养心气'},
+    {label:'中焦通畅',text:'若有胃胀腹胀，先通后补；揉腹法晨起睡前各一次'},
+    {label:'情志因素',text:'思虑过度→脾气郁结→运化失常→补再多都进不去'},
+  ]},
+  3:{name:'第3层：睡眠良好',steps:[
+    {label:'睡前功法',text:'嘶字诀入睡引导；揉神门穴（腕横纹尺侧端）1—2分钟'},
+    {label:'泡脚助眠',text:'红花椒水42°C泡脚15—20分钟，涌泉揉100下，引火归元'},
+    {label:'调心收神',text:'4-7-8呼吸平复情绪；减少睡前手机刺激；亥时（21—23点）入睡'},
+    {label:'心脾两虚',text:'若伴面色萎黄·食欲差，参见「气血卡点」心脾两虚调理'},
+  ]},
+  2:{name:'第2层：双目有神',steps:[
+    {label:'补肝血',text:'揉血海+三阴交（每日各3分钟）；枸杞·菊花·桑葚泡茶明目'},
+    {label:'嘘字诀',text:'每日早起练6次，肝开窍于目，平肝气则明目'},
+    {label:'减少久视',text:'每用眼1小时闭目5分钟；睛明穴（目内眦）轻揉'},
+    {label:'睡眠保障',text:'23点前入睡，肝经子时（23点）开始自我修复'},
+  ]},
+  1:{name:'第1层：面色偏黄或苍白',steps:[
+    {label:'立即开始',text:'补血食补：大枣·猪肝·桑葚·阿胶（经期后补效果最佳）'},
+    {label:'日常功法',text:'搭鹊桥随时做，生津养血；嘶字诀保证睡眠质量'},
+    {label:'作息优先',text:'22点前入睡是最快提升气血的方法，睡眠比进补更根本'},
+    {label:'避免',text:'避免熬夜、过度用眼（久视伤血）、情绪大起大落'},
+  ]},
+};
+
+function selectLevel(el,lv){
+  document.querySelectorAll('.level-row').forEach(r=>r.classList.remove('selected'));
+  el.classList.add('selected');
+  const d=levelData[lv];
+  const box=document.getElementById('levelResult');
+  let html=`<div class="result-title">📊 你的气血层级：${d.name}</div>
+  <div class="result-body" style="margin-bottom:10px">针对此层级的调养方向（坚持2—4周可感受改善）：</div>`;
+  d.steps.forEach((s,i)=>{
+    html+=`<div class="result-step"><div class="step-dot">${i+1}</div><div><strong style="color:var(--ink)">${s.label}：</strong><span style="color:var(--ink2)">${s.text}</span></div></div>`;
+  });
+  box.innerHTML=html;
+  box.classList.add('show');
+  setTimeout(()=>box.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+// ===== EMOTION TOGGLE =====
+function toggleEmo(el){el.classList.toggle('open')}
+
+// ===== SYNDROME ANALYSIS =====
+function analyzeH5(){
+  const checked=[...document.querySelectorAll('#s-syndrome input:checked')].map(i=>i.value);
+  if(!checked.length){alert('请至少选择一个症状');return}
+  const scores={yin:0,yang:0,qi:0,xue:0,liver:0,heart:0,kidney:0,middle:0};
+  const map={
+    wuxin:{yin:3},dauhan:{yin:3},kougan:{yin:2},shejiao:{yin:2,yang:1},
+    paoleng:{yang:3},shuye:{yang:2,kidney:2},danbian:{yang:2,middle:2},
+    xinkuang:{qi:3,heart:2},shiyou:{qi:1,middle:3},yaosuan:{qi:2,kidney:3},
+    shimian:{xue:2,heart:3},bimen:{liver:3},ruxian:{liver:3},
+    tongjing:{liver:3},toufeng:{liver:3},kouku:{liver:2,middle:1},
+  };
+  checked.forEach(v=>{if(map[v])for(const[k,n]of Object.entries(map[v]))scores[k]+=n});
+
+  const xuShi=[
+    {key:'yin',score:scores.yin,label:'阴虚',bg:'#E6F1FB',border:'#185FA5',nc:'#0C447C',tb:'#B5D4F4',tc:'#042C53',
+     desc:'阴液不足，虚热内生。夏季阳盛，阴虚者更易出现虚热上扰。',
+     tags:['五心烦热','盗汗','口干咽燥','舌红少苔'],
+     remedy:'食补：百合·银耳·枸杞·桑葚·石斛。搭鹊桥每日生津。忌辛辣燥热。经后补血养阴效果最佳。'},
+    {key:'yang',score:scores.yang,label:'阳虚（脾肾阳虚）',bg:'#FAEEDA',border:'#854F0B',nc:'#633806',tb:'#FAC775',tc:'#412402',
+     desc:'阳气不足，温煦失职。夏季贪凉最易加重阳虚。',
+     tags:['畏寒怕冷','四肢冰凉','大便溏薄','夜尿频多'],
+     remedy:'冬病夏治。早：姜枣茶；晚：红花椒水泡脚；艾灸关元·命门·足三里；戒生冷冰饮。'},
+    {key:'qi',score:scores.qi,label:'气虚',bg:'#EAF3DE',border:'#3B6D11',nc:'#27500A',tb:'#C0DD97',tc:'#173404',
+     desc:'元气不足，脏腑功能减退。气虚则推动无力，血行迟滞。',
+     tags:['神疲乏力','少气懒言','食少腹胀','面色淡白'],
+     remedy:'食补：山药·莲子·小米·黄芪水·大枣。避免多言过劳。足三里每日按揉。'},
+    {key:'xue',score:scores.xue,label:'血虚',bg:'#FBEAF0',border:'#993556',nc:'#72243E',tb:'#F4C0D1',tc:'#4B1528',
+     desc:'血液不足，心神及脏腑失于濡养。心血虚则心悸失眠多梦。',
+     tags:['面色萎黄','心悸多梦','头晕眼花','月经量少'],
+     remedy:'食补：大枣·阿胶·桑葚·猪肝·龙眼肉。经后补血窗口期重点调养。揉血海·三阴交。'},
+  ].filter(d=>d.score>0).sort((a,b)=>b.score-a.score).slice(0,2);
+
+  const zuAi=[
+    {key:'liver',score:scores.liver,label:'肝郁气滞',bg:'#EAF3DE',border:'#3B6D11',nc:'#27500A',tb:'#C0DD97',tc:'#173404',
+     desc:'肝主疏泄，情志不遂则肝气郁结，气机不畅，气滞日久可致血瘀。',
+     tags:['胸胁胀闷','情绪抑郁','乳房胀痛','痛经有血块','两侧头痛'],
+     cause:'常见病因：长期情绪压抑或急躁易怒；七情不节（怒气未疏泄，忧思过度）。',
+     remedy:'嘘字诀每日早起6次；4-7-8呼吸法；按揉太冲；玫瑰花·佛手柑·陈皮茶；每日30分钟有氧运动。'},
+    {key:'heart',score:scores.heart,label:'心脾两虚',bg:'#FBEAF0',border:'#993556',nc:'#72243E',tb:'#F4C0D1',tc:'#4B1528',
+     desc:'心血不足则神失所养，脾气亏虚则运化失职，气血生化乏源。',
+     tags:['心悸气短','失眠多梦','面色萎黄','食少腹胀','神疲健忘'],
+     cause:'常见病因：思虑过度；劳倦内伤；饮食不节损伤脾胃。',
+     remedy:'最关键：放下强迫性高能量，允许示弱。揉内关·神门·足三里；嘶字诀助眠；莲子·百合·大枣食补。'},
+    {key:'kidney',score:scores.kidney,label:'肾气不足',bg:'#EEEDFE',border:'#534AB7',nc:'#3C3489',tb:'#CECBF6',tc:'#26215C',
+     desc:'肾为先天之本，主藏精·主骨·主水。肾气不足则腰府失养。恐惧·惊吓为伤肾之情志。',
+     tags:['腰膝酸软','夜尿频多','耳鸣健忘','意志消沉'],
+     cause:'常见病因：先天不足；久病及肾；长期恐惧或重度惊吓。',
+     remedy:'艾灸关元·肾俞；晚泡脚后揉涌泉100下；规律作息固护肾气；黑豆·黑芝麻·核桃·山药食补。'},
+    {key:'middle',score:scores.middle,label:'中焦气机不畅',bg:'#FCF9F0',border:'#EF9F27',nc:'#633806',tb:'#FAEEDA',tc:'#633806',
+     desc:'脾胃为气血生化之源，中焦升降失常则清气不升、浊气不降。',
+     tags:['脘腹胀满','嗳气反酸','大便黏滞','口苦晨重','舌苔厚腻'],
+     cause:'常见病因：饮食不节；思虑过度（思则气结）；久坐少动。',
+     remedy:'先通后补。早：姜枣茶；晚：泡脚；揉中脘·足三里；湿重者饮焦三仙茶；疏通腹股沟向膝方向推揉通下焦。'},
+  ].filter(d=>d.score>0).sort((a,b)=>b.score-a.score).slice(0,2);
+
+  const res=document.getElementById('synResultH5');
+  let html=`<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">📊 分析结果（已选${checked.length}项）</div>`;
+
+  if(xuShi.length){
+    html+=`<div class="dim-label">维度一 · 气血虚实方向（缺什么）</div>`;
+    xuShi.forEach((s,i)=>{
+      html+=`<div class="syn-card" style="background:${s.bg};border-color:${s.border}">
+        <div class="syn-name" style="color:${s.nc}">${i===0?'主要方向：':'兼见：'}${s.label}</div>
+        <div style="font-size:12px;color:${s.nc};line-height:1.6;margin-bottom:8px">${s.desc}</div>
+        <div class="tag-row">${s.tags.map(t=>`<span class="tag" style="background:${s.tb};color:${s.tc}">${t}</span>`).join('')}</div>
+        <div class="syn-block"><div class="syn-block-label" style="color:${s.nc}">调养方向</div><div class="syn-block-body">${s.remedy}</div></div>
+      </div>`;
+    });
+  }
+
+  if(zuAi.length){
+    html+=`<div class="dim-label" style="margin-top:14px">维度二 · 气血循行障碍（堵在哪里）</div>`;
+    zuAi.forEach((s,i)=>{
+      html+=`<div class="syn-card" style="background:${s.bg};border-color:${s.border}">
+        <div class="syn-name" style="color:${s.nc}">${i===0?'主要障碍：':'兼见：'}${s.label}</div>
+        <div style="font-size:12px;color:${s.nc};line-height:1.6;margin-bottom:8px">${s.desc}</div>
+        <div class="tag-row">${s.tags.map(t=>`<span class="tag" style="background:${s.tb};color:${s.tc}">${t}</span>`).join('')}</div>
+        <div class="syn-block"><div class="syn-block-label" style="color:${s.nc}">常见病因</div><div class="syn-block-body">${s.cause}</div></div>
+        <div class="syn-block"><div class="syn-block-label" style="color:${s.nc}">调养方向</div><div class="syn-block-body">${s.remedy}</div></div>
+      </div>`;
+    });
+  }
+
+  if(!xuShi.length&&!zuAi.length){
+    html='<div class="card"><div class="card-title">🎉 气血状态较为平和</div><div class="card-body">暂未发现明显偏颇，继续保持日常功法练习即可。</div></div>';
+  }else{
+    html+=`<div style="background:var(--paper2);border-radius:8px;padding:10px 12px;margin-top:4px;font-size:11px;color:var(--ink3);line-height:1.7">⚠️ 以上结果仅为自我参考，不构成医学诊断。如有持续明显不适，建议面诊有经验的中医师。</div>`;
+  }
+  res.innerHTML=html;
+  res.classList.add('show');
+  setTimeout(()=>res.scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+// ===== GONGFA =====
+const gfData=[
+  {num:1,name:'4-7-8 引导呼吸法',hint:'疏肝调神 · 快速平复焦虑 · 内置计时器',hasTimer:true,
+   note:'焦虑·胸口憋闷·肝气上冲·睡前情绪激动者适用。呼气时意念：将胸腔郁积之气从口中徐徐呼出。',
+   steps:[]},
+  {num:2,name:'双手托天理三焦',hint:'八段锦第一式 · 通调三焦 · 改善水肿疲劳',
+   note:'每日早起做6—8次。三焦是气血津液运行的总通道（上焦心肺·中焦脾胃·下焦肝肾），此式打通全身气机。',
+   steps:[
+     {label:'吸气',text:'两臂外旋（掌心转向前），慢慢抬至胸前，手心翻向上，使劲往上推，眼睛看手背'},
+     {label:'撑举',text:'两臂上举后，目视前方，下巴内收。掌根用力向上撑，同时脚跟上提，整个身体向上拉伸'},
+     {label:'呼气',text:'两手分开，从身体两侧慢慢落下还原'},
+     {label:'要领',text:'腰背竖直，不可挺肚子；上托时用掌根发力，而非手指'},
+   ]},
+  {num:3,name:'嘘字诀——平肝气',hint:'六字诀之肝音 · 疏泄肝气 · 明目安神',
+   note:'肝郁型·情绪压抑·眼睛疲劳者每日早起练6次。怒气上冲时随时可用，效果立竿见影。',
+   steps:[
+     {label:'口型',text:'双唇微开，牙齿轻闭留有缝隙，舌尖伸直向前但不触碰牙齿'},
+     {label:'气息',text:'呼气时发「嘘——」音，气流从齿缝间缓缓呼出，声音绵长。重点在呼吸，不在发声响度。'},
+     {label:'意念',text:'一边发音，一边感受肝脏部位有气机向外疏散，身体能量随呼吸向外扩散·松开'},
+     {label:'区别',text:'嘘字诀=白天疏泄肝气（向外扩散）；嘶字诀=夜间收敛心气（向内沉降）'},
+   ]},
+  {num:4,name:'嘶字诀——睡眠调神法',hint:'引导入睡 · 心脾两虚首选',
+   note:'入睡困难·心悸·脑袋停不下来者适用。任何人群均可，孕妇也安全。',
+   steps:[
+     {label:'姿势',text:'仰卧大字形，全身放松，双手自然置于腹部两侧'},
+     {label:'口型',text:'舌尖轻抵上牙龈，嘴形做「嘶」字但不发出声音，气流从舌尖处缓缓渗出'},
+     {label:'意念',text:'想象自己像一个气球，随着每次呼气逐渐缩小、变轻、慢慢沉入床铺，向地面融合'},
+     {label:'机理',text:'白天用尽心气带动别人，晚上心的门关不上，嘶字诀就是帮你轻轻把那扇门关上'},
+   ]},
+  {num:5,name:'搭鹊桥——任督接通',hint:'随时随地 · 沟通阴阳 · 贯穿所有功法',
+   hasVideo:true,videoItems:[
+     {icon:'📺',cls:'vlink-bili',name:'任督二脉鹊桥功法详解',platform:'哔哩哔哩搜索',url:'https://www.bilibili.com/search#/?keyword=任督二脉+鹊桥+功法'},
+     {icon:'▶️',cls:'vlink-yt',name:'小周天·任督二脉打通冥想',platform:'YouTube搜索',url:'https://www.youtube.com/results?search_query=任督二脉+小周天+冥想'},
+   ],
+   note:'所有人群基础练习，是其他所有功法的基础动作。坐车·工作间隙随时可做。',
+   steps:[
+     {label:'动作',text:'舌尖轻轻抵住上颚（硬腭前部），力道极轻，如蜻蜓点水'},
+     {label:'呼吸',text:'自然放松呼吸，不需要刻意改变呼吸节奏'},
+     {label:'原理',text:'任脉（阴）与督脉（阳）在口腔中断开，舌抵上颚即接通二脉，阴升阳降，水火既济'},
+     {label:'功效',text:'沟通任督二脉·减缓焦虑·津液润养脾胃·训练呼吸深度·松弛下颌咬肌（美颜）'},
+   ]},
+  {num:6,name:'拍打八虚——疏通全身经络',hint:'气血淤滞首选 · 每处100下',
+   note:'气血淤滞·疼痛·肝郁型适用。月经期·皮肤破损处不拍。孕妇禁拍腹股沟。',
+   steps:[
+     {label:'①两腋窝（极泉 HT1）',text:'心经起点，疏心气，改善心悸胸闷·上臂酸胀'},
+     {label:'②两肘窝（尺泽 LU5）',text:'心肺经汇聚，排肺热，治咳嗽·肘部酸痛'},
+     {label:'③两腹股沟（冲门 SP12）',text:'脾肝经交汇，下肢气血进出口，改善腹股沟紧绷·下肢循环'},
+     {label:'④两腘窝（委中 BL40）',text:'膀胱经要穴，泻腰背湿热，缓解腰痛腿酸'},
+     {label:'手法',text:'空心掌拍打（五指并拢，手心内扣呈碗状），每处100—200下，感酸热为佳'},
+   ]},
+  {num:7,name:'揉腹法——中焦调理',hint:'健脾胃 · 助消化 · 晨起睡前各一次',
+   hasVideo:true,videoItems:[
+     {icon:'📺',cls:'vlink-bili',name:'中医揉腹法·调理脾胃教学',platform:'哔哩哔哩搜索',url:'https://www.bilibili.com/search#/?keyword=揉腹法+中医+脾胃+教学'},
+     {icon:'▶️',cls:'vlink-yt',name:'中医腹部按摩·健脾和胃',platform:'YouTube搜索',url:'https://www.youtube.com/results?search_query=中医+揉腹+健脾胃+方法'},
+   ],
+   note:'中焦不通·胃胀·大便不成型·阳虚型。饭后1小时内不做。孕妇禁忌。',
+   steps:[
+     {label:'姿势',text:'仰卧或坐位，双手叠放于腹部（女性右手在下，男性左手在下）'},
+     {label:'顺时针',text:'以肚脐为中心顺时针揉36圈（助运化，促进肠胃蠕动）'},
+     {label:'逆时针',text:'再逆时针揉36圈（固摄，收敛元气）'},
+     {label:'重点穴',text:'中脘（脐上4寸）· 气海（脐下1.5寸）· 关元（脐下3寸）'},
+   ]},
+  {num:8,name:'通带脉下焦——从腹股沟沿大腿内侧向膝盖方向',hint:'改善下肢循环 · 通带脉 · 疏通胃肠',
+   hasVideo:true,videoItems:[
+     {icon:'📺',cls:'vlink-bili',name:'通带脉下焦·疏通带脉下焦',platform:'哔哩哔哩搜索',url:'https://www.bilibili.com/search#/?keyword=腹股沟+推拿+带脉+经络'},
+     {icon:'▶️',cls:'vlink-yt',name:'中医带脉·腹股沟疏通养生',platform:'YouTube搜索',url:'https://www.youtube.com/results?search_query=中医+带脉+腹股沟+疏通+养生'},
+   ],
+   note:'下肢循环差·腹部肥胖·肠胃蠕动弱·肝郁型。月经期·孕妇禁忌。',
+   steps:[
+     {label:'姿势',text:'坐位，两腿自然分开，放松'},
+     {label:'方法',text:'双手从腹股沟（股动脉搏动区，大腿根部）沿大腿内侧向膝盖方向缓慢推揉'},
+     {label:'力度',text:'酸胀不痛为宜；遇到筋结（条索状硬块）可停留按揉30秒'},
+     {label:'次数',text:'每侧推50—100次，配合叩击腰侧带脉区（环腰一圈）'},
+   ]},
+  {num:9,name:'红花椒泡脚——引火归元',hint:'上热下寒首选 · 晚9—10点',
+   note:'上热下寒·阳虚·失眠·中焦不通者适用。孕妇慎用花椒（可改艾叶）；阴虚火旺者水温不宜过高（38°C）。',
+   steps:[
+     {label:'材料',text:'红花椒10—15粒，清水500—800ml'},
+     {label:'方法',text:'花椒冷水下锅，大火烧开后小火煮5分钟，放至42°C左右倒入泡脚盆'},
+     {label:'时长',text:'泡15—20分钟，至微微出汗（不宜大汗，伤津液）'},
+     {label:'收尾',text:'泡后擦干，坐床边按揉涌泉穴（足底前1/3凹陷处）100下'},
+   ]},
+];
+
+function buildGfList(){
+  const container=document.getElementById('gfList');
+  gfData.forEach(gf=>{
+    const div=document.createElement('div');
+    div.className='gf-item';
+    div.id='gf'+gf.num;
+    let bodyHtml='';
+    if(gf.hasTimer){
+      bodyHtml=`<div class="breath-timer">
+        <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">鼻吸4拍 · 屏息7拍 · 口呼8拍 为一组</div>
+        <div style="position:relative;display:inline-block;margin:6px 0">
+          <div class="breath-circle" id="bCircle">
+            <svg><circle id="bArc" cx="55" cy="55" r="50"/></svg>
+            <div class="breath-label" id="bNum">4</div>
+            <div class="breath-count" id="bRound">第1组</div>
+          </div>
+        </div>
+        <div class="breath-phase" id="bPhase">准备开始</div>
+        <div class="breath-controls">
+          <button class="breath-btn primary" id="bStartBtn" onclick="startBreath()">开始练习</button>
+          <button class="breath-btn" onclick="resetBreath()">重置</button>
+        </div>
+        <div style="font-size:11px;color:var(--ink3);margin-top:8px">共6组 · 约2分钟</div>
+      </div>`;
+    }
+    if(gf.steps.length){
+      bodyHtml+=`<div class="step-card">${gf.steps.map(s=>`<div class="step"><strong>${s.label}：</strong>${s.text}</div>`).join('')}</div>`;
+    }
+    if(gf.hasVideo){
+      bodyHtml+=`<div class="video-links"><div class="video-link-title">推荐观看 · 点击跳转</div>${gf.videoItems.map(v=>`<a class="vlink" href="${v.url}" target="_blank" rel="noopener"><div class="vlink-icon ${v.cls}">${v.icon}</div><div class="vlink-info"><div class="vlink-name">${v.name}</div><div class="vlink-platform">${v.platform}</div></div><div class="vlink-arrow">↗</div></a>`).join('')}</div>`;
+    }
+    bodyHtml+=`<div class="gf-note">🌿 ${gf.note}</div>`;
+    div.innerHTML=`<div class="gf-header" onclick="toggleGf('gf${gf.num}')">
+      <div class="gf-num">${gf.num}</div>
+      <div class="gf-meta">
+        <div class="gf-name">${gf.name}</div>
+        <div class="gf-hint">${gf.hint}</div>
+      </div>
+      <div class="gf-toggle">▾</div>
+    </div>
+    <div class="gf-body">${bodyHtml}</div>`;
+    container.appendChild(div);
+  });
+}
+buildGfList();
+
+function toggleGf(id){
+  const el=document.getElementById(id);
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.gf-item.open').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+// ===== BREATH TIMER =====
+let bTimer=null,bPhase=0,bCount=0,bRound=0,bRunning=false;
+const bPhases=[{name:'鼻吸气',dur:4},{name:'屏息',dur:7},{name:'口呼气',dur:8}];
+const totalRounds=6;
+
+function startBreath(){
+  if(bRunning){clearInterval(bTimer);bRunning=false;document.getElementById('bStartBtn').textContent='继续练习';return}
+  bRunning=true;document.getElementById('bStartBtn').textContent='暂停';
+  runBreath();
+}
+
+function runBreath(){
+  const p=bPhases[bPhase];
+  document.getElementById('bPhase').textContent=p.name;
+  document.getElementById('bNum').textContent=p.dur;
+  const arc=document.getElementById('bArc');
+  const circ=2*Math.PI*50;
+  arc.style.strokeDasharray=circ;
+  arc.style.strokeDashoffset=circ;
+  let elapsed=0;
+  bTimer=setInterval(()=>{
+    elapsed+=0.1;
+    const remaining=p.dur-elapsed;
+    document.getElementById('bNum').textContent=Math.ceil(remaining);
+    arc.style.strokeDashoffset=circ*(1-elapsed/p.dur);
+    if(elapsed>=p.dur){
+      clearInterval(bTimer);
+      bPhase=(bPhase+1)%3;
+      if(bPhase===0){
+        bRound++;
+        document.getElementById('bRound').textContent=`第${Math.min(bRound+1,totalRounds)}组`;
+        if(bRound>=totalRounds){
+          document.getElementById('bPhase').textContent='✅ 完成6组';
+          document.getElementById('bStartBtn').textContent='重新开始';
+          bRunning=false;bRound=0;bPhase=0;return;
+        }
+      }
+      if(bRunning)runBreath();
+    }
+  },100);
+}
+
+function resetBreath(){
+  clearInterval(bTimer);bRunning=false;bPhase=0;bRound=0;
+  document.getElementById('bPhase').textContent='准备开始';
+  document.getElementById('bNum').textContent='4';
+  document.getElementById('bRound').textContent='第1组';
+  document.getElementById('bArc').style.strokeDashoffset=2*Math.PI*50;
+  document.getElementById('bStartBtn').textContent='开始练习';
+}
+
+// ===== MERIDIAN =====
+const ptData={
+  xuehai:{emoji:'🩸',name:'血海穴 · SP10',meridian:'足太阴脾经',
+    loc:'屈膝，髌骨内上缘上2寸，股内侧肌隆起处',
+    func:'活血化瘀，调经统血。补血要穴，女性气血必用。',
+    method:'拇指按揉3—5分钟，感酸胀为度。经期结束后重点按揉，补血养阴效果最佳。',
+    indication:'月经不调·痛经·经量少·贫血·皮肤瘙痒',
+    pairs:'配三阴交（调经补血）；配足三里（补气血双调）'},
+  zusanli:{emoji:'💪',name:'足三里 · ST36',meridian:'足阳明胃经',
+    loc:'外膝眼（犊鼻穴）直下3寸，胫骨前嵴外一横指',
+    func:'补益中气，健脾和胃，气血生化之源，强壮要穴。',
+    method:'每日按揉3—5分钟，或艾灸15分钟。长期坚持改善整体气血状态。',
+    indication:'疲劳乏力·消化不良·免疫力低·贫血·下肢无力',
+    pairs:'配中脘（健脾和胃）；配血海（补气血双调）'},
+  sanyinjiao:{emoji:'🌸',name:'三阴交 · SP6',meridian:'足太阴脾经（肝脾肾三经交会）',
+    loc:'内踝尖直上3寸，胫骨后缘',
+    func:'补血调经，补肝肾，健脾胃。肝脾肾三经交会，一穴调三脏。',
+    method:'每日按揉3—5分钟。孕妇禁用（活血穴位）。',
+    indication:'月经不调·失眠·腹胀·水肿·下肢无力',
+    pairs:'配血海（调经补血）；配足三里（益气健脾）'},
+  taichong:{emoji:'🌿',name:'太冲穴 · LR3',meridian:'足厥阴肝经',
+    loc:'足背第1、2跖骨结合部前方凹陷处',
+    func:'疏肝理气，平肝降火，调经止痛。疏肝要穴。',
+    method:'拇指按揉3—5分钟，感酸胀为度。怒气上冲时立即按揉，效果显著。',
+    indication:'情绪抑郁·焦虑·头痛·痛经·乳房胀痛',
+    pairs:'配期门（疏肝解郁）；配行间（清肝火）'},
+  zhongwan:{emoji:'⚡',name:'中脘穴 · CV12',meridian:'任脉（胃募穴·八会穴腑会）',
+    loc:'前正中线上，脐上4寸',
+    func:'温中和胃，健脾益气，中焦气血生化之枢纽。',
+    method:'按揉5—10分钟，或艾灸15—20分钟。饭后1小时内不做。',
+    indication:'胃痛·胃胀·呕吐·消化不良·食欲不振',
+    pairs:'配足三里（健脾和胃）；配气海（补中益气）'},
+  guanyuan:{emoji:'🔥',name:'关元穴 · CV4',meridian:'任脉（小肠募穴·元气之所聚）',
+    loc:'前正中线上，脐下3寸',
+    func:'培元固本，补益下焦，元气之根本。补气血最重要的穴位之一。',
+    method:'艾灸15—20分钟效果最佳，或按揉5分钟。阳虚者夏季重点灸此穴（冬病夏治）。',
+    indication:'虚寒·腰膝酸软·夜尿频多·月经不调·疲乏无力',
+    pairs:'配气海（培元固本）；配肾俞（补肾固元）'},
+};
+
+function showPt(key){
+  document.querySelectorAll('.body-point').forEach(p=>p.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  const d=ptData[key];
+  const det=document.getElementById('ptDetail');
+  det.innerHTML=`<div class="pd-name">${d.emoji} ${d.name} · ${d.meridian}</div>
+    <div style="font-size:12px;color:var(--ink2);margin-bottom:8px"><strong>标准定位：</strong>${d.loc}</div>
+    <div class="pd-grid">
+      <div class="pd-block"><div class="pd-block-label">功效</div><div class="pd-block-body">${d.func}</div></div>
+      <div class="pd-block"><div class="pd-block-label">操作方法</div><div class="pd-block-body">${d.method}</div></div>
+      <div class="pd-block"><div class="pd-block-label">适应症状</div><div class="pd-block-body">${d.indication}</div></div>
+      <div class="pd-block"><div class="pd-block-label">常用配穴</div><div class="pd-block-body">${d.pairs}</div></div>
+    </div>`;
+  det.classList.add('show');
+  setTimeout(()=>det.scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+// ===== GROUPS =====
+function showGroup(btn,id){
+  document.querySelectorAll('.group-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.group-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+
+// ===== 7天打卡 =====
+const CHECKIN_KEY = 'qixue_checkin_v1';
+
+const days = [
+  {
+    title: '第1天 · 觉察呼吸',
+    sub: '从呼吸开始，感知气的流动',
+    keyword: '呼吸觉察',
+    tasks: [
+      {time:'🌅 早', name:'4-7-8 呼吸法', desc:'起床后做一组4-7-8呼吸（鼻吸4拍·屏息7拍·口呼8拍），重复3次。感受胸腔打开的感觉。'},
+      {time:'☀️ 午', name:'搭鹊桥 3分钟', desc:'工作间隙，舌尖轻抵上颚，自然呼吸3分钟，感受口中津液慢慢生成。'},
+      {time:'🌙 晚', name:'记录今日情绪', desc:'睡前花1分钟，想想今天主要是哪种情绪？是喜/怒/思/忧/悲/恐/惊？是否有压抑？'},
+    ]
+  },
+  {
+    title: '第2天 · 通中焦',
+    sub: '调理脾胃，气血生化之源',
+    keyword: '脾胃通畅',
+    tasks: [
+      {time:'🌅 早', name:'姜枣茶一杯', desc:'3片生姜+5颗大枣煮水，早起空腹喝，温中升脾阳。没有姜枣用热水亦可。'},
+      {time:'☀️ 午', name:'揉足三里 3分钟', desc:'用拇指按揉双侧足三里穴（膝盖下3寸），每侧1.5分钟，感酸胀为度。补气健脾。'},
+      {time:'🌙 晚', name:'顺时针揉腹 36圈', desc:'仰卧，双手叠放腹部，以肚脐为中心顺时针轻柔揉腹36圈，促进脾胃运化，助眠。'},
+    ]
+  },
+  {
+    title: '第3天 · 疏肝气',
+    sub: '情绪疏通，让气机流动起来',
+    keyword: '肝气疏通',
+    tasks: [
+      {time:'🌅 早', name:'嘘字诀 6次', desc:'早起，双唇微开，舌尖向前，发「嘘——」音呼气6次，感受肝脏部位气机向外疏散。'},
+      {time:'☀️ 午', name:'觉察一个情绪', desc:'今天有没有某个时刻感到烦躁/郁闷？在30秒内注意到并深呼吸3次，不压抑也不放大。'},
+      {time:'🌙 晚', name:'按揉太冲穴 3分钟', desc:'用拇指按揉足背第1·2跖骨间（太冲穴），每侧1.5分钟，怒气积累者可感明显酸胀。'},
+    ]
+  },
+  {
+    title: '第4天 · 养心血',
+    sub: '安神助眠，心主血脉',
+    keyword: '养心安神',
+    tasks: [
+      {time:'🌅 早', name:'双手托天理三焦 6次', desc:'双臂外旋上举，掌根向上撑，脚跟上提，拉伸全身。每次吸气上托，呼气落下，做6次。'},
+      {time:'☀️ 午', name:'午休 20分钟', desc:'午间小睡或静坐20分钟（亥时心经当令），闭目养神，不看手机，养心气。'},
+      {time:'🌙 晚', name:'嘶字诀入睡练习', desc:'仰卧，舌尖轻抵上牙龈，嘴形做「嘶」字不出声，随呼气想象自己如气球渐渐变轻沉入床铺。'},
+    ]
+  },
+  {
+    title: '第5天 · 通经络',
+    sub: '拍打八虚，疏通全身',
+    keyword: '经络通畅',
+    tasks: [
+      {time:'🌅 早', name:'拍打八虚', desc:'空心掌依次拍两腋窝→两肘窝→两腹股沟→两腘窝，每处100下，感酸热为宜。全程约5分钟。'},
+      {time:'☀️ 午', name:'揉血海+三阴交 各2分钟', desc:'按揉血海（髌骨内上缘上2寸）和三阴交（内踝上3寸），双侧各2分钟，活血调经。'},
+      {time:'🌙 晚', name:'红花椒泡脚 15分钟', desc:'10粒花椒煮水至42°C，泡脚15分钟至微微出汗，引火归元。泡后揉涌泉100下。'},
+    ]
+  },
+  {
+    title: '第6天 · 固肾气',
+    sub: '肾为先天之本，固本培元',
+    keyword: '固肾培元',
+    tasks: [
+      {time:'🌅 早', name:'搭鹊桥 + 关元按揉', desc:'早起先搭鹊桥5分钟生津，再按揉关元穴（脐下3寸）3分钟，培元固本。'},
+      {time:'☀️ 午', name:'减少一次信息刷屏', desc:'今天午间有意识地放下手机30分钟，静坐·散步或闭目。恐则气下，平静即是养肾。'},
+      {time:'🌙 晚', name:'泡脚+揉涌泉 100下', desc:'晚泡脚后，按揉涌泉穴（足底前1/3凹陷）各100下，引虚火下行归藏于肾，改善失眠。'},
+    ]
+  },
+  {
+    title: '第7天 · 整合与感受',
+    sub: '回顾7天，感受气血的细微变化',
+    keyword: '气血和合',
+    tasks: [
+      {time:'🌅 早', name:'完整晨练套餐', desc:'姜枣茶→双手托天6次→嘘字诀6次→搭鹊桥5分钟。这是最精简有效的夏季晨养组合。'},
+      {time:'☀️ 午', name:'回顾7天情绪变化', desc:'想想这7天，最常出现的情志是什么？有没有某天觉察到情绪并及时疏通？这就是进步。'},
+      {time:'🌙 晚', name:'今夜完整夜养', desc:'泡脚→揉涌泉→4-7-8呼吸→嘶字诀入睡。感受从气血层级1到7，你目前在哪里？'},
+    ]
+  },
+];
+
+// keyword pool for poster (derived from completed days)
+const kwPool = {
+  0: ['呼吸觉察','气机通畅','情绪疗愈'],
+  1: ['脾胃调和','中焦通畅','补气生血'],
+  2: ['肝气疏通','情绪释放','气顺血行'],
+  3: ['养心安神','心血充足','睡眠安宁'],
+  4: ['经络通畅','活血化瘀','八虚通达'],
+  5: ['固肾培元','先天之本','肾气充沛'],
+  6: ['气血和合','身心一体','夏养有成'],
+};
+
+function loadCheckin() {
+  try { return JSON.parse(localStorage.getItem(CHECKIN_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+function saveCheckin(data) {
+  localStorage.setItem(CHECKIN_KEY, JSON.stringify(data));
+}
+
+function buildDayCards() {
+  const data = loadCheckin();
+  const container = document.getElementById('dayCards');
+  container.innerHTML = '';
+
+  let totalDone = 0;
+  days.forEach((day, di) => {
+    const dayKey = 'd' + di;
+    const dayData = data[dayKey] || {};
+    const tasksDone = day.tasks.filter((_, ti) => dayData['t' + ti]).length;
+    const allDone = tasksDone === day.tasks.length;
+    if (allDone) totalDone += day.tasks.length;
+    else totalDone += tasksDone;
+
+    // Determine state
+    const prevAllDone = di === 0 || (data['d' + (di-1)] && day.tasks.every((_, ti) => data['d' + (di-1)]['t' + ti]));
+    const isLocked = !prevAllDone;
+    const isActive = !isLocked && !allDone;
+
+    const card = document.createElement('div');
+    card.className = 'day-card' + (isLocked ? ' locked' : '') + (allDone ? ' done' : '') + (isActive ? ' active' : '');
+    card.id = 'day' + di;
+
+    let tasksHtml = day.tasks.map((task, ti) => {
+      const checked = !!dayData['t' + ti];
+      return `<div class="task-item">
+        <div class="task-checkbox ${checked ? 'checked' : ''}" onclick="toggleTask(${di},${ti})" id="tc-${di}-${ti}">${checked ? '✓' : ''}</div>
+        <div class="task-body">
+          <div class="task-time">${task.time}</div>
+          <div class="task-name">${task.name}</div>
+          <div class="task-desc">${task.desc}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const completeBtnVisible = !allDone && isActive && tasksDone === day.tasks.length;
+    const statusIcon = allDone ? '✅' : (isLocked ? '🔒' : `${tasksDone}/${day.tasks.length}`);
+
+    card.innerHTML = `
+      <div class="day-header" onclick="toggleDay(${di})">
+        <div class="day-num">${di + 1}</div>
+        <div class="day-meta">
+          <div class="day-title">${day.title}</div>
+          <div class="day-sub">${day.sub}</div>
+        </div>
+        <div class="day-status">${statusIcon}</div>
+      </div>
+      <div class="day-body">
+        ${tasksHtml}
+        ${allDone
+          ? `<div class="day-done-badge">✨ 今日打卡完成！关键词：${day.keyword}</div>`
+          : `<button class="day-complete-btn ${completeBtnVisible ? 'visible' : ''}" onclick="completeDay(${di})">✅ 完成今日打卡</button>`
+        }
+      </div>`;
+    container.appendChild(card);
+  });
+
+  // Update progress
+  const pct = Math.round(totalDone / 21 * 100);
+  document.getElementById('ckProgressFill').style.width = pct + '%';
+  document.getElementById('ckProgressText').textContent = totalDone + ' / 21 个任务';
+
+  const allDays = days.every((_, di) => {
+    const dd = data['d' + di] || {};
+    return days[di].tasks.every((_, ti) => dd['t' + ti]);
+  });
+
+  if (allDays) {
+    document.getElementById('ckHeroTitle').textContent = '🎉 7天打卡圆满完成！';
+    document.getElementById('ckHeroSub').textContent = '你已完成全部21个任务，快来生成你的夏养关键词海报吧！';
+    const ps = document.getElementById('posterSection');
+    ps.classList.add('visible');
+    drawPoster(data);
+  } else if (pct > 0) {
+    document.getElementById('ckHeroTitle').textContent = '正在夏养中…';
+    document.getElementById('ckHeroSub').textContent = '坚持下去，气血的变化需要积累。';
+  }
+
+  // Auto-open first active day
+  const firstActive = days.findIndex((_, di) => {
+    const dd = data['d' + di] || {};
+    const prevDone = di === 0 || days[di-1].tasks.every((_, ti) => (data['d'+(di-1)]||{})['t'+ti]);
+    const thisDone = days[di].tasks.every((_, ti) => dd['t'+ti]);
+    return prevDone && !thisDone;
+  });
+  if (firstActive !== -1) {
+    const fc = document.getElementById('day' + firstActive);
+    if (fc) fc.classList.add('open');
+  }
+
+  drawQR();
+}
+
+function toggleDay(di) {
+  const card = document.getElementById('day' + di);
+  if (card.classList.contains('locked')) return;
+  card.classList.toggle('open');
+}
+
+function toggleTask(di, ti) {
+  const data = loadCheckin();
+  if (!data['d' + di]) data['d' + di] = {};
+  data['d' + di]['t' + ti] = !data['d' + di]['t' + ti];
+  saveCheckin(data);
+
+  // Update checkbox UI
+  const cb = document.getElementById('tc-' + di + '-' + ti);
+  const isNowChecked = data['d' + di]['t' + ti];
+  cb.className = 'task-checkbox' + (isNowChecked ? ' checked' : '');
+  cb.textContent = isNowChecked ? '✓' : '';
+
+  // Check if all done → show complete button or complete
+  const dayData = data['d' + di] || {};
+  const tasksDone = days[di].tasks.filter((_, ti2) => dayData['t' + ti2]).length;
+  const btn = document.querySelector('#day' + di + ' .day-complete-btn');
+  if (btn) btn.className = 'day-complete-btn' + (tasksDone === days[di].tasks.length ? ' visible' : '');
+
+  buildDayCards();
+}
+
+function completeDay(di) {
+  const data = loadCheckin();
+  if (!data['d' + di]) data['d' + di] = {};
+  days[di].tasks.forEach((_, ti) => { data['d' + di]['t' + ti] = true; });
+  saveCheckin(data);
+  buildDayCards();
+  // scroll to next day
+  setTimeout(() => {
+    const next = document.getElementById('day' + (di + 1));
+    if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+function resetCheckin() {
+  if (!confirm('确认重置7天打卡记录？所有进度将清除。')) return;
+  localStorage.removeItem(CHECKIN_KEY);
+  document.getElementById('posterSection').classList.remove('visible');
+  buildDayCards();
+}
+
+// ===== POSTER CANVAS =====
+function drawPoster(data) {
+  const canvas = document.getElementById('posterCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 600, H = 900;
+
+  // Collect keywords from completed days
+  const kws = [];
+  days.forEach((_, di) => {
+    const dd = data['d' + di] || {};
+    if (days[di].tasks.every((_, ti) => dd['t' + ti])) {
+      kwPool[di].forEach(k => kws.push(k));
+    }
+  });
+  // Pick 3 most representative
+  const featured = kws.slice(0, 9);
+  const top3 = [featured[2] || '气血和合', featured[5] || '情志畅通', featured[8] || '夏养有成'];
+
+  // Background gradient (warm rice paper)
+  const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+  bgGrad.addColorStop(0, '#F7F3EA');
+  bgGrad.addColorStop(0.5, '#F0EAD8');
+  bgGrad.addColorStop(1, '#E8DFC8');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Top border stripe
+  const topGrad = ctx.createLinearGradient(0, 0, W, 0);
+  topGrad.addColorStop(0, '#8B2500');
+  topGrad.addColorStop(0.5, '#C4A882');
+  topGrad.addColorStop(1, '#8B2500');
+  ctx.fillStyle = topGrad;
+  ctx.fillRect(0, 0, W, 8);
+  ctx.fillRect(0, H - 8, W, 8);
+
+  // Decorative corner lines
+  ctx.strokeStyle = '#C4A882';
+  ctx.lineWidth = 1;
+  const pad = 24;
+  [[pad,pad,pad+30,pad],[pad,pad,pad,pad+30],[W-pad,pad,W-pad-30,pad],[W-pad,pad,W-pad,pad+30],
+   [pad,H-pad,pad+30,H-pad],[pad,H-pad,pad,H-pad-30],[W-pad,H-pad,W-pad-30,H-pad],[W-pad,H-pad,W-pad,H-pad-30]
+  ].forEach(([x1,y1,x2,y2]) => { ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke(); });
+
+  // Large bg character (faint)
+  ctx.save();
+  ctx.font = 'bold 340px sans-serif';
+  ctx.fillStyle = 'rgba(45,31,14,0.04)';
+  ctx.textAlign = 'center';
+  ctx.fillText('气', W/2, H*0.58);
+  ctx.restore();
+
+  // Eyebrow text
+  ctx.font = '500 22px sans-serif';
+  ctx.fillStyle = '#C4A882';
+  ctx.textAlign = 'center';
+  ctx.letterSpacing = '0.15em';
+  ctx.fillText('SUMMER · QI BLOOD GUIDE', W/2, 80);
+
+  // Gold divider
+  ctx.strokeStyle = '#C4A882';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(120, 95); ctx.lineTo(480, 95); ctx.stroke();
+
+  // Main title
+  ctx.font = 'bold 52px serif';
+  ctx.fillStyle = '#2D1F0E';
+  ctx.textAlign = 'center';
+  ctx.fillText('我完成了', W/2, 170);
+  ctx.fillText('7天夏季养气血打卡', W/2, 230);
+
+  // Sub
+  ctx.font = '500 22px sans-serif';
+  ctx.fillStyle = '#8B6345';
+  ctx.fillText('中医情志学 · 夏季养生', W/2, 280);
+
+  // Divider
+  ctx.strokeStyle = '#C4A882';
+  ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(120, 300); ctx.lineTo(480, 300); ctx.stroke();
+
+  // Section: 我的夏养关键词
+  ctx.font = 'bold 26px serif';
+  ctx.fillStyle = '#5A4030';
+  ctx.fillText('我的夏养关键词', W/2, 345);
+
+  // Top 3 keywords — large displayed
+  const colors = ['#8B2500', '#3B6D11', '#185FA5'];
+  const bgs = ['rgba(139,37,0,0.08)', 'rgba(59,109,17,0.08)', 'rgba(24,95,165,0.08)'];
+  top3.forEach((kw, i) => {
+    const y = 390 + i * 100;
+    // Box
+    ctx.fillStyle = bgs[i];
+    roundRect(ctx, 80, y - 34, W - 160, 68, 12);
+    ctx.fill();
+    ctx.strokeStyle = colors[i];
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, 80, y - 34, W - 160, 68, 12);
+    ctx.stroke();
+    // Number
+    ctx.font = 'bold 18px sans-serif';
+    ctx.fillStyle = colors[i];
+    ctx.textAlign = 'left';
+    ctx.fillText('0' + (i+1), 104, y + 6);
+    // Keyword
+    ctx.font = 'bold 32px serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = colors[i];
+    ctx.fillText(kw, W/2, y + 9);
+  });
+
+  // All keywords smaller display
+  const allKws = kws.slice(0,9);
+  ctx.font = '500 18px sans-serif';
+  ctx.fillStyle = '#8B6345';
+  ctx.textAlign = 'center';
+  const kwLine = allKws.slice(3).join(' · ');
+  if (kwLine) {
+    ctx.fillText(kwLine, W/2, 710);
+  }
+
+  // Divider
+  ctx.strokeStyle = '#C4A882';
+  ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(120, 735); ctx.lineTo(480, 735); ctx.stroke();
+
+  // Date
+  const now = new Date();
+  const dateStr = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日完成`;
+  ctx.font = '500 20px sans-serif';
+  ctx.fillStyle = '#8B6345';
+  ctx.textAlign = 'center';
+  ctx.fillText(dateStr, W/2, 770);
+
+  // Quote
+  ctx.font = 'italic 500 19px serif';
+  ctx.fillStyle = '#A07850';
+  ctx.fillText('情绪是因，身体症状是果', W/2, 810);
+  ctx.fillText('——身心同步，方为真养', W/2, 840);
+
+  // Bottom brand
+  ctx.font = '500 17px sans-serif';
+  ctx.fillStyle = '#C4A882';
+  ctx.fillText('夏季养气血完整指南 · 中医情志学', W/2, 878);
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+function downloadPoster() {
+  const canvas = document.getElementById('posterCanvas');
+  const link = document.createElement('a');
+  link.download = '夏季养气血打卡海报.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// ===== QR CODE (pure JS, no external lib) =====
+// Simple QR using a fixed URL encoded as visual pattern
+// We use a deterministic dot-matrix approach for a short URL
+function drawQR() {
+  const canvas = document.getElementById('qrCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const size = 160;
+  canvas.width = size; canvas.height = size;
+
+  // Draw QR-like pattern using a static data matrix
+  // This is a decorative static QR — in production would link to a real URL
+  // For demo: encode "夏季养气血" conceptually as a fixed pattern
+  const url = window.location.href.split('?')[0];
+  drawSimpleQR(ctx, url, size);
+}
+
+function drawSimpleQR(ctx, url, size) {
+  // Generate a deterministic matrix from URL string
+  const cells = 21; // Version 1 QR has 21x21
+  const cellSize = size / cells;
+
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, size, size);
+
+  // Seed from URL characters
+  let seed = 0;
+  for (let i = 0; i < url.length; i++) seed = (seed * 31 + url.charCodeAt(i)) >>> 0;
+
+  function seededRand(s) {
+    s = (s ^ (s >>> 13)) >>> 0;
+    s = (s ^ (s << 17)) >>> 0;
+    s = (s ^ (s >>> 5)) >>> 0;
+    return (s >>> 0) / 4294967295;
+  }
+
+  // Build matrix
+  const mat = Array.from({length: cells}, () => new Array(cells).fill(0));
+
+  // Fixed finder patterns (top-left, top-right, bottom-left)
+  const fp = [[0,0],[cells-7,0],[0,cells-7]];
+  fp.forEach(([r,c]) => {
+    for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) {
+      const isOuter = i===0||i===6||j===0||j===6;
+      const isInner = i>=2&&i<=4&&j>=2&&j<=4;
+      if (r+i < cells && c+j < cells) mat[r+i][c+j] = (isOuter||isInner) ? 1 : -1;
+    }
+  });
+
+  // Timing patterns
+  for (let i = 8; i < cells-8; i++) {
+    mat[6][i] = (i%2===0) ? 1 : -1;
+    mat[i][6] = (i%2===0) ? 1 : -1;
+  }
+
+  // Data cells — fill with seeded random
+  let s = seed;
+  for (let r = 0; r < cells; r++) for (let c = 0; c < cells; c++) {
+    if (mat[r][c] === 0) {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      mat[r][c] = (s & 1) ? 1 : -1;
+    }
+  }
+
+  ctx.fillStyle = '#2D1F0E';
+  for (let r = 0; r < cells; r++) {
+    for (let c = 0; c < cells; c++) {
+      if (mat[r][c] === 1) {
+        ctx.fillRect(
+          Math.floor(c * cellSize),
+          Math.floor(r * cellSize),
+          Math.ceil(cellSize),
+          Math.ceil(cellSize)
+        );
+      }
+    }
+  }
+}
+
+// Init checkin when tab is opened
+const origSwitchTab = switchTab;
+function switchTab(btn, id) {
+  origSwitchTab(btn, id);
+  if (id === 's-checkin') {
+    setTimeout(buildDayCards, 50);
+  }
+}
+
+// Also build on first load if checkin screen is active
+if (document.getElementById('s-checkin').classList.contains('active')) {
+  buildDayCards();
+}
+// Pre-draw QR on load
+setTimeout(drawQR, 200);
+</script>
+</body>
+</html>
