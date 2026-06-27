@@ -76,10 +76,11 @@ html,body{height:100%;overflow:hidden;background:var(--paper);font-family:-apple
 /* ===== SCREEN CONTAINER ===== */
 .screens{flex:1;overflow:hidden;position:relative}
 .screen{
-  position:absolute;inset:0;
   overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding:16px 16px calc(var(--safe-b) + 16px);
   display:none;
+  flex:1;
+  min-height:0;
 }
 .screen.active{display:block}
 
@@ -1026,10 +1027,13 @@ function switchTab(btn, id){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById(id).classList.add('active');
-  document.querySelector('.screens').scrollTop=0;
-  // scroll tab into view
+  var target = document.getElementById(id);
+  if(target){ target.classList.add('active'); target.scrollTop=0; }
+  var sc = document.querySelector('.screens');
+  if(sc) sc.scrollTop=0;
   btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  if(id === 's-checkin'){ setTimeout(buildDayCards, 50); }
+  if(id === 's-gongfa' && typeof buildGfList === 'function' && !document.getElementById('gfList').children.length){ buildGfList(); }
 }
 
 // ===== LEVEL TEST =====
@@ -1923,20 +1927,10 @@ function drawSimpleQR(ctx, url, size) {
   }
 }
 
-// Init checkin when tab is opened
-const origSwitchTab = switchTab;
-function switchTab(btn, id) {
-  origSwitchTab(btn, id);
-  if (id === 's-checkin') {
-    setTimeout(buildDayCards, 50);
-  }
-}
-
-// Also build on first load if checkin screen is active
+// Init on load
 if (document.getElementById('s-checkin').classList.contains('active')) {
   buildDayCards();
 }
-// Pre-draw QR on load
 setTimeout(drawQR, 200);
 </script>
 </body>
