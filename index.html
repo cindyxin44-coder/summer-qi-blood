@@ -1847,77 +1847,17 @@ function downloadPoster() {
 function drawQR() {
   const canvas = document.getElementById('qrCanvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const size = 160;
-  canvas.width = size; canvas.height = size;
-
-  // Draw QR-like pattern using a static data matrix
-  // This is a decorative static QR — in production would link to a real URL
-  // For demo: encode "夏季养气血" conceptually as a fixed pattern
-  const url = window.location.href.split('?')[0];
-  drawSimpleQR(ctx, url, size);
-}
-
-function drawSimpleQR(ctx, url, size) {
-  // Generate a deterministic matrix from URL string
-  const cells = 21; // Version 1 QR has 21x21
-  const cellSize = size / cells;
-
-  ctx.fillStyle = '#fff';
-  ctx.fillRect(0, 0, size, size);
-
-  // Seed from URL characters
-  let seed = 0;
-  for (let i = 0; i < url.length; i++) seed = (seed * 31 + url.charCodeAt(i)) >>> 0;
-
-  function seededRand(s) {
-    s = (s ^ (s >>> 13)) >>> 0;
-    s = (s ^ (s << 17)) >>> 0;
-    s = (s ^ (s >>> 5)) >>> 0;
-    return (s >>> 0) / 4294967295;
-  }
-
-  // Build matrix
-  const mat = Array.from({length: cells}, () => new Array(cells).fill(0));
-
-  // Fixed finder patterns (top-left, top-right, bottom-left)
-  const fp = [[0,0],[cells-7,0],[0,cells-7]];
-  fp.forEach(([r,c]) => {
-    for (let i = 0; i < 7; i++) for (let j = 0; j < 7; j++) {
-      const isOuter = i===0||i===6||j===0||j===6;
-      const isInner = i>=2&&i<=4&&j>=2&&j<=4;
-      if (r+i < cells && c+j < cells) mat[r+i][c+j] = (isOuter||isInner) ? 1 : -1;
-    }
-  });
-
-  // Timing patterns
-  for (let i = 8; i < cells-8; i++) {
-    mat[6][i] = (i%2===0) ? 1 : -1;
-    mat[i][6] = (i%2===0) ? 1 : -1;
-  }
-
-  // Data cells — fill with seeded random
-  let s = seed;
-  for (let r = 0; r < cells; r++) for (let c = 0; c < cells; c++) {
-    if (mat[r][c] === 0) {
-      s = (s * 1664525 + 1013904223) >>> 0;
-      mat[r][c] = (s & 1) ? 1 : -1;
-    }
-  }
-
-  ctx.fillStyle = '#2D1F0E';
-  for (let r = 0; r < cells; r++) {
-    for (let c = 0; c < cells; c++) {
-      if (mat[r][c] === 1) {
-        ctx.fillRect(
-          Math.floor(c * cellSize),
-          Math.floor(r * cellSize),
-          Math.ceil(cellSize),
-          Math.ceil(cellSize)
-        );
-      }
-    }
-  }
+  // Real QR code pointing to: https://cindyxin44-coder.github.io/summer-qi-blood/
+  const img = new Image();
+  img.onload = function() {
+    canvas.width = 200;
+    canvas.height = 200;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FAFAF5';
+    ctx.fillRect(0, 0, 200, 200);
+    ctx.drawImage(img, 4, 4, 192, 192);
+  };
+  img.src = 'data:image/png;base64,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';
 }
 
 // Init on load
