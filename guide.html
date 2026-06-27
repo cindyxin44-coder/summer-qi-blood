@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏季养气血完整指南 · 中医情志学</title>
+<style>
+:root {
+  --green-50: #EAF3DE;
+  --green-100: #C0DD97;
+  --green-200: #97C459;
+  --green-500: #3B6D11;
+  --green-700: #27500A;
+  --teal-50: #E1F5EE;
+  --teal-400: #1D9E75;
+  --teal-600: #0F6E56;
+  --amber-50: #FAEEDA;
+  --amber-100: #FAC775;
+  --amber-400: #BA7517;
+  --amber-700: #633806;
+  --blue-50: #E6F1FB;
+  --blue-100: #B5D4F4;
+  --blue-500: #185FA5;
+  --blue-800: #0C447C;
+  --pink-50: #FBEAF0;
+  --pink-100: #F4C0D1;
+  --pink-500: #993556;
+  --pink-700: #72243E;
+  --purple-50: #EEEDFE;
+  --purple-100: #CECBF6;
+  --purple-500: #534AB7;
+  --purple-700: #3C3489;
+  --coral-50: #FAECE7;
+  --coral-100: #F5C4B3;
+  --coral-600: #993C1D;
+  --gray-50: #F7F5EF;
+  --gray-100: #EDEAE0;
+  --gray-200: #D3D1C7;
+  --gray-400: #888780;
+  --gray-600: #5F5E5A;
+  --gray-800: #2C2C2A;
+  --text: #1a1a18;
+  --text-muted: #5F5E5A;
+  --text-faint: #9c9a92;
+  --bg: #FDFCF8;
+  --bg2: #F4F2EB;
+  --border: rgba(0,0,0,0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== LAYOUT ===== */
+.page { max-width: 760px; margin: 0 auto; padding: 0 16px 60px; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #d4edbc 0%, #b8e8d8 50%, #c8dff5 100%);
+  padding: 48px 28px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 12px;
+  color: var(--green-500);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: clamp(26px, 6vw, 36px);
+  font-weight: 700;
+  color: var(--green-700);
+  margin-bottom: 10px;
+  position: relative;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--green-500);
+  line-height: 1.7;
+  position: relative;
+}
+
+/* ===== NAV ===== */
+.nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253,252,248,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+}
+.nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--teal-400); }
+.nav-btn.active {
+  color: var(--teal-600);
+  border-bottom-color: var(--teal-400);
+}
+
+/* ===== SECTIONS ===== */
+.section { display: none; padding: 24px 0; }
+.section.active { display: block; }
+
+.sec-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 6px;
+}
+.sec-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+}
+.card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.card-body { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+
+.tag { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 10px; font-weight: 500; margin: 2px; }
+.tag-row { margin: 8px 0 4px; }
+
+.li { display: flex; gap: 8px; font-size: 14px; color: var(--text-muted); padding: 4px 0; line-height: 1.55; }
+.li-dot { color: var(--teal-400); flex-shrink: 0; }
+
+/* ===== SECTION 1: LEVEL TEST ===== */
+.level-intro {
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+.level-intro p { font-size: 14px; color: var(--green-500); line-height: 1.7; }
+.level-intro strong { color: var(--green-700); }
+
+.pyramid { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+
+.level-item {
+  border-radius: 10px;
+  padding: 14px 18px;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
+}
+.level-item:hover { transform: translateX(4px); }
+.level-item.selected { box-shadow: 0 0 0 3px rgba(29,158,117,0.25); }
+
+.level-badge {
+  min-width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0;
+}
+.level-content { flex: 1; }
+.level-name { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+.level-desc { font-size: 13px; line-height: 1.55; }
+.level-check {
+  position: absolute; right: 14px; top: 14px;
+  width: 22px; height: 22px;
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.level-item.selected .level-check {
+  background: var(--teal-400);
+  border-color: var(--teal-400);
+  color: #fff;
+}
+
+.result-box {
+  background: #fff;
+  border: 2px solid var(--teal-400);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+.result-box.show { display: block; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-title { font-size: 18px; font-weight: 700; color: var(--teal-600); margin-bottom: 10px; }
+.result-body { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.result-steps { margin-top: 12px; }
+.result-step {
+  display: flex; gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  font-size: 14px;
+  align-items: flex-start;
+}
+.step-num {
+  min-width: 24px; height: 24px;
+  background: var(--teal-400);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* chain */
+.chain {
+  display: flex; align-items: center;
+  gap: 6px; flex-wrap: wrap;
+  margin: 16px 0;
+}
+.chain-item {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px; font-weight: 500;
+}
+.chain-arrow { color: var(--text-faint); font-size: 16px; }
+
+/* ===== SECTION 2: EMOTION ===== */
+.emotion-item {
+  display: flex;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.emotion-item:hover { transform: translateX(3px); }
+.emotion-icon-wrap {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.emotion-main { flex: 1; }
+.emotion-name { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.emotion-mech { font-size: 12px; font-weight: 500; margin-bottom: 6px; }
+.emotion-detail { font-size: 13px; line-height: 1.6; }
+.emotion-extra {
+  display: none;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.emotion-item.open .emotion-extra { display: block; }
+.emotion-arrow {
+  font-size: 14px;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  align-self: flex-start;
+  margin-top: 14px;
+}
+.emotion-item.open .emotion-arrow { transform: rotate(180deg); }
+
+/* ===== SECTION 3: SYNDROME ===== */
+.quiz-wrap { margin-bottom: 24px; }
+.quiz-title { font-size: 15px; font-weight: 600; margin-bottom: 12px; }
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  padding: 12px 16px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.18s;
+  display: flex; align-items: center; gap: 10px;
+}
+.quiz-opt:hover { border-color: var(--teal-400); background: var(--teal-50); }
+.quiz-opt.selected { border-color: var(--teal-400); background: var(--teal-50); }
+.quiz-opt input[type=checkbox] { accent-color: var(--teal-400); width: 16px; height: 16px; flex-shrink: 0; }
+
+.quiz-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px;
+  background: var(--teal-400);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quiz-btn:hover { background: var(--teal-600); }
+
+.syn-result {
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+.syn-result.show { display: block; }
+.syn-card-big {
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  border: 2px solid;
+  margin-bottom: 10px;
+}
+.syn-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.syn-tags { margin: 10px 0; }
+.syn-block { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); }
+.syn-block-title { font-size: 12px; font-weight: 600; margin-bottom: 4px; letter-spacing: 0.05em; }
+.syn-block-body { font-size: 13px; line-height: 1.7; }
+
+/* ===== SECTION 4: GONGFA ===== */
+.gf-list { display: flex; flex-direction: column; gap: 0; }
+.gf-item {
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+.gf-item:last-child { border-bottom: none; }
+.gf-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.gf-header:hover { background: var(--gray-50); border-radius: var(--radius-sm); }
+.gf-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: var(--text-muted);
+  flex-shrink: 0;
+}
+.gf-meta { flex: 1; }
+.gf-name { font-size: 15px; font-weight: 600; }
+.gf-hint { font-size: 12px; color: var(--text-faint); margin-top: 2px; }
+.gf-toggle { color: var(--text-faint); font-size: 18px; transition: transform 0.2s; }
+.gf-item.open .gf-toggle { transform: rotate(180deg); }
+
+.gf-body {
+  display: none;
+  padding: 4px 4px 18px 46px;
+}
+.gf-item.open .gf-body { display: block; }
+
+.step-card {
+  background: var(--gray-50);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.step-card .step { display: flex; gap: 10px; padding: 6px 0; font-size: 13px; line-height: 1.6; color: var(--text-muted); }
+.step-card .step strong { color: var(--text); }
+
+.gf-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  background: var(--amber-50);
+  border-left: 3px solid var(--amber-100);
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Breathing timer */
+.breath-timer {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 10px 0;
+  text-align: center;
+}
+.breath-circle-wrap { position: relative; display: inline-block; margin: 10px 0; }
+.breath-circle {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--gray-100);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+.breath-circle svg {
+  position: absolute; top: 0; left: 0;
+  width: 120px; height: 120px;
+  transform: rotate(-90deg);
+}
+.breath-circle circle {
+  fill: none;
+  stroke: var(--teal-400);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 345;
+  stroke-dashoffset: 345;
+  transition: stroke-dashoffset 0.1s linear;
+}
+.breath-label { font-size: 18px; font-weight: 700; color: var(--teal-600); z-index: 1; }
+.breath-count { font-size: 13px; color: var(--text-muted); z-index: 1; }
+.breath-phase { font-size: 16px; color: var(--text-muted); margin: 8px 0; font-weight: 500; }
+.breath-controls { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
+.breath-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1.5px solid var(--teal-400);
+  background: transparent;
+  color: var(--teal-600);
+  font-size: 14px; font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.breath-btn.primary { background: var(--teal-400); color: #fff; }
+.breath-btn:hover { background: var(--teal-400); color: #fff; }
+
+/* ===== SECTION 5: MERIDIAN ===== */
+.body-map {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+@media (max-width: 500px) { .body-map { grid-template-columns: 1fr; } }
+.body-point {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.body-point:hover { border-color: var(--teal-400); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29,158,117,0.1); }
+.body-point.active { border-color: var(--teal-400); background: var(--teal-50); }
+.point-icon {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.point-info { flex: 1; }
+.point-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.point-loc { font-size: 12px; color: var(--text-faint); }
+
+.point-detail {
+  background: #fff;
+  border: 1.5px solid var(--teal-400);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: none;
+  animation: slideUp 0.2s ease;
+}
+.point-detail.show { display: block; }
+.pd-name { font-size: 17px; font-weight: 700; color: var(--teal-600); margin-bottom: 8px; }
+.pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+@media (max-width: 500px) { .pd-grid { grid-template-columns: 1fr; } }
+.pd-block { background: var(--gray-50); border-radius: var(--radius-sm); padding: 10px 12px; }
+.pd-block-title { font-size: 11px; color: var(--text-faint); font-weight: 600; letter-spacing: 0.05em; margin-bottom: 4px; }
+.pd-block-body { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ===== SECTION 6: GROUPS ===== */
+.group-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.group-tab {
+  padding: 7px 15px;
+  font-size: 13px; font-weight: 500;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.group-tab:hover { border-color: var(--teal-400); color: var(--teal-600); }
+.group-tab.active { background: var(--teal-400); color: #fff; border-color: transparent; }
+.group-panel { display: none; }
+.group-panel.active { display: block; animation: slideUp 0.2s ease; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--gray-800);
+  color: var(--gray-400);
+  text-align: center;
+  padding: 24px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.footer a { color: var(--gray-200); text-decoration: none; }
+
+/* ===== MISC ===== */
+.alert {
+  background: var(--amber-50);
+  border: 1px solid var(--amber-100);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--amber-400);
+  margin-bottom: 16px;
+  line-height: 1.65;
+}
+.divider {
+  height: 1px; background: var(--border);
+  margin: 20px 0;
+}
+.pill {
+  display: inline-block;
+  font-size: 11px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin: 2px;
+}
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Share btn */
+.share-bar {
+  display: flex; gap: 8px; justify-content: center;
+  padding: 20px 0 8px;
+}
+.share-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 18px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.share-btn:hover { border-color: var(--teal-400); color: var(--teal-600); }
+.share-btn.copied { border-color: var(--teal-400); color: var(--teal-600); background: var(--teal-50); }
+
+/* progress bar */
+.progress-track {
+  height: 4px; background: var(--gray-100); border-radius: 2px; margin: 10px 0;
+}
+.progress-fill {
+  height: 100%; border-radius: 2px; background: var(--teal-400);
+  transition: width 0.4s ease;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">中医情志学 · 气血养生</div>
+  <h1>🌿 夏季养气血完整指南</h1>
+  <p class="hero-sub">
+    气血七层级自测 · 七情内伤辨证 · 经络穴位 · 日常功法口诀<br>
+    覆盖男女老少，辨证阴虚·阳虚·肝郁·心脾两虚
+  </p>
+  <div class="share-bar">
+    <button class="share-btn" onclick="copyLink(this)">
+      <span>🔗</span> 复制链接分享
+    </button>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection(this,'sec-level')">气血自测</button>
+    <button class="nav-btn" onclick="showSection(this,'sec-emotion')">七情内伤</button>
+    <button class="nav-btn" onclick="showSection(this,'sec-syndrome')">气血卡点</button>
+    <button class="nav-btn" onclick="showSection(this,'sec-gongfa')">功法口诀</button>
+    <button class="nav-btn" onclick="showSection(this,'sec-meridian')">经络穴位</button>
+    <button class="nav-btn" onclick="showSection(this,'sec-groups')">分人群调养</button>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ==============================
+     SECTION 1: LEVEL TEST
+=============================== -->
+<div class="section active" id="sec-level">
+  <div class="sec-title">气血七层级——你在第几层？</div>
+  <p class="sec-sub">从底层（第1层）到顶层（第7层），每一层都是气血充盈度的真实体现。点击选择最符合你现状的层级，获取专属调养建议。</p>
+
+  <div class="level-intro">
+    <p><strong>使用说明：</strong>从第1层开始往上看，找到自己<strong>尚未完全达到</strong>的那一层，那就是你当前的气血层级。点击它获取调养方案。</p>
+  </div>
+
+  <div class="pyramid" id="levelPyramid">
+    <div class="level-item" style="background:#EAF3DE;border-color:#97C459" onclick="selectLevel(this,7)">
+      <div class="level-badge" style="background:#27500A;color:#EAF3DE">7</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#27500A">脉象和缓有力</div>
+        <div class="level-desc" style="color:#3B6D11">气血充盈至极，脉象有神，全身机能运转正常，精气神俱足，极少生病。</div>
+      </div>
+      <div class="level-check" style="border-color:#97C459">✓</div>
+    </div>
+    <div class="level-item" style="background:#E1F5EE;border-color:#5DCAA5" onclick="selectLevel(this,6)">
+      <div class="level-badge" style="background:#0F6E56;color:#E1F5EE">6</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#085041">声音洪亮有力</div>
+        <div class="level-desc" style="color:#0F6E56">气血充足濡养发声器官，说话声音洪亮有力。说话软弱、声音细小→气虚信号。</div>
+      </div>
+      <div class="level-check" style="border-color:#5DCAA5">✓</div>
+    </div>
+    <div class="level-item" style="background:#E6F1FB;border-color:#85B7EB" onclick="selectLevel(this,5)">
+      <div class="level-badge" style="background:#185FA5;color:#E6F1FB">5</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#0C447C">手足温暖</div>
+        <div class="level-desc" style="color:#185FA5">气血可温煦四肢，手足温暖说明末梢循环好，气血运行畅达。手脚冰凉→阳虚或气血不足。</div>
+      </div>
+      <div class="level-check" style="border-color:#85B7EB">✓</div>
+    </div>
+    <div class="level-item" style="background:#FAEEDA;border-color:#EF9F27" onclick="selectLevel(this,4)">
+      <div class="level-badge" style="background:#854F0B;color:#FAEEDA">4</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#633806">精力充沛</div>
+        <div class="level-desc" style="color:#854F0B">日常活动不易疲倦，能积极应对工作和生活。容易累、下午低谷→气血支撑不足。</div>
+      </div>
+      <div class="level-check" style="border-color:#EF9F27">✓</div>
+    </div>
+    <div class="level-item" style="background:#FBEAF0;border-color:#ED93B1" onclick="selectLevel(this,3)">
+      <div class="level-badge" style="background:#993556;color:#FBEAF0">3</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#72243E">睡眠良好</div>
+        <div class="level-desc" style="color:#993556">气血旺盛有助心神安宁，能正常入睡，睡眠质量高。入睡困难、多梦、易醒→心血不足。</div>
+      </div>
+      <div class="level-check" style="border-color:#ED93B1">✓</div>
+    </div>
+    <div class="level-item" style="background:#EEEDFE;border-color:#AFA9EC" onclick="selectLevel(this,2)">
+      <div class="level-badge" style="background:#534AB7;color:#EEEDFE">2</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#3C3489">双目有神</div>
+        <div class="level-desc" style="color:#534AB7">眼睛灵动、视物清晰。眼干涩、眼神呆滞、久视后眼酸→肝血不足信号。</div>
+      </div>
+      <div class="level-check" style="border-color:#AFA9EC">✓</div>
+    </div>
+    <div class="level-item" style="background:#F1EFE8;border-color:#B4B2A9" onclick="selectLevel(this,1)">
+      <div class="level-badge" style="background:#2C2C2A;color:#F1EFE8">1</div>
+      <div class="level-content">
+        <div class="level-name" style="color:#2C2C2A">面色红润</div>
+        <div class="level-desc" style="color:#5F5E5A">气血充盈首先体现在面色，健康红色说明气血上荣。面色萎黄·苍白·晦暗→最基础层不足。</div>
+      </div>
+      <div class="level-check" style="border-color:#B4B2A9">✓</div>
+    </div>
+  </div>
+
+  <div class="result-box" id="levelResult"></div>
+
+  <div class="divider"></div>
+  <div class="card">
+    <div class="card-title">⚠️ 气血失调的完整演变链条</div>
+    <div class="card-body" style="margin-bottom:12px">七情是这条链条的上游触发器——情绪失和扰乱气机，气机紊乱才是一切的起点：</div>
+    <div class="chain" style="margin-top:4px">
+      <div class="chain-item" style="background:#FBEAF0;color:#72243E;font-weight:600">七情失和（因）</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#EAF3DE;color:#27500A">气机紊乱</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:var(--amber-50);color:var(--amber-400)">气滞</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#FAEEDA;color:#854F0B">血瘀</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#FAECE7;color:#993C1D">痰瘀互结</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-item" style="background:#F7C1C1;color:#501313">结节·囊肿·肌瘤（果）</div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--gray-50);border-radius:8px;border-left:3px solid var(--amber-100)">
+      <div style="font-size:12px;font-weight:600;color:var(--amber-400);margin-bottom:6px">气机紊乱 → 气滞阶段的身体感受信号</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="font-size:12px;padding:3px 10px;background:#EAF3DE;color:#27500A;border-radius:6px">酸·胀 → 气滞为主</span>
+        <span style="font-size:12px;padding:3px 10px;background:#E6F1FB;color:#185FA5;border-radius:6px">麻 → 气血不足经脉失养</span>
+        <span style="font-size:12px;padding:3px 10px;background:#FAEEDA;color:#633806;border-radius:6px">痛 → 不通则痛，气滞或血瘀</span>
+        <span style="font-size:12px;padding:3px 10px;background:#FBEAF0;color:#72243E;border-radius:6px">痒 → 血虚生风或风邪</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:8px">这些信号是身体在提醒你气机已经出现问题，越早干预越不会向下演变。长期忽视才会从无形的气滞走向有形的结节。</div>
+    </div>
+    <div class="card-body" style="margin-top:12px;font-size:13px">情绪郁结在不同系统的具身化表现：<br>
+    · <b>怒气压抑</b>（肝经）→ 乳腺/甲状腺/淋巴结节、痛经血块、太阳穴偏头痛<br>
+    · <b>思虑过度</b>（中焦）→ 慢性胃炎、反酸、腹部胀满<br>
+    · <b>悲忧积郁</b>（肺）→ 胸部闷堵、呼吸浅短<br>
+    痛则不通——所有疼痛都是气机不通的信号，不是「忍一忍」的事。</div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="card-title">⏱️ 情绪的「30秒法则」</div>
+    <div class="card-body">一个情绪升起后：<br>
+    · <b>30秒内</b>能觉察并拉回 → 不至于伤害脏腑<br>
+    · <b>30分钟后</b>仍在波动 → 对应脏腑开始持续失衡<br>
+    · <b>3年后</b>还在影响你 → 已转为无形到有形的具身症状<br><br>
+    这也是为什么「我没什么大情绪」的人依然气血不好——那些被大脑压制下去的情绪，身体从未忘记。</div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="card-title">🌀 现代人的三大隐性耗气模式</div>
+    <div class="card-body">
+    · <b>说话/打字也耗气</b>：不是发出声音才消耗，同样的思维路径、精气神流动本身就是耗损，打字沟通同等消耗<br>
+    · <b>假性积极也耗气</b>：长期强撑高能量、强迫自己保持好状态，让心气持续涣散无法收拢 → 血脉失去鼓动力 → 莫名心悸<br>
+    · <b>过度自律也耗气</b>：过度运动（举瑜伽老师气血极差的例子）、强迫完美表现、报复性熬夜，都是另一种形式的自我伤害。补的速度永远赶不上耗的速度。</div>
+  </div>
+
+</div>
+
+<!-- ==============================
+     SECTION 2: EMOTION
+=============================== -->
+<div class="section" id="sec-emotion">
+  <div class="sec-title">七情内伤——情绪"过度"就是病</div>
+  <p class="sec-sub">七情（喜怒思忧悲恐惊）是正常情志反应，但"过度"或"长期压抑"，就会内伤脏腑、耗损气血。点击每条了解详情和调理方法。每条情志都有正向价值，失衡才是问题所在。</p>
+
+  <div class="alert">💡 小贴士：七情本是正常反应，但"过"则成伤。感受到某种情绪是健康的，压抑它才是根本问题。</div>
+
+  <div id="emotionList">
+    <div class="emotion-item" style="background:#FBEAF0;border-color:#F4C0D1" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#F4C0D1">😄</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#72243E">喜 → 伤心</div>
+        <div class="emotion-mech" style="color:#993556">过喜则心气涣散</div>
+        <div class="emotion-detail" style="color:#4B1528">→ 失眠、多梦、心神不宁</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>喜型人有时候不是真开心——这是课程中反复强调的核心洞察。刻意塑造出来的好状态，是在掩饰真实的情绪需求。<br><br>
+          <b>典型案例（喜＋忧＋思叠加）：</b>长期担当团队情绪、报喜不报忧、用高能量带动他人，晚上独处时崩溃→用报复性熬夜/刷短剧麻痹。持续数年后：失眠成常态、记忆力暴跌、莫名心悸心慌。中医诊断：<b>心气不足，心神失养</b>。<br><br>
+          <b>机理</b>：强撑高能量让心气持续涣散无法收拢→血脉失去鼓动力→心悸。这与现代医学的「惊恐发作」不是同一回事，是长期委屈内耗导致的心气虚。<br><br>
+          <strong>调理：</strong>内关穴（腕横纹上2寸）按揉；嘶字诀入睡；<b>最关键：彻底放下「强迫性高能量」的人设，允许自己示弱、表达委屈</b>；敛神养心，每天静坐点香10—15分钟；莲子心茶清心火。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#FAECE7;border-color:#F5C4B3" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#F5C4B3">😡</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#712B13">怒 → 伤肝</div>
+        <div class="emotion-mech" style="color:#993C1D">大怒则肝气上逆；怒则气上</div>
+        <div class="emotion-detail" style="color:#4A1B0C">→ 头痛、面红、血压升高、胁肋疼痛</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>怒气有两种形态——<b>爆发型</b>（暴怒气机上冲）和<b>压抑型</b>（隐忍不发、低气压）。两者都伤肝，压抑型更隐蔽，久郁化火，一点就着。<br><br>
+          <b>怒值低（6分以下）的真实含义：</b>不代表你平和，而是长期压抑怒气。压抑的怒气不会消失，它会憋在肝经循行路径上，具体体现为：<br>
+          · <b>子宫、少腹</b>：痛经、血块<br>
+          · <b>乳房</b>：经前乳腺胀痛、结节<br>
+          · <b>甲状腺</b>：结节、异物感<br>
+          · <b>头部两侧太阳穴</b>：偏头痛（肝胆经循行位置）<br><br>
+          <b>怒气平衡时的正向价值：</b>有力量、行动力强、有担当、执行方向明确——怒不是坏情绪，被压抑才是问题。<br><br>
+          <strong>调理：</strong>嘘字诀（平肝气，每日早起6次）；按揉太冲穴；4-7-8呼吸法；玫瑰花+佛手柑+陈皮茶。<b>怒气后绝不宜进食</b>（伤脾）。适当争吵也是一种沟通——气顺了比对方认错更重要。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#EAF3DE;border-color:#C0DD97" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#C0DD97">🤔</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#27500A">思 → 伤脾</div>
+        <div class="emotion-mech" style="color:#3B6D11">思虑过度则脾气郁结；思则气滞</div>
+        <div class="emotion-detail" style="color:#173404">→ 食欲差、腹胀、没精神、肌肉松软</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>大饱（暴饮暴食）伤脾，根源是没有安全感、匮乏感、情绪性进食。思则气滞——思虑繁杂、行动力差是脾气不升的典型表现。<br><br>
+          <b>思过度→脾胃运化失常→进补无效的机制：</b>脾主统血、与血相关；胃与气相关。思虑过度直接损伤脾胃运化，这时候吃再多营养品，也无法转化为气血。过度学习、捕捉大量外界信息、停不下来的思考，都在无形中让脾胃「转不动」。<br><br>
+          <b>焦虑≠单一问题，需辨证脏腑：</b><br>
+          · 焦虑来自<b>脾胃</b>：思的情志爆棚，思则气结<br>
+          · 焦虑来自<b>肾气不足</b>：恐和惊的情志过剩，总觉危险<br>
+          · 焦虑来自<b>肺气防御过强</b>：过于敏感，「烟感报警器全开」，一点风吹草动就警铃大作<br><br>
+          <strong>调理：</strong>揉足三里+中脘；姜枣茶早起喝；<b>每日20—30分钟有氧运动（思型人首选）</b>，让气机动起来；减少信息摄入，每天给大脑留白；建立规律三餐，不用饥饿感控制食量。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#E6F1FB;border-color:#B5D4F4" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#B5D4F4">😔</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#0C447C">忧 → 伤肺</div>
+        <div class="emotion-mech" style="color:#185FA5">忧愁耗肺气</div>
+        <div class="emotion-detail" style="color:#042C53">→ 干咳、气短、声音嘶哑</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>夏季贪凉（空调+冷饮）会加重忧伤肺的损耗。形寒饮冷伤肺，体质弱者尤甚，易出现咳嗽、痰多、怕风。<br><br>
+          <strong>调理：</strong>搭鹊桥（生津养肺）；按揉中府穴（锁骨外侧端下方）；夏季薄外套护腰肩；戒冰饮冷食；百合莲子粥润肺养心。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#F1EFE8;border-color:#D3D1C7" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#D3D1C7">😢</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#2C2C2A">悲 → 伤肺</div>
+        <div class="emotion-mech" style="color:#444441">悲损肺气，气不宣降</div>
+        <div class="emotion-detail" style="color:#5F5E5A">→ 呼吸无力、语音低微、容易落泪</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>持续悲伤→肺气不降→气血运行无力→全身乏力，进入恶性循环。悲与忧常同见，持续的悲伤状态是气血消耗的无底洞。<br><br>
+          <strong>调理：</strong>适当流泪（情绪排泄，不压抑）后需补肺气；深呼吸练习；太渊穴（腕横纹桡侧端，肺原穴）按揉；补肺食物：白色食物（白萝卜、百合、银耳）。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#EEEDFE;border-color:#CECBF6" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#CECBF6">😨</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#3C3489">恐 → 伤肾</div>
+        <div class="emotion-mech" style="color:#534AB7">恐则气下，肾气下陷</div>
+        <div class="emotion-detail" style="color:#26215C">→ 面色苍白、头晕，严重可二便失禁</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>长期焦虑恐慌→肾气下陷→腰膝酸软、夜尿频多、意志消沉、健忘耳鸣。强力举重、久坐湿地也伤肾（负重劳损、寒湿侵腰）。<br><br>
+          <strong>调理：</strong>晚泡脚（红花椒）+揉涌泉；艾灸关元·肾俞；减少高刺激信息摄入；培养安全感（规律作息、稳定的日常节奏）；黑色食物补肾（黑豆·黑芝麻·核桃）。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+    <div class="emotion-item" style="background:#FCEBEB;border-color:#F09595" onclick="toggleEmotion(this)">
+      <div class="emotion-icon-wrap" style="background:#F09595">😱</div>
+      <div class="emotion-main">
+        <div class="emotion-name" style="color:#791F1F">惊 → 伤心</div>
+        <div class="emotion-mech" style="color:#A32D2D">惊吓扰乱心神</div>
+        <div class="emotion-detail" style="color:#501313">→ 心悸、失眠、心神不安</div>
+        <div class="emotion-extra">
+          <strong>深层洞察：</strong>容易受惊者，多为心脾两虚或肾气不足。惊与恐常并见（恐惊伤肾），长期处于惊恐状态会同时损耗心气和肾气。<br><br>
+          <strong>调理：</strong>按揉神门穴（安心要穴）；嘶字诀睡前引导；减少突然的声音刺激；建立稳定的生活秩序感（稳定外部环境帮助稳定内在心神）。
+        </div>
+      </div>
+      <div class="emotion-arrow">▾</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card" style="background:#FFF8F3;border:1px solid #F5C4B3">
+    <div class="card-title" style="color:#712B13">💡 情绪根因 vs 表面症状——为什么方法不管用</div>
+    <div class="card-body">
+    很多人焦虑用了很多方法都无效，原因是：每种焦虑背后的脏腑「端点」不同。找错了端点，再多方法也是打地鼠。<br><br>
+    同理，睡眠问题、月经问题、消化问题……表面看是习惯或身体，底层往往是已经运行了多年的情绪模式。情绪是「因」，身体症状是「果」。只处理果而不回到因，就是补了半天没有用的根本原因。<br><br>
+    <b>真正的调养路径：</b>觉察情绪（身体信号先于大脑分析）→ 辨别脏腑端点 → 情志与身体同步工作 → 才能彻底解决
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card">
+    <div class="card-title">情志调养四字法则</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+      <div style="background:var(--teal-50);border-radius:10px;padding:12px 14px;border:1px solid var(--teal-400)">
+        <div style="font-size:20px;font-weight:700;color:var(--teal-600)">通</div>
+        <div style="font-size:13px;color:var(--teal-600);margin-top:4px;line-height:1.5">疏通为先，不压抑。痛则不通，郁则成病。</div>
+      </div>
+      <div style="background:var(--blue-50);border-radius:10px;padding:12px 14px;border:1px solid var(--blue-100)">
+        <div style="font-size:20px;font-weight:700;color:var(--blue-500)">化</div>
+        <div style="font-size:13px;color:var(--blue-500);margin-top:4px;line-height:1.5">用呼吸、运动将情绪能量转化排出。</div>
+      </div>
+      <div style="background:var(--amber-50);border-radius:10px;padding:12px 14px;border:1px solid var(--amber-100)">
+        <div style="font-size:20px;font-weight:700;color:var(--amber-400)">养</div>
+        <div style="font-size:13px;color:var(--amber-400);margin-top:4px;line-height:1.5">培养安全感，减少信息焦虑，规律作息。</div>
+      </div>
+      <div style="background:var(--green-50);border-radius:10px;padding:12px 14px;border:1px solid var(--green-100)">
+        <div style="font-size:20px;font-weight:700;color:var(--green-500)">补</div>
+        <div style="font-size:13px;color:var(--green-500);margin-top:4px;line-height:1.5">情志稳定后，配合饮食、穴位调理脏腑。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================
+     SECTION 3: SYNDROME
+=============================== -->
+<div class="section" id="sec-syndrome">
+  <div class="sec-title">气血失调常见模式</div>
+  <p class="sec-sub">勾选近期符合你的症状，了解气血问题可能出在哪个方向。结果仅供自我参考，如有持续不适建议咨询中医师。</p>
+
+  <div class="alert" style="margin-bottom:16px">
+    📌 这里的内容分为两个维度：<b>气血的虚实方向</b>（缺什么）和<b>气血循行的障碍</b>（堵在哪里）。两者常同时存在，找到主要方向再针对调养。
+  </div>
+
+  <div class="quiz-wrap">
+    <div class="quiz-title">请勾选近期符合你的症状（可多选）：</div>
+    <div class="quiz-options" id="quizOptions">
+      <label class="quiz-opt"><input type="checkbox" value="wuxin"> 五心烦热（手心·脚心·心口热）</label>
+      <label class="quiz-opt"><input type="checkbox" value="dauhan"> 盗汗（夜间睡中出汗，醒后汗止）</label>
+      <label class="quiz-opt"><input type="checkbox" value="kougan"> 口干咽燥，喜饮水</label>
+      <label class="quiz-opt"><input type="checkbox" value="shimian"> 入睡困难，多梦，心烦不宁</label>
+      <label class="quiz-opt"><input type="checkbox" value="paoleng"> 畏寒怕冷，四肢冰凉</label>
+      <label class="quiz-opt"><input type="checkbox" value="shuye"> 夜尿频多（每夜起夜2次以上）</label>
+      <label class="quiz-opt"><input type="checkbox" value="yaosuan"> 腰膝酸软，耳鸣，脱发，记忆力减退</label>
+      <label class="quiz-opt"><input type="checkbox" value="bimen"> 胸胁胀闷，情绪抑郁或烦躁，喜叹气</label>
+      <label class="quiz-opt"><input type="checkbox" value="ruxian"> 乳房胀痛，随情绪波动加重（女性）</label>
+      <label class="quiz-opt"><input type="checkbox" value="tongjing"> 痛经，经色暗有血块，或月经不调（女性）</label>
+      <label class="quiz-opt"><input type="checkbox" value="xinkuang"> 心悸气短，面色淡白或萎黄</label>
+      <label class="quiz-opt"><input type="checkbox" value="shiyou"> 食欲不振，脘腹胀满，嗳气反酸</label>
+      <label class="quiz-opt"><input type="checkbox" value="danbian"> 大便溏薄或黏滞不爽</label>
+      <label class="quiz-opt"><input type="checkbox" value="kouku"> 口苦，晨起明显</label>
+      <label class="quiz-opt"><input type="checkbox" value="toufeng"> 头痛以两侧太阳穴为主</label>
+      <label class="quiz-opt"><input type="checkbox" value="shejiao"> 舌红少苔，或舌淡苔白</label>
+    </div>
+    <button class="quiz-btn" onclick="analyzeSymptoms()">查看我的气血卡点 →</button>
+  </div>
+
+  <div class="syn-result" id="synResult"></div>
+</div>
+
+<!-- ==============================
+     SECTION 4: GONGFA
+=============================== -->
+<div class="section" id="sec-gongfa">
+  <div class="sec-title">日常功法与口诀</div>
+  <p class="sec-sub">共9个功法，每个附有动作图示和演示视频链接，点击展开步骤。含引导式4-7-8呼吸计时器。<br><span style="font-size:12px;color:var(--amber-400)">💡 嘘字诀（疏肝）与嘶字诀（助眠）是两个不同功法，请注意区分。</span></p>
+
+  <style>
+  /* ===== GONGFA MEDIA STYLES ===== */
+  .gf-media {
+    margin: 12px 0 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #fff;
+  }
+  .gf-media-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .gf-media-tab {
+    flex: 1;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    color: var(--text-muted);
+    background: var(--gray-50);
+    border: none;
+    transition: all 0.15s;
+  }
+  .gf-media-tab.active {
+    background: #fff;
+    color: var(--teal-600);
+    border-bottom: 2px solid var(--teal-400);
+    margin-bottom: -1px;
+  }
+  .gf-media-panel { display: none; }
+  .gf-media-panel.active { display: block; }
+
+  .svg-anim-wrap {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gray-50);
+    min-height: 180px;
+  }
+  .svg-anim-wrap svg { max-width: 100%; }
+
+  .video-links {
+    padding: 14px 16px;
+  }
+  .video-link-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-faint);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .vlink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 7px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.15s;
+    background: #fff;
+  }
+  .vlink:hover {
+    border-color: var(--teal-400);
+    background: var(--teal-50);
+  }
+  .vlink-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .vlink-bili { background: #E8F4FF; }
+  .vlink-yt { background: #FFF0F0; }
+  .vlink-info { flex: 1; }
+  .vlink-name { font-size: 13px; font-weight: 500; }
+  .vlink-platform { font-size: 11px; color: var(--text-faint); margin-top: 1px; }
+  .vlink-arrow { color: var(--text-faint); font-size: 13px; }
+
+  /* Stick figure animations */
+  @keyframes raise-arms {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes breathe-expand {
+    0%, 100% { r: 30; opacity: 0.3; }
+    50% { r: 44; opacity: 0.7; }
+  }
+  @keyframes tongue-move {
+    0%, 40% { d: path('M 50 62 Q 50 68 50 68'); }
+    60%, 100% { d: path('M 50 62 Q 50 58 50 56'); }
+  }
+  @keyframes float-balloon {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(0.88); }
+  }
+  @keyframes pat-arm {
+    0%, 100% { transform: rotate(0deg); transform-origin: 60px 80px; }
+    30% { transform: rotate(25deg); transform-origin: 60px 80px; }
+    60% { transform: rotate(-10deg); transform-origin: 60px 80px; }
+  }
+  @keyframes rub-circle {
+    0% { stroke-dashoffset: 188; }
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes steam-rise {
+    0% { opacity: 0.8; transform: translateY(0) scaleX(1); }
+    100% { opacity: 0; transform: translateY(-20px) scaleX(1.5); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.2; r: 8; }
+    50% { opacity: 0.6; r: 12; }
+  }
+  @keyframes qi-flow {
+    0% { stroke-dashoffset: 100; opacity: 0; }
+    20% { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0.3; }
+  }
+  @keyframes wave-hand {
+    0%, 100% { transform: rotate(-15deg); transform-origin: 108px 108px; }
+    50% { transform: rotate(15deg); transform-origin: 108px 108px; }
+  }
+  @keyframes nod {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(3px); }
+  }
+  @keyframes push-legs {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+  @keyframes pepper-fall {
+    0% { transform: translateY(-10px); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(30px); opacity: 0; }
+  }
+  @keyframes water-ripple {
+    0% { r: 2; opacity: 0.8; stroke-width: 2; }
+    100% { r: 20; opacity: 0; stroke-width: 0.5; }
+  }
+  </style>
+
+  <div class="gf-list">
+
+    <!-- ===== GF 2: 4-7-8呼吸 ===== -->
+    <div class="gf-item" id="gf4">
+      <div class="gf-header" onclick="toggleGf('gf4')">
+        <div class="gf-num">1</div>
+        <div class="gf-meta">
+          <div class="gf-name">4-7-8 引导呼吸法</div>
+          <div class="gf-hint">疏肝调神 · 快速平复焦虑 · 内置计时器</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+        <div class="breath-timer">
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">鼻吸4拍 · 屏息7拍 · 口呼8拍 为一组</div>
+          <div class="breath-circle-wrap">
+            <div class="breath-circle" id="breathCircle">
+              <svg><circle id="breathArc" cx="60" cy="60" r="55"/></svg>
+              <div class="breath-label" id="breathNum">4</div>
+              <div class="breath-count" id="breathRound">第1组</div>
+            </div>
+          </div>
+          <div class="breath-phase" id="breathPhase">准备开始</div>
+          <div class="progress-track" style="max-width:240px;margin:8px auto">
+            <div class="progress-fill" id="breathProgress" style="width:0%"></div>
+          </div>
+          <div class="breath-controls">
+            <button class="breath-btn primary" id="breathStartBtn" onclick="startBreath()">开始练习</button>
+            <button class="breath-btn" onclick="resetBreath()">重置</button>
+          </div>
+          <div style="font-size:12px;color:var(--text-faint);margin-top:10px">共6组 · 约2分钟</div>
+        </div>
+        <div class="gf-note">🌿 焦虑、胸口憋闷、肝气上冲、睡前情绪激动者适用。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 3: 双手托天理三焦 ===== -->
+    <div class="gf-item" id="gf2">
+      <div class="gf-header" onclick="toggleGf('gf2')">
+        <div class="gf-num">2</div>
+        <div class="gf-meta">
+          <div class="gf-name">双手托天理三焦</div>
+          <div class="gf-hint">八段锦第一式 · 通调三焦 · 改善水肿疲劳</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+        <div class="gf-media">
+          <div class="gf-media-tabs">
+            <button class="gf-media-tab active" onclick="switchMediaTab(this,'m2-anim')">动作图示</button>
+            <button class="gf-media-tab" onclick="switchMediaTab(this,'m2-video')">视频参考</button>
+          </div>
+          <div class="gf-media-panel active" id="m2-anim">
+            <div class="svg-anim-wrap">
+              <svg viewBox="0 0 320 190" width="320" height="190" xmlns="http://www.w3.org/2000/svg">
+                <rect width="320" height="190" fill="#F0F7FF" rx="8"/>
+                <text x="160" y="16" text-anchor="middle" font-size="11" fill="#185FA5" font-weight="600">双手托天理三焦 · 全程动作示意</text>
+
+                <!-- 起式 (左) -->
+                <text x="55" y="32" text-anchor="middle" font-size="9" fill="#888" font-weight="600">① 预备</text>
+                <!-- 人体 -->
+                <circle cx="55" cy="55" r="12" fill="#FDEBD8" stroke="#D4A574" stroke-width="1.2"/>
+                <line x1="55" y1="67" x2="55" y2="110" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="55" y1="75" x2="35" y2="90" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+                <line x1="55" y1="75" x2="75" y2="90" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+                <line x1="55" y1="110" x2="43" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="55" y1="110" x2="67" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- 手掌朝下 -->
+                <ellipse cx="35" cy="91" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8" transform="rotate(-20,35,91)"/>
+                <ellipse cx="75" cy="91" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8" transform="rotate(20,75,91)"/>
+                <text x="55" y="152" text-anchor="middle" font-size="8" fill="#666">自然站立</text>
+
+                <!-- 举手式 (中) -->
+                <text x="155" y="32" text-anchor="middle" font-size="9" fill="#185FA5" font-weight="600">② 吸气上托</text>
+                <circle cx="155" cy="55" r="12" fill="#FDEBD8" stroke="#D4A574" stroke-width="1.2"/>
+                <line x1="155" y1="67" x2="155" y2="108" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- 上举手臂 (动画) -->
+                <g>
+                  <line x1="155" y1="73" x2="125" y2="42" stroke="#185FA5" stroke-width="2.2" stroke-linecap="round">
+                    <animate attributeName="x2" values="125;122;125" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="42;38;42" dur="2.5s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="155" y1="73" x2="185" y2="42" stroke="#185FA5" stroke-width="2.2" stroke-linecap="round">
+                    <animate attributeName="x2" values="185;188;185" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="y2" values="42;38;42" dur="2.5s" repeatCount="indefinite"/>
+                  </line>
+                  <!-- 手掌朝上 -->
+                  <ellipse cx="124" cy="40" rx="7" ry="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1" transform="rotate(-30,124,40)">
+                    <animate attributeName="cx" values="124;121;124" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="cy" values="40;36;40" dur="2.5s" repeatCount="indefinite"/>
+                  </ellipse>
+                  <ellipse cx="186" cy="40" rx="7" ry="4" fill="#FFD54F" stroke="#F9A825" stroke-width="1" transform="rotate(30,186,40)">
+                    <animate attributeName="cx" values="186;189;186" dur="2.5s" repeatCount="indefinite"/>
+                    <animate attributeName="cy" values="40;36;40" dur="2.5s" repeatCount="indefinite"/>
+                  </ellipse>
+                </g>
+                <line x1="155" y1="108" x2="143" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="155" y1="108" x2="167" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- 脚跟上提 -->
+                <ellipse cx="143" cy="143" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8">
+                  <animate attributeName="cy" values="143;139;143" dur="2.5s" repeatCount="indefinite"/>
+                </ellipse>
+                <ellipse cx="167" cy="143" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8">
+                  <animate attributeName="cy" values="143;139;143" dur="2.5s" repeatCount="indefinite"/>
+                </ellipse>
+                <!-- 向上箭头 -->
+                <path d="M 155 165 L 155 148" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#uarr)"/>
+                <text x="155" y="175" text-anchor="middle" font-size="8" fill="#1D9E75">脚跟上提</text>
+                <defs>
+                  <marker id="uarr" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+                    <path d="M 4 1 L 7 7 L 4 5 L 1 7 Z" fill="#1D9E75"/>
+                  </marker>
+                </defs>
+                <!-- 气机上行光晕 -->
+                <circle cx="155" cy="72" r="18" fill="none" stroke="#64B5F6" stroke-width="1" opacity="0.4" stroke-dasharray="3,3">
+                  <animate attributeName="r" values="18;28;18" dur="2.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+
+                <!-- 落手式 (右) -->
+                <text x="260" y="32" text-anchor="middle" font-size="9" fill="#888" font-weight="600">③ 呼气下落</text>
+                <circle cx="260" cy="55" r="12" fill="#FDEBD8" stroke="#D4A574" stroke-width="1.2"/>
+                <line x1="260" y1="67" x2="260" y2="110" stroke="#555" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="260" y1="77" x2="237" y2="95" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+                <line x1="260" y1="77" x2="283" y2="95" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="236" cy="96" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8" transform="rotate(-10,236,96)"/>
+                <ellipse cx="284" cy="96" rx="5" ry="3" fill="#FDEBD8" stroke="#D4A574" stroke-width="0.8" transform="rotate(10,284,96)"/>
+                <line x1="260" y1="110" x2="248" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <line x1="260" y1="110" x2="272" y2="140" stroke="#555" stroke-width="2.2" stroke-linecap="round"/>
+                <text x="260" y="152" text-anchor="middle" font-size="8" fill="#666">两侧落下</text>
+
+                <!-- 三焦标注 -->
+                <rect x="2" y="158" width="316" height="30" rx="5" fill="white" stroke="#B5D4F4" stroke-width="0.8"/>
+                <text x="30" y="170" font-size="9" fill="#185FA5">上焦：心肺</text>
+                <text x="30" y="181" font-size="8" fill="#888">宽胸理气</text>
+                <text x="118" y="170" font-size="9" fill="#3B6D11">中焦：脾胃</text>
+                <text x="118" y="181" font-size="8" fill="#888">健运消化</text>
+                <text x="210" y="170" font-size="9" fill="#993556">下焦：肝肾</text>
+                <text x="210" y="181" font-size="8" fill="#888">固本培元</text>
+                <line x1="105" y1="160" x2="105" y2="188" stroke="#ddd" stroke-width="0.8"/>
+                <line x1="200" y1="160" x2="200" y2="188" stroke="#ddd" stroke-width="0.8"/>
+              </svg>
+            </div>
+          </div>
+          <div class="gf-media-panel" id="m2-video">
+            <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=八段锦+双手托天理三焦+教学" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">八段锦 · 双手托天理三焦教学</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=八段锦+完整版+跟练" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">八段锦完整版 · 跟练版</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=八段锦+双手托天+教学" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">Ba Duan Jin · Raise Arms Exercise</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>吸气：</strong>两臂外旋（掌心转向前），慢慢抬至胸前，手心翻向上，使劲往上推，眼睛看手背</div>
+          <div class="step"><strong>撑举：</strong>两臂上举后，目视前方，下巴内收。掌根用力向上撑，同时脚跟上提，整个身体向上拉伸</div>
+          <div class="step"><strong>呼气：</strong>两手分开，从身体两侧慢慢落下还原</div>
+          <div class="step"><strong>要领：</strong>腰背竖直，不可挺肚子。上托时用掌根发力，而非手指。</div>
+        </div>
+        <div class="gf-note">🌿 每日早起做6—8次。三焦是气血津液运行的总通道，此式打通全身气机。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 4: 嘘字诀 ===== -->
+    <div class="gf-item" id="gf3">
+      <div class="gf-header" onclick="toggleGf('gf3')">
+        <div class="gf-num">3</div>
+        <div class="gf-meta">
+          <div class="gf-name">嘘字诀——平肝气</div>
+          <div class="gf-hint">六字诀之肝音 · 疏泄肝气 · 明目安神</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+        <div class="gf-media">
+          <div class="gf-media-tabs">
+            <button class="gf-media-tab active" onclick="switchMediaTab(this,'m3-anim')">动作图示</button>
+            <button class="gf-media-tab" onclick="switchMediaTab(this,'m3-video')">视频参考</button>
+          </div>
+          <div class="gf-media-panel active" id="m3-anim">
+            <div class="svg-anim-wrap">
+              <svg viewBox="0 0 320 170" width="320" height="170" xmlns="http://www.w3.org/2000/svg">
+                <rect width="320" height="170" fill="#EAF3DE" rx="8"/>
+                <text x="160" y="16" text-anchor="middle" font-size="11" fill="#27500A" font-weight="600">嘘字诀 · 口型与气流示意</text>
+                <!-- 大字 -->
+                <text x="50" y="110" text-anchor="middle" font-size="72" fill="#3B6D11" opacity="0.12" font-weight="700">嘘</text>
+
+                <!-- 正面人脸 口型 -->
+                <ellipse cx="85" cy="72" rx="28" ry="32" fill="#FDEBD8" stroke="#D4A574" stroke-width="1.2"/>
+                <!-- 眼睛 -->
+                <ellipse cx="76" cy="64" rx="4" ry="3" fill="#555"/>
+                <ellipse cx="94" cy="64" rx="4" ry="3" fill="#555"/>
+                <!-- 眉毛 放松 -->
+                <path d="M 72 60 Q 76 57 80 60" fill="none" stroke="#8D6E63" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M 90 60 Q 94 57 98 60" fill="none" stroke="#8D6E63" stroke-width="1.2" stroke-linecap="round"/>
+                <!-- 口型：双唇微开 牙齿闭合留缝 -->
+                <path d="M 75 85 Q 85 89 95 85" fill="#E57373" stroke="#C62828" stroke-width="0.8"/>
+                <path d="M 75 85 Q 85 82 95 85" fill="#FFCCBC" stroke="#D4A574" stroke-width="0.8"/>
+                <!-- 牙齿缝 -->
+                <line x1="75" y1="85" x2="95" y2="85" stroke="white" stroke-width="1.5" opacity="0.8"/>
+                <line x1="85" y1="83" x2="85" y2="87" stroke="#ddd" stroke-width="0.8"/>
+                <!-- 舌尖 -->
+                <ellipse cx="85" cy="87" rx="6" ry="3" fill="#FF8A65" opacity="0.8"/>
+                <text x="85" y="108" text-anchor="middle" font-size="8.5" fill="#27500A">口型：双唇微开</text>
+                <text x="85" y="118" text-anchor="middle" font-size="8.5" fill="#27500A">牙齿留缝·舌尖前顶</text>
+
+                <!-- 气流箭头 -->
+                <path d="M 97 85 C 120 80 145 70 180 65" fill="none" stroke="#81C784" stroke-width="2" stroke-dasharray="5,3" opacity="0.8">
+                  <animate attributeName="stroke-dashoffset" values="0;-24" dur="1.5s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 97 87 C 125 84 155 78 185 76" fill="none" stroke="#A5D6A7" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6">
+                  <animate attributeName="stroke-dashoffset" values="0;-21" dur="1.8s" begin="0.3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 97 89 C 128 88 160 85 188 85" fill="none" stroke="#C8E6C9" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.5">
+                  <animate attributeName="stroke-dashoffset" values="0;-18" dur="2.2s" begin="0.6s" repeatCount="indefinite"/>
+                </path>
+                <text x="175" y="58" font-size="9" fill="#2E7D32">嘘——</text>
+                <text x="163" y="100" font-size="8.5" fill="#388E3C">气流从齿缝缓缓呼出</text>
+
+                <!-- 右侧：肝脏意念 -->
+                <ellipse cx="265" cy="78" rx="28" ry="22" fill="#FFE0B2" stroke="#FF8F00" stroke-width="1.2"/>
+                <text x="265" y="76" text-anchor="middle" font-size="10" fill="#E65100" font-weight="600">肝</text>
+                <text x="265" y="89" text-anchor="middle" font-size="8" fill="#BF360C">意念向外疏散</text>
+                <!-- 能量向外扩散 -->
+                <circle cx="265" cy="78" r="32" fill="none" stroke="#FFCC02" stroke-width="1" opacity="0.5" stroke-dasharray="4,3">
+                  <animate attributeName="r" values="32;45;32" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.5;0;0.5" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="265" cy="78" r="22" fill="none" stroke="#FFB300" stroke-width="1.2" opacity="0.4">
+                  <animate attributeName="r" values="22;38;22" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+                <text x="265" y="120" text-anchor="middle" font-size="8.5" fill="#E65100">肝气向外疏散</text>
+                <text x="265" y="131" text-anchor="middle" font-size="8.5" fill="#E65100">感受松开·舒展</text>
+
+                <!-- 底部说明 -->
+                <rect x="5" y="143" width="310" height="22" rx="5" fill="white" opacity="0.7"/>
+                <text x="160" y="157" text-anchor="middle" font-size="9" fill="#27500A">每次呼气3—5秒，共6次 · 怒气上冲时随时使用效果立竿见影</text>
+              </svg>
+            </div>
+          </div>
+          <div class="gf-media-panel" id="m3-video">
+            <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=六字诀+嘘字诀+教学" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">六字诀·嘘字诀 · 平肝气教学</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=六字诀+完整版+跟练" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">六字诀完整版（嘘呵呼呬吹嘻）</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=Liu+Zi+Jue+Xu+sound+healing+liver" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">Liu Zi Jue · Xu Sound Liver Healing</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>口型：</strong>双唇微开，牙齿轻闭留有缝隙，舌尖伸直向前但不触碰牙齿</div>
+          <div class="step"><strong>气息：</strong>呼气时发「嘘——」音，气流从齿缝间缓缓呼出，声音绵长。<b>重点在呼吸，不在发声响度</b>——声音极轻，甚至无声，感受口腔共鸣即可。</div>
+          <div class="step"><strong>意念：</strong>一边发音，一边感受肝脏部位有气机向外疏散，身体能量随呼吸向外扩散、松开。</div>
+          <div class="step"><strong>六字诀背景：</strong>嘘（肝）·呵（心）·呼（脾）·呬（肺）·吹（肾）·嘻（三焦），六字对应六脏，各有其调节功效。</div>
+        </div>
+        <div style="background:#EAF3DE;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13px;color:#3B6D11">
+          <b>与嘶字诀的区别：</b><br>
+          嘘字诀 = 白天疏泄肝气，向外扩散能量，适合情绪郁积时使用<br>
+          嘶字诀 = 夜间收敛心气，向内沉降，适合睡前安神
+        </div>
+        <div class="gf-note">🌿 肝郁型、情绪压抑、眼睛疲劳者每日早起练6次。怒气上冲时随时可用，效果立竿见影。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 5: 嘶字诀 ===== -->
+    <div class="gf-item" id="gf5">
+      <div class="gf-header" onclick="toggleGf('gf5')">
+        <div class="gf-num">4</div>
+        <div class="gf-meta">
+          <div class="gf-name">嘶字诀——睡眠调神法</div>
+          <div class="gf-hint">引导入睡 · 心脾两虚首选</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+                <div class="step-card">
+          <div class="step"><strong>姿势：</strong>仰卧大字形，全身放松，双手自然置于腹部两侧</div>
+          <div class="step"><strong>口型：</strong>舌尖轻抵上牙龈，嘴形做「嘶」字但<b>不发出声音</b>，非常轻，气流从舌尖处缓缓渗出</div>
+          <div class="step"><strong>意念：</strong>想象自己像一个气球，随着每次呼气逐渐缩小、变轻、慢慢沉入床铺，向地面融合。3—5次循环就会有睡意。</div>
+          <div class="step"><strong>⚠️ 注意：</strong>与嘘字诀不同——嘘字诀用于白天疏肝气，嘶字诀用于睡前缓和心气。两者不可混用。</div>
+        </div>
+        <div style="background:#FBEAF0;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13px;color:#72243E">
+          <b>机理：</b>嘶字诀帮助心气回收，缓和心血。特别适合因「强迫性高能量」导致心气涣散的喜型人——白天用尽心气带动别人，晚上心的门关不上，嘶字诀就是帮你轻轻把那扇门关上。
+        </div>
+        <div class="gf-note">🌿 入睡困难、脑袋停不下来、心悸。任何人群均可，孕妇也安全。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 6: 搭鹊桥 ===== -->
+    <div class="gf-item" id="gf6">
+      <div class="gf-header" onclick="toggleGf('gf6')">
+        <div class="gf-num">5</div>
+        <div class="gf-meta">
+          <div class="gf-name">搭鹊桥——任督接通</div>
+          <div class="gf-hint">随时随地 · 沟通阴阳 · 贯穿所有功法</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+                <div class="gf-media">
+          <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=任督二脉+鹊桥+功法" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">任督二脉鹊桥功法详解</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=任督二脉+小周天+冥想" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">小周天 · 任督二脉打通冥想</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>动作：</strong>舌尖轻轻抵住上颚（硬腭前部），力道极轻，如蜻蜓点水</div>
+          <div class="step"><strong>呼吸：</strong>自然放松呼吸，不需要刻意改变呼吸节奏</div>
+          <div class="step"><strong>原理：</strong>任脉（阴）与督脉（阳）在口腔中断开，舌抵上颚即接通二脉，阴升阳降，水火既济。</div>
+        </div>
+        <div class="gf-note">🌿 所有人群基础练习，是其他所有功法的基础动作。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 7: 拍打八虚 ===== -->
+    <div class="gf-item" id="gf7">
+      <div class="gf-header" onclick="toggleGf('gf7')">
+        <div class="gf-num">6</div>
+        <div class="gf-meta">
+          <div class="gf-name">拍打八虚——疏通全身经络</div>
+          <div class="gf-hint">气血淤滞首选 · 每处100下</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+        <div class="gf-media">
+          <div class="gf-media-tabs">
+            <button class="gf-media-tab active" onclick="switchMediaTab(this,'m7-anim')">部位图示</button>
+            <button class="gf-media-tab" onclick="switchMediaTab(this,'m7-video')">视频参考</button>
+          </div>
+          <div class="gf-media-panel active" id="m7-anim">
+            <div class="svg-anim-wrap">
+              <svg viewBox="0 0 320 210" width="320" height="210" xmlns="http://www.w3.org/2000/svg">
+                <rect width="320" height="210" fill="#FFF3E0" rx="8"/>
+                <text x="160" y="14" text-anchor="middle" font-size="10.5" fill="#E65100" font-weight="600">八虚拍打 · 穴位解剖定位</text>
+                <defs>
+                  <marker id="bxarr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="4" markerHeight="4" orient="auto">
+                    <path d="M 1 1 L 7 4 L 1 7 Z" fill="#aaa"/>
+                  </marker>
+                </defs>
+
+                <!-- 人体正面（解剖比例轮廓） -->
+                <!-- 头部 -->
+                <ellipse cx="160" cy="33" rx="16" ry="18" fill="#FDEBD8" stroke="#C8A082" stroke-width="1.2"/>
+                <!-- 颈部 -->
+                <rect x="155" y="50" width="10" height="10" rx="2" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+                <!-- 躯干（肩宽→腰→髋） -->
+                <path d="M 134 62 Q 128 65 126 75 Q 124 90 126 105 Q 128 115 130 120 L 132 122 L 188 122 L 190 120 Q 192 115 194 105 Q 196 90 194 75 Q 192 65 186 62 Z"
+                  fill="#FDEBD8" stroke="#C8A082" stroke-width="1.2"/>
+                <!-- 锁骨线 -->
+                <path d="M 144 63 Q 160 60 176 63" fill="none" stroke="#C8A082" stroke-width="0.8" opacity="0.5"/>
+                <!-- 腹部中线 -->
+                <line x1="160" y1="72" x2="160" y2="120" stroke="#C8A082" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.3"/>
+
+                <!-- 上臂（含肘关节） -->
+                <!-- 左臂：肩→肘→腕 -->
+                <path d="M 134 68 Q 122 72 115 82 Q 110 90 112 100 Q 113 105 116 107"
+                  fill="none" stroke="#C8A082" stroke-width="9" stroke-linecap="round"/>
+                <path d="M 134 68 Q 122 72 115 82 Q 110 90 112 100 Q 113 105 116 107"
+                  fill="none" stroke="#FDEBD8" stroke-width="7" stroke-linecap="round"/>
+                <!-- 右臂 -->
+                <path d="M 186 68 Q 198 72 205 82 Q 210 90 208 100 Q 207 105 204 107"
+                  fill="none" stroke="#C8A082" stroke-width="9" stroke-linecap="round"/>
+                <path d="M 186 68 Q 198 72 205 82 Q 210 90 208 100 Q 207 105 204 107"
+                  fill="none" stroke="#FDEBD8" stroke-width="7" stroke-linecap="round"/>
+
+                <!-- 大腿 -->
+                <!-- 左腿 -->
+                <path d="M 142 122 Q 138 135 136 150 Q 134 162 135 170"
+                  fill="none" stroke="#C8A082" stroke-width="11" stroke-linecap="round"/>
+                <path d="M 142 122 Q 138 135 136 150 Q 134 162 135 170"
+                  fill="none" stroke="#FDEBD8" stroke-width="9" stroke-linecap="round"/>
+                <!-- 右腿 -->
+                <path d="M 178 122 Q 182 135 184 150 Q 186 162 185 170"
+                  fill="none" stroke="#C8A082" stroke-width="11" stroke-linecap="round"/>
+                <path d="M 178 122 Q 182 135 184 150 Q 186 162 185 170"
+                  fill="none" stroke="#FDEBD8" stroke-width="9" stroke-linecap="round"/>
+
+                <!-- ① 腋窝·极泉穴 HT1 -->
+                <!-- 位置：上臂内侧，腋窝正中，腋动脉搏动处 -->
+                <circle cx="132" cy="74" r="8" fill="#FFCDD2" stroke="#C62828" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="8;12;8" dur="1.8s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="188" cy="74" r="8" fill="#FFCDD2" stroke="#C62828" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="8;12;8" dur="1.8s" begin="0.3s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="0.3s" repeatCount="indefinite"/>
+                </circle>
+                <text x="52" y="62" font-size="8.5" fill="#B71C1C" font-weight="600">① 极泉 HT1</text>
+                <text x="52" y="72" font-size="7.5" fill="#C62828">腋窝正中</text>
+                <text x="52" y="81" font-size="7" fill="#999">腋动脉搏动处</text>
+                <text x="52" y="90" font-size="7" fill="#999">手少阴心经</text>
+                <line x1="105" y1="73" x2="123" y2="74" stroke="#C62828" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#bxarr)"/>
+
+                <!-- ② 肘窝·尺泽穴 LU5 -->
+                <!-- 位置：肘横纹上，肱二头肌腱桡侧凹陷 -->
+                <circle cx="114" cy="100" r="7" fill="#FCE4EC" stroke="#AD1457" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="206" cy="100" r="7" fill="#FCE4EC" stroke="#AD1457" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="0.8s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="0.8s" repeatCount="indefinite"/>
+                </circle>
+                <text x="52" y="103" font-size="8.5" fill="#880E4F" font-weight="600">② 尺泽 LU5</text>
+                <text x="52" y="113" font-size="7.5" fill="#AD1457">肘横纹桡侧</text>
+                <text x="52" y="122" font-size="7" fill="#999">肱二头肌腱旁</text>
+                <text x="52" y="131" font-size="7" fill="#999">手太阴肺经</text>
+                <line x1="100" y1="110" x2="107" y2="103" stroke="#AD1457" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#bxarr)"/>
+
+                <!-- ③ 腹股沟·冲门穴 SP12 -->
+                <!-- 位置：腹股沟外侧，髂外动脉搏动外侧，距耻骨联合中点3.5寸 -->
+                <circle cx="146" cy="124" r="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="1s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="1s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="174" cy="124" r="7" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="1.3s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="1.3s" repeatCount="indefinite"/>
+                </circle>
+                <text x="220" y="115" font-size="8.5" fill="#1B5E20" font-weight="600">③ 冲门 SP12</text>
+                <text x="220" y="125" font-size="7.5" fill="#2E7D32">腹股沟外侧</text>
+                <text x="220" y="134" font-size="7" fill="#999">股动脉搏动外侧</text>
+                <text x="220" y="143" font-size="7" fill="#999">足太阴脾经</text>
+                <line x1="218" y1="123" x2="182" y2="124" stroke="#2E7D32" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#bxarr)"/>
+
+                <!-- ④ 腘窝·委中穴 BL40 -->
+                <!-- 腘窝正中（膝后面），腘横纹中点，股二头肌腱与半腱肌腱之间 -->
+                <!-- 人体正面图显示膝盖，腘窝在膝后，用虚线标注到腿背面 -->
+                <!-- 膝关节前面标示 -->
+                <circle cx="136" cy="165" r="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="1.5s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="1.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="184" cy="165" r="7" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5" opacity="0.9">
+                  <animate attributeName="r" values="7;11;7" dur="1.8s" begin="1.8s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.9;0.4;0.9" dur="1.8s" begin="1.8s" repeatCount="indefinite"/>
+                </circle>
+                <!-- 腘窝标注（膝后，正面图用括号说明） -->
+                <text x="220" y="158" font-size="8.5" fill="#0D47A1" font-weight="600">④ 委中 BL40</text>
+                <text x="220" y="168" font-size="7.5" fill="#1565C0">腘横纹中点</text>
+                <text x="220" y="177" font-size="7" fill="#999">（膝后窝正中）</text>
+                <text x="220" y="186" font-size="7" fill="#999">足太阳膀胱经</text>
+                <line x1="218" y1="166" x2="192" y2="165" stroke="#1565C0" stroke-width="0.8" stroke-dasharray="3,2" marker-end="url(#bxarr)"/>
+
+                <!-- 底部提示 -->
+                <rect x="6" y="194" width="308" height="13" rx="4" fill="#FFF8E1" stroke="#FFCC80" stroke-width="0.7"/>
+                <text x="160" y="203" text-anchor="middle" font-size="7.5" fill="#E65100">空心掌拍打各100下 · 顺序：腋窝 → 肘窝 → 腹股沟 → 腘窝</text>
+              </svg>
+            </div>
+          </div>
+          <div class="gf-media-panel" id="m7-video">
+            <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=拍打八虚+经络+教学" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">拍打八虚全套教学</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=经络拍打+极泉+委中+养生" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">经络拍打养生 · 极泉委中详解</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=中医+经络拍打+八虚+养生" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">中医经络拍打 · 八虚疏通</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>两腋窝（极泉）：</strong>心经起点，疏心气，改善心悸胸闷、上臂酸胀</div>
+          <div class="step"><strong>两肘窝（尺泽）：</strong>心肺经汇聚，排肺热，治咳嗽、肘部酸痛</div>
+          <div class="step"><strong>两腹股沟（冲门）：</strong>脾肝经交汇，下肢气血进出口，改善腹股沟紧绷、下肢循环</div>
+          <div class="step"><strong>两腘窝（委中）：</strong>膀胱经要穴，泻腰背湿热，缓解腰痛腿酸</div>
+          <div class="step"><strong>手法：</strong>空心掌拍打（五指并拢，手心内扣呈碗状），每处100—200下，感酸热为宜</div>
+        </div>
+        <div class="gf-note">🌿 气血淤滞、疼痛、肝郁型。月经期、皮肤破损处不拍。孕妇禁拍腹股沟。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 8: 揉腹法 ===== -->
+    <div class="gf-item" id="gf8">
+      <div class="gf-header" onclick="toggleGf('gf8')">
+        <div class="gf-num">7</div>
+        <div class="gf-meta">
+          <div class="gf-name">揉腹法——中焦调理</div>
+          <div class="gf-hint">健脾胃 · 助消化 · 晨起睡前各一次</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+                <div class="gf-media">
+          <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=揉腹法+中医+脾胃+教学" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">中医揉腹法 · 调理脾胃教学</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=中脘+气海+关元+按揉+穴位" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">中脘·气海·关元穴 · 按揉方法</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=中医+揉腹+健脾胃+方法" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">中医腹部按摩 · 健脾和胃</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>姿势：</strong>仰卧或坐位，双手叠放于腹部（女性右手在下，男性左手在下）</div>
+          <div class="step"><strong>顺时针：</strong>以肚脐为中心顺时针揉36圈（助运化，促进肠胃蠕动）</div>
+          <div class="step"><strong>逆时针：</strong>再逆时针揉36圈（固摄，收敛元气）</div>
+          <div class="step"><strong>重点穴：</strong>中脘（脐上4寸）· 气海（脐下1.5寸）· 关元（脐下3寸）</div>
+        </div>
+        <div class="gf-note">🌿 中焦不通、胃胀、大便不成型、阳虚型。饭后1小时内不做。孕妇禁忌。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 9: 通带脉下焦 ===== -->
+    <div class="gf-item" id="gf10">
+      <div class="gf-header" onclick="toggleGf('gf10')">
+        <div class="gf-num">8</div>
+        <div class="gf-meta">
+          <div class="gf-name">通带脉下焦——从腹股沟沿大腿内侧向膝盖方向</div>
+          <div class="gf-hint">改善下肢循环 · 通带脉 · 疏通胃肠</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+                <div class="gf-media">
+          <div class="video-links">
+              <div class="video-link-title">推荐观看 · 点击跳转</div>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=腹股沟+推拿+带脉+经络" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">通带脉下焦 · 疏通带脉下焦</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.bilibili.com/search#/?keyword=带脉+拍打+腰部+养生" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-bili">📺</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">带脉拍打·腰部养生方法</div>
+                  <div class="vlink-platform">哔哩哔哩搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+              <a class="vlink" href="https://www.youtube.com/results?search_query=中医+带脉+腹股沟+疏通+养生" target="_blank" rel="noopener">
+                <div class="vlink-icon vlink-yt">▶️</div>
+                <div class="vlink-info">
+                  <div class="vlink-name">中医带脉·腹股沟疏通养生</div>
+                  <div class="vlink-platform">YouTube搜索</div>
+                </div>
+                <div class="vlink-arrow">↗</div>
+              </a>
+            </div>
+          </div>
+        <div class="step-card">
+          <div class="step"><strong>姿势：</strong>坐位，两腿自然分开，放松</div>
+          <div class="step"><strong>方法：</strong>双手从腹股沟（股动脉搏动区，大腿根部）沿大腿内侧向膝盖方向缓慢推揉</div>
+          <div class="step"><strong>力度：</strong>酸胀不痛为宜；遇到筋结（条索状硬块）可停留按揉30秒</div>
+          <div class="step"><strong>次数：</strong>每侧推50—100次，配合叩击腰侧带脉区（环腰一圈）</div>
+        </div>
+        <div class="gf-note">🌿 下肢循环差、腹部肥胖、肠胃蠕动弱、肝郁型。月经期、孕妇禁忌。</div>
+      </div>
+    </div>
+
+    <!-- ===== GF 10: 红花椒泡脚 ===== -->
+    <div class="gf-item" id="gf9">
+      <div class="gf-header" onclick="toggleGf('gf9')">
+        <div class="gf-num">9</div>
+        <div class="gf-meta">
+          <div class="gf-name">红花椒泡脚——引火归元</div>
+          <div class="gf-hint">上热下寒首选 · 晚9—10点</div>
+        </div>
+        <div class="gf-toggle">▾</div>
+      </div>
+      <div class="gf-body">
+                <div class="step-card">
+          <div class="step"><strong>材料：</strong>红花椒10—15粒，清水500—800ml</div>
+          <div class="step"><strong>方法：</strong>花椒冷水下锅，大火烧开后小火煮5分钟，放至42°C左右倒入泡脚盆</div>
+          <div class="step"><strong>时长：</strong>泡15—20分钟，至微微出汗（不宜大汗，伤津液）</div>
+          <div class="step"><strong>收尾：</strong>泡后擦干，坐床边按揉涌泉穴100下</div>
+        </div>
+        <div class="gf-note">🌿 上热下寒、阳虚、失眠者适用。孕妇慎用花椒（可改艾叶）；阴虚火旺者水温38°C即可。</div>
+      </div>
+    </div>
+
+  </div><!-- /gf-list -->
+
+  <script>
+  function switchMediaTab(btn, targetId) {
+    const item = btn.closest('.gf-media');
+    item.querySelectorAll('.gf-media-tab').forEach(t => t.classList.remove('active'));
+    item.querySelectorAll('.gf-media-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(targetId).classList.add('active');
+  }
+  </script>
+</div>
+
+<div class="section" id="sec-meridian">
+  <div class="sec-title">经络穴位——点击查看详解</div>
+
+  <div class="point-detail" id="pointDetail"></div>
+
+  <div class="body-map" id="bodyMap">
+    <div class="body-point" onclick="showPoint('xuehai')">
+      <div class="point-icon" style="background:#FBEAF0">🩸</div>
+      <div class="point-info">
+        <div class="point-name">血海穴</div>
+        <div class="point-loc">髌骨内上缘2寸</div>
+      </div>
+    </div>
+    <div class="body-point" onclick="showPoint('zusanli')">
+      <div class="point-icon" style="background:#E1F5EE">💪</div>
+      <div class="point-info">
+        <div class="point-name">足三里</div>
+        <div class="point-loc">膝眼下3寸</div>
+      </div>
+    </div>
+    <div class="body-point" onclick="showPoint('sanyinjiao')">
+      <div class="point-icon" style="background:#FBEAF0">🌸</div>
+      <div class="point-info">
+        <div class="point-name">三阴交</div>
+        <div class="point-loc">内踝上3寸</div>
+      </div>
+    </div>
+    <div class="body-point" onclick="showPoint('taichong')">
+      <div class="point-icon" style="background:#EAF3DE">🌿</div>
+      <div class="point-info">
+        <div class="point-name">太冲穴</div>
+        <div class="point-loc">足背第1·2跖骨间</div>
+      </div>
+    </div>
+    <div class="body-point" onclick="showPoint('zhongwan')">
+      <div class="point-icon" style="background:#FAEEDA">⚡</div>
+      <div class="point-info">
+        <div class="point-name">中脘穴</div>
+        <div class="point-loc">脐上4寸</div>
+      </div>
+    </div>
+    <div class="body-point" onclick="showPoint('guanyuan')">
+      <div class="point-icon" style="background:#FAECE7">🔥</div>
+      <div class="point-info">
+        <div class="point-name">关元穴</div>
+        <div class="point-loc">脐下3寸</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==============================
+     SECTION 6: GROUPS
+=============================== -->
+<div class="section" id="sec-groups">
+  <div class="sec-title">分人群调养方案</div>
+  <p class="sec-sub">不同人群的气血特点和调养侧重不同，选择你的人群类型。</p>
+
+  <div class="group-tabs">
+    <button class="group-tab active" onclick="showGroup(this,'g-female')">👩 女性</button>
+    <button class="group-tab" onclick="showGroup(this,'g-male')">👨 男性</button>
+    <button class="group-tab" onclick="showGroup(this,'g-elder')">👴 老年人</button>
+    <button class="group-tab" onclick="showGroup(this,'g-youth')">🧒 青少年</button>
+    <button class="group-tab" onclick="showGroup(this,'g-preg')">🤰 孕产期</button>
+  </div>
+
+  <div class="group-panel active" id="g-female">
+    <div class="card">
+      <div class="card-title">经期四阶段完整管理</div>
+      <div style="margin-top:10px">
+        <div style="background:var(--pink-50);border-left:3px solid var(--pink-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:8px">
+          <div style="font-weight:600;color:var(--pink-500);font-size:13px">经前7—10天：疏肝期</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:3px;line-height:1.6">玫瑰花+佛手柑+陈皮茶；避免上火失眠；不宜大补；按揉太冲·期门</div>
+        </div>
+        <div style="background:#FCF9F0;border-left:3px solid var(--amber-100);border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:8px">
+          <div style="font-weight:600;color:var(--amber-400);font-size:13px">经期：温通保暖期</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:3px;line-height:1.6">红糖水（经前3天开始）；益母草煮鸡蛋；避免寒凉；不强行进补；保暖腰腹</div>
+        </div>
+        <div style="background:var(--teal-50);border-left:3px solid #9FE1CB;border-radius:0 8px 8px 0;padding:10px 14px;margin-bottom:8px">
+          <div style="font-weight:600;color:var(--teal-600);font-size:13px">经后：补血养阴黄金期</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:3px;line-height:1.6">血海空虚，此时补最有效；大枣·桑葚·阿胶·猪肝；揉血海+三阴交。<b>经期本身进补无效</b>，等经结束后才是正确时机。</div>
+        </div>
+        <div style="background:var(--green-50);border-left:3px solid var(--green-100);border-radius:0 8px 8px 0;padding:10px 14px">
+          <div style="font-weight:600;color:var(--green-500);font-size:13px">平时：疏肝通络日常</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:3px;line-height:1.6">嘘字诀每日6次；拍带脉；通带脉下焦；情绪保持通畅。<b>怒气压抑→憋在子宫/乳腺→直接影响月经质量</b>，经期情绪暴躁不是性格问题，是肝郁体质+激素波动的综合表现，放过自己。</div>
+        </div>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">乳腺问题</div>
+        <div class="card-body">根源是肝郁。疏肝为本：太冲·膻中·期门；少戴钢圈文胸；保持情绪通畅比任何药物都根本。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">激素失调</div>
+        <div class="card-body">与肝郁密切相关。调情志+规律运动（快走·八段锦）是根本，经前疏肝才能持续改善。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="g-male">
+    <div class="card">
+      <div class="card-title">久坐办公族（最普遍）</div>
+      <div class="card-body">每小时起身5分钟做双手托天理三焦（6次）；揉足三里+委中缓解腰背；下班拍八虚排毒；久坐伤肉，脾主肌肉，需保持运动激活脾气。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">压力型肝郁（怒气压抑）</div>
+      <div class="card-body">嘘字诀每日早起6次；拍腋窝极泉打通心气；4-7-8呼吸法情绪激动时用；玫瑰陈皮茶；减少表情管理的内耗。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">肾虚型（脱发·腰膝酸·夜尿多）</div>
+      <div class="card-body">晚泡脚+揉涌泉；艾灸关元+肾俞；早起姜枣茶；黑芝麻·核桃·黑豆食补；减少恐慌情绪（恐伤肾）。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">夏季贪凉注意（高发问题）</div>
+      <div class="card-body">戒冰饮冷食，空调房薄外套护腰肾；出汗后及时擦干避风。形寒饮冷伤肺，是夏季男性最常见气血损耗。</div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="g-elder">
+    <div class="card">
+      <div class="card-title">总体原则：固本培元，动静结合</div>
+      <div class="card-body">气血双虚为主。久卧伤气，久坐伤肉——每日保持适量活动（散步30分钟+坐式八段锦）。以维持第3—4层（睡眠良好·精力基本够用）为目标，争取手足温暖（第5层）。</div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">脾胃弱者</div>
+        <div class="card-body">揉腹+足三里；食物软烂温热；忌夏日冰饮；焦三仙茶助消化。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">肾虚明显</div>
+        <div class="card-body">晚泡脚；黑芝麻·核桃·黑豆；避免恐慌情绪（恐伤肾）；艾灸关元。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">睡眠差</div>
+        <div class="card-body">嘶字诀入睡；睡前揉神门+涌泉；亥时（21—23点）保证入睡。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">心脑供血</div>
+        <div class="card-body">拍八虚；搭鹊桥每日做；搭鹊桥随时；散步配合深呼吸。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="g-youth">
+    <div class="card">
+      <div class="card-title">最大风险：久视伤血（手机·电脑）</div>
+      <div class="card-body">每用眼1小时，闭目养神5分钟；揉睛明·四白穴；嘘字诀明目（肝开窍于目）；减少深夜用眼（久视+熬夜双重耗血）。</div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">脾胃弱（厌食偏食）</div>
+        <div class="card-body">捏脊（由下向上）；揉足三里；焦三仙茶消食；三餐规律，暴饮暴食=大饱伤脾。</div>
+      </div>
+      <div class="card">
+        <div class="card-title">情绪管理</div>
+        <div class="card-body">嘘字诀疏肝；引导运动排泄（羽毛球·跑步）；减少情绪压抑积累。</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">夏季作息（最关键）</div>
+      <div class="card-body">22点前入睡，让气血充分修复。面色差·眼神无光（第1—2层）→最快捷的办法就是改善睡眠，而不是进补。肝郁高发期从25岁开始，青少年打好基础至关重要。</div>
+    </div>
+  </div>
+
+  <div class="group-panel" id="g-preg">
+    <div class="card">
+      <div class="card-title">孕期注意事项</div>
+      <div style="margin-top:10px">
+        <div class="li"><span class="li-dot">⛔</span><span><strong>禁忌穴位：</strong>三阴交·合谷·至阴·昆仑等活血穴位，可能引起宫缩</span></div>
+        <div class="li"><span class="li-dot">✅</span><span>可做：搭鹊桥·搭鹊桥；轻柔顺时针揉腹；双手托天（幅度减小，不踮脚）</span></div>
+        <div class="li"><span class="li-dot">💛</span><span>情志调养最重要：母体情绪直接影响胎儿发育，思虑过重（思则气滞）对孕期伤害最大</span></div>
+        <div class="li"><span class="li-dot">🌿</span><span>泡脚：可用艾叶代替花椒，水温38—40°C，不超过20分钟</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">产后调养</div>
+      <div style="margin-top:8px">
+        <div class="li"><span class="li-dot">·</span><span><strong>产后血虚：</strong>红枣+阿胶+桑葚食补；产后42天后可揉血海+三阴交</span></div>
+        <div class="li"><span class="li-dot">·</span><span><strong>产后肝郁：</strong>玫瑰花茶+轻柔揉太冲；家人情感支持与功法同等重要</span></div>
+        <div class="li"><span class="li-dot">·</span><span><strong>哺乳期：</strong>禁花椒等辛热（影响乳汁）；泡脚改用艾叶；饮食以温补为主</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card">
+    <div class="card-title">📅 夏季通用日程参考</div>
+    <div style="margin-top:10px">
+      <div class="li"><span style="color:var(--teal-400);font-weight:600;min-width:56px;flex-shrink:0">早起</span><span>姜枣茶 → 双手托天（6次）→ 嘘字诀（6次）→ 搭鹊桥</span></div>
+      <div class="li"><span style="color:var(--teal-400);font-weight:600;min-width:56px;flex-shrink:0">工作中</span><span>鹊桥随时搭桥 → 每小时起身拉伸 → 4-7-8呼吸（情绪波动时）</span></div>
+      <div class="li"><span style="color:var(--teal-400);font-weight:600;min-width:56px;flex-shrink:0">午间</span><span>午休20分钟（养心气）· 避免11—14点太阳直射</span></div>
+      <div class="li"><span style="color:var(--teal-400);font-weight:600;min-width:56px;flex-shrink:0">傍晚</span><span>拍八虚 → 揉太冲·足三里 → 揉腹</span></div>
+      <div class="li"><span style="color:var(--teal-400);font-weight:600;min-width:56px;flex-shrink:0">睡前</span><span>红花椒泡脚 → 揉涌泉 → 4-7-8呼吸 → 嘶字诀入睡</span></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<div class="footer">
+  <div>🌿 夏季养气血完整指南 · 基于中医情志学</div>
+  <div style="margin-top:4px;font-size:12px">本指南仅供学习参考，具体症状请结合专业中医师诊断</div>
+</div>
+
+<script>
+// ===== NAV =====
+function showSection(btn, id) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ===== LEVEL TEST =====
+const levelData = {
+  1: {
+    name: '第1层：面色偏黄或苍白',
+    color: '#5F5E5A',
+    bg: '#F1EFE8',
+    steps: [
+      { label: '立即开始', text: '补血食补：大枣·猪肝·桑葚·阿胶（经期后补效果最佳）' },
+      { label: '日常功法', text: '搭鹊桥随时做；搭鹊桥随时练、生津养血' },
+      { label: '作息优先', text: '22点前入睡是最快提升气血的方法，睡眠比进补更根本' },
+      { label: '避免', text: '避免熬夜、过度用眼（久视伤血）、情绪大起大落' },
+    ]
+  },
+  2: {
+    name: '第2层：眼睛干涩、神采不足',
+    color: '#3C3489',
+    bg: '#EEEDFE',
+    steps: [
+      { label: '补肝血', text: '揉血海+三阴交（每日各3分钟）；枸杞·菊花·桑葚泡茶明目' },
+      { label: '嘘字诀', text: '每日早起练6次，肝开窍于目，平肝气则明目' },
+      { label: '减少久视', text: '每用眼1小时闭目5分钟；睛明穴（目内眦）轻揉' },
+      { label: '睡眠保障', text: '23点前入睡，肝经子时（23点）开始自我修复' },
+    ]
+  },
+  3: {
+    name: '第3层：入睡困难、睡眠质量差',
+    color: '#72243E',
+    bg: '#FBEAF0',
+    steps: [
+      { label: '睡前功法', text: '嘶字诀入睡引导；神门穴（腕横纹尺侧）揉1—2分钟' },
+      { label: '泡脚助眠', text: '红花椒水42°C泡15—20分钟，涌泉揉100下引火归元' },
+      { label: '调心安神', text: '4-7-8呼吸法平复情绪；减少睡前手机刺激' },
+      { label: '亥时入睡', text: '21—23点（亥时）三焦经当令，此时入睡养气血最佳' },
+    ]
+  },
+  4: {
+    name: '第4层：容易疲倦、精力不足',
+    color: '#633806',
+    bg: '#FAEEDA',
+    steps: [
+      { label: '补脾气', text: '早起姜枣茶；揉足三里（每日200下）；双手托天理三焦每日6次' },
+      { label: '减少耗散', text: '减少多言耗气（说话也很耗气）；避免久坐（久坐伤肉）' },
+      { label: '午休补气', text: '午间20分钟小睡，养心气；不可过度运动消耗气血' },
+      { label: '中焦调理', text: '胃胀腹满者揉中脘+天枢；焦三仙茶化湿消食' },
+    ]
+  },
+  5: {
+    name: '第5层：手脚偏凉',
+    color: '#0C447C',
+    bg: '#E6F1FB',
+    steps: [
+      { label: '温阳通络', text: '晚泡脚（红花椒）+揉涌泉；艾灸关元·命门（阳虚型）' },
+      { label: '拍八虚', text: '每日拍打八虚100下，推动气血运行至四肢末梢' },
+      { label: '饮食温热', text: '夏季也要少吃冰饮冷食；姜枣茶每日早起一杯' },
+      { label: '运动激活', text: '每日快走30分钟，激活阳气；通带脉下焦通带脉' },
+    ]
+  },
+  6: {
+    name: '第6层：声音偏弱',
+    color: '#085041',
+    bg: '#E1F5EE',
+    steps: [
+      { label: '补肺气', text: '搭鹊桥每日做；中府穴（锁骨外侧下方）按揉' },
+      { label: '减少言语耗气', text: '说话也很耗气；高声说话多者需特别注意补肺气' },
+      { label: '嘘字诀', text: '搭配嘘字诀平肝，肝气顺则肺气降，声音自然响亮' },
+      { label: '百合银耳', text: '百合·银耳·白萝卜润肺；忧愁悲伤者尤其要注意情志调养' },
+    ]
+  },
+  7: {
+    name: '第7层：气血充盈！',
+    color: '#27500A',
+    bg: '#EAF3DE',
+    steps: [
+      { label: '维持现状', text: '保持规律的功法练习（双手托天·嘘字诀·搭鹊桥）' },
+      { label: '防止耗损', text: '避免五劳（久坐·久视·久立·久卧·久行）损耗气血' },
+      { label: '情志调养', text: '保持心情舒畅，避免七情过度。痛则不通，保持疏通' },
+      { label: '季节顺应', text: '夏季顺应天时，午休护心气；冬季收藏，勿大汗损阳' },
+    ]
+  }
+};
+
+function selectLevel(el, level) {
+  document.querySelectorAll('.level-item').forEach(i => i.classList.remove('selected'));
+  el.classList.add('selected');
+  const data = levelData[level];
+  const html = `
+    <div class="result-title">📊 你的气血层级：${data.name}</div>
+    <div class="result-body">以下是针对第${level}层的专属调养方案，坚持2—4周可感受到明显改善：</div>
+    <div class="result-steps">
+      ${data.steps.map((s,i) => `
+        <div class="result-step">
+          <div class="step-num">${i+1}</div>
+          <div><strong style="color:var(--text)">${s.label}：</strong>${s.text}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  const box = document.getElementById('levelResult');
+  box.innerHTML = html;
+  box.classList.add('show');
+  setTimeout(() => box.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
+// ===== EMOTION =====
+function toggleEmotion(el) {
+  el.classList.toggle('open');
+}
+
+// ===== SYNDROME QUIZ =====
+function analyzeSymptoms() {
+  const checked = [...document.querySelectorAll('#quizOptions input:checked')].map(i => i.value);
+  if (checked.length === 0) { alert('请至少选择一个症状'); return; }
+
+  // 两个维度：虚实方向（缺什么）+ 循行障碍（堵在哪里）
+  const scores = { yin: 0, yang: 0, qi: 0, xue: 0, liver: 0, heart: 0, kidney: 0, middle: 0 };
+  const map = {
+    wuxin:   { yin: 3 },
+    dauhan:  { yin: 3 },
+    kougan:  { yin: 2 },
+    shejiao: { yin: 2, yang: 1 },
+    paoleng: { yang: 3 },
+    shuye:   { yang: 2, kidney: 2 },
+    danbian: { yang: 2, middle: 2 },
+    xinkuang:{ qi: 3, heart: 2 },
+    shiyou:  { qi: 1, middle: 3 },
+    yaosuan: { qi: 2, kidney: 3 },
+    shimian: { xue: 2, heart: 3 },
+    bimen:   { liver: 3 },
+    ruxian:  { liver: 3 },
+    tongjing:{ liver: 3 },
+    toufeng: { liver: 3 },
+    kouku:   { liver: 2, middle: 1 },
+  };
+  checked.forEach(v => { if (map[v]) { for (const [k,n] of Object.entries(map[v])) scores[k] += n; } });
+
+  // 合并 heart 到 xue/qi 之外单独展示
+  const res = document.getElementById('synResult');
+
+  // 维度一：虚实方向
+  const xuShi = [
+    { key:'yin',  score: scores.yin,  label:'阴虚', bg:'#E6F1FB', border:'#185FA5', nc:'#0C447C', tb:'#B5D4F4', tc:'#042C53',
+      desc:'阴液不足，虚热内生。夏季阳盛，阴虚者更易出现虚热上扰。',
+      tags:['五心烦热','盗汗','口干咽燥','舌红少苔','失眠多梦'],
+      remedy:'滋阴为主。食补：百合·银耳·枸杞·桑葚·石斛·麦冬。搭鹊桥每日生津。忌辛辣燥热、过度劳神。经后补血养阴效果最佳。' },
+    { key:'yang', score: scores.yang, label:'阳虚（脾肾阳虚）', bg:'#FAEEDA', border:'#854F0B', nc:'#633806', tb:'#FAC775', tc:'#412402',
+      desc:'阳气不足，温煦失职。脾阳虚则运化无力；肾阳虚则腰膝酸冷、夜尿频多。夏季贪凉最易加重阳虚。',
+      tags:['畏寒怕冷','四肢冰凉','大便溏薄','夜尿频多','腰膝酸冷'],
+      remedy:'温阳补虚，冬病夏治。早：姜枣茶温中；晚：红花椒水泡脚引火归元；艾灸关元·命门·足三里；戒生冷冰饮。' },
+    { key:'qi',   score: scores.qi,   label:'气虚', bg:'#EAF3DE', border:'#3B6D11', nc:'#27500A', tb:'#C0DD97', tc:'#173404',
+      desc:'元气不足，脏腑功能减退。气虚则推动无力，血行迟滞，易疲劳、气短、自汗。',
+      tags:['神疲乏力','少气懒言','自汗','食少腹胀','面色淡白'],
+      remedy:'益气健脾。食补：山药·莲子·小米·黄芪（煮水）·大枣。避免过度耗气（多言·过劳·久思）。足三里每日按揉。' },
+    { key:'xue',  score: scores.xue,  label:'血虚', bg:'#FBEAF0', border:'#993556', nc:'#72243E', tb:'#F4C0D1', tc:'#4B1528',
+      desc:'血液不足，心神及各脏腑失于濡养。心血虚则心悸失眠、多梦；肝血虚则目干、月经量少。',
+      tags:['面色萎黄或苍白','心悸多梦','头晕眼花','月经量少','爪甲不荣'],
+      remedy:'养血为主。食补：大枣·阿胶·桑葚·猪肝·龙眼肉。经后补血窗口期重点调养。揉血海·三阴交。' },
+  ].filter(d => d.score > 0).sort((a,b) => b.score - a.score).slice(0,2);
+
+  // 维度二：气血循行障碍
+  const zuAi = [
+    { key:'liver', score: scores.liver, label:'肝郁气滞', bg:'#EAF3DE', border:'#3B6D11', nc:'#27500A', tb:'#C0DD97', tc:'#173404',
+      desc:'肝主疏泄，情志不遂则肝气郁结，气机不畅。气滞日久可致血瘀，或化火上炎。',
+      tags:['胸胁胀闷','善太息','情绪抑郁或烦躁','乳房胀痛','痛经有血块','两侧头痛'],
+      cause:'常见病因：长期情绪压抑或急躁易怒；七情不节（怒气未疏泄，忧思过度）。',
+      remedy:'疏肝理气。嘘字诀每日早起6次；4-7-8呼吸法；按揉太冲（足背第1、2跖骨间）·期门；玫瑰花·佛手柑·陈皮沏茶；每日30分钟有氧运动。' },
+    { key:'heart', score: scores.heart, label:'心脾两虚', bg:'#FBEAF0', border:'#993556', nc:'#72243E', tb:'#F4C0D1', tc:'#4B1528',
+      desc:'心血不足则神失所养，脾气亏虚则运化失职，气血生化乏源，形成恶性循环。',
+      tags:['心悸气短','失眠多梦','面色萎黄','食少腹胀','神疲健忘'],
+      cause:'常见病因：思虑过度耗伤心脾；劳倦内伤；饮食不节损伤脾胃。',
+      remedy:'养心健脾，益气补血。按揉内关·神门·足三里；嘶字诀助眠；亥时（21—23点）入睡；莲子·百合·大枣食补。' },
+    { key:'kidney', score: scores.kidney, label:'肾气不足', bg:'#EEEDFE', border:'#534AB7', nc:'#3C3489', tb:'#CECBF6', tc:'#26215C',
+      desc:'肾为先天之本，主藏精、主骨、主水。肾气不足则腰府失养、气化失司。恐惧·惊吓为伤肾之情志（恐则气下）。',
+      tags:['腰膝酸软','夜尿频多','耳鸣健忘','意志消沉','易受惊吓'],
+      cause:'常见病因：先天不足；房劳过度；久病及肾；长期恐惧或重度惊吓。',
+      remedy:'补肾固本。艾灸关元·肾俞；晚泡脚后揉涌泉100下；规律作息固护肾气；黑豆·黑芝麻·核桃·山药食补。' },
+    { key:'middle', score: scores.middle, label:'中焦气机不畅', bg:'#FCF9F0', border:'#EF9F27', nc:'#633806', tb:'#FAEEDA', tc:'#633806',
+      desc:'脾胃为气血生化之源，中焦升降失常则清气不升、浊气不降，影响全身气血运化。',
+      tags:['脘腹胀满','嗳气反酸','大便黏滞','口苦晨重','舌苔厚腻'],
+      cause:'常见病因：饮食不节（过饥过饱·生冷油腻）；思虑过度（思则气结，脾运失健）；久坐少动。',
+      remedy:'先通后补。早：姜枣茶；晚：泡脚；揉中脘·足三里；湿重者饮焦三仙茶（焦山楂·焦神曲·焦麦芽）；疏通腹股沟向膝方向推揉通下焦。' },
+  ].filter(d => d.score > 0).sort((a,b) => b.score - a.score).slice(0,2);
+
+  let html = `<div style="font-size:15px;font-weight:600;margin-bottom:16px">📊 分析结果（已选 ${checked.length} 项症状）</div>`;
+
+  if (xuShi.length > 0) {
+    html += `<div style="font-size:12px;font-weight:600;color:var(--text-faint);letter-spacing:.08em;margin-bottom:8px;padding-bottom:4px;border-bottom:.5px solid var(--color-border-tertiary)">维度一 · 气血虚实方向（缺什么）</div>`;
+    xuShi.forEach((s, idx) => {
+      html += `
+        <div class="syn-card-big" style="background:${s.bg};border-color:${s.border};margin-bottom:10px">
+          <div class="syn-name" style="color:${s.nc}">${idx===0?'主要方向：':'兼见：'}${s.label}</div>
+          <div style="font-size:13px;color:${s.nc};margin:6px 0 8px;line-height:1.6">${s.desc}</div>
+          <div class="syn-tags">${s.tags.map(t=>`<span class="tag" style="background:${s.tb};color:${s.tc}">${t}</span>`).join('')}</div>
+          <div class="syn-block">
+            <div class="syn-block-title" style="color:${s.nc}">调养方向</div>
+            <div class="syn-block-body">${s.remedy}</div>
+          </div>
+        </div>`;
+    });
+  }
+
+  if (zuAi.length > 0) {
+    html += `<div style="font-size:12px;font-weight:600;color:var(--text-faint);letter-spacing:.08em;margin:16px 0 8px;padding-bottom:4px;border-bottom:.5px solid var(--color-border-tertiary)">维度二 · 气血循行障碍（堵在哪里）</div>`;
+    zuAi.forEach((s, idx) => {
+      html += `
+        <div class="syn-card-big" style="background:${s.bg};border-color:${s.border};margin-bottom:10px">
+          <div class="syn-name" style="color:${s.nc}">${idx===0?'主要障碍：':'兼见：'}${s.label}</div>
+          <div style="font-size:13px;color:${s.nc};margin:6px 0 8px;line-height:1.6">${s.desc}</div>
+          <div class="syn-tags">${s.tags.map(t=>`<span class="tag" style="background:${s.tb};color:${s.tc}">${t}</span>`).join('')}</div>
+          <div class="syn-block">
+            <div class="syn-block-title" style="color:${s.nc}">常见病因</div>
+            <div class="syn-block-body">${s.cause}</div>
+          </div>
+          <div class="syn-block">
+            <div class="syn-block-title" style="color:${s.nc}">调养方向</div>
+            <div class="syn-block-body">${s.remedy}</div>
+          </div>
+        </div>`;
+    });
+  }
+
+  if (xuShi.length === 0 && zuAi.length === 0) {
+    html = '<div class="card"><div class="card-title">🎉 气血状态较为平和</div><div class="card-body">暂未发现明显偏颇，继续保持日常功法练习即可。建议关注饮食规律、睡眠质量与情志调和。</div></div>';
+  } else {
+    html += `<div style="background:#F7F5EF;border-radius:8px;padding:12px 14px;margin-top:8px;font-size:12px;color:var(--text-faint);line-height:1.7">
+      ⚠️ 以上结果仅为自我参考，不构成医学诊断。气血虚实与循行障碍常同时存在、互相影响。如有持续明显不适，建议面诊有经验的中医师，通过望闻问切做出准确判断。
+    </div>`;
+  }
+
+  res.innerHTML = html;
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+// ===== GONGFA =====
+function toggleGf(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// ===== BREATHING TIMER =====
+let breathInterval = null;
+let breathState = { phase: 0, count: 0, round: 0, total: 6, running: false };
+const phases = [
+  { name: '鼻吸气', dur: 4, color: '#1D9E75' },
+  { name: '屏息', dur: 7, color: '#185FA5' },
+  { name: '口呼气', dur: 8, color: '#854F0B' },
+];
+
+function startBreath() {
+  if (breathState.running) return;
+  breathState.running = true;
+  breathState.phase = 0;
+  breathState.count = phases[0].dur;
+  breathState.round = 1;
+  document.getElementById('breathStartBtn').textContent = '练习中...';
+  runBreath();
+}
+
+function runBreath() {
+  const p = phases[breathState.phase];
+  updateBreathUI(p, breathState.count, breathState.round);
+  
+  breathInterval = setInterval(() => {
+    breathState.count--;
+    if (breathState.count <= 0) {
+      breathState.phase++;
+      if (breathState.phase >= phases.length) {
+        breathState.phase = 0;
+        breathState.round++;
+        if (breathState.round > breathState.total) {
+          clearInterval(breathInterval);
+          breathState.running = false;
+          document.getElementById('breathPhase').textContent = '✨ 完成！';
+          document.getElementById('breathNum').textContent = '✓';
+          document.getElementById('breathStartBtn').textContent = '再练一次';
+          document.getElementById('breathStartBtn').onclick = () => { resetBreath(); setTimeout(startBreath, 300); };
+          document.getElementById('breathProgress').style.width = '100%';
+          return;
+        }
+      }
+      const np = phases[breathState.phase];
+      breathState.count = np.dur;
+      updateBreathUI(np, breathState.count, breathState.round);
+    } else {
+      const cp = phases[breathState.phase];
+      updateBreathUI(cp, breathState.count, breathState.round);
+    }
+  }, 1000);
+}
+
+function updateBreathUI(phase, count, round) {
+  document.getElementById('breathNum').textContent = count;
+  document.getElementById('breathPhase').textContent = phase.name;
+  document.getElementById('breathRound').textContent = `第${round}组`;
+  document.getElementById('breathArc').style.stroke = phase.color;
+  const pct = 1 - (count / phase.dur);
+  const circ = 345;
+  document.getElementById('breathArc').style.strokeDashoffset = circ - pct * circ;
+  const totalDone = (breathState.round - 1) / breathState.total;
+  document.getElementById('breathProgress').style.width = (totalDone * 100) + '%';
+}
+
+function resetBreath() {
+  clearInterval(breathInterval);
+  breathState = { phase: 0, count: 0, round: 0, total: 6, running: false };
+  document.getElementById('breathNum').textContent = '4';
+  document.getElementById('breathRound').textContent = '第1组';
+  document.getElementById('breathPhase').textContent = '准备开始';
+  document.getElementById('breathArc').style.strokeDashoffset = '345';
+  document.getElementById('breathProgress').style.width = '0%';
+  document.getElementById('breathStartBtn').textContent = '开始练习';
+  document.getElementById('breathStartBtn').onclick = startBreath;
+}
+
+// ===== MERIDIAN POINTS =====
+const pointsData = {
+  taichong: {
+    svg: `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#EAF3DE;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#27500A" font-weight="600">太冲穴 · 足背定位</text>
+    <!-- 足背轮廓 -->
+    <path d="M 55 110 Q 50 90 52 70 Q 54 55 60 45 Q 65 38 72 35 Q 80 32 88 33 Q 96 32 104 35 Q 112 38 116 45 Q 122 55 122 70 Q 122 85 118 100 Q 115 110 110 115 L 65 115 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 五趾 -->
+    <ellipse cx="62" cy="38" rx="7" ry="4" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+    <ellipse cx="74" cy="33" rx="6" ry="4" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+    <ellipse cx="86" cy="31" rx="6" ry="4" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+    <ellipse cx="98" cy="33" rx="5" ry="3.5" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+    <ellipse cx="108" cy="37" rx="5" ry="3.5" fill="#FDEBD8" stroke="#C8A082" stroke-width="0.8"/>
+    <!-- 跖趾关节横纹 -->
+    <path d="M 57 50 Q 87 44 118 50" fill="none" stroke="#C8A082" stroke-width="0.7" stroke-dasharray="2,2" opacity="0.5"/>
+    <!-- 第1·2跖骨间隙线 -->
+    <line x1="74" y1="44" x2="78" y2="90" stroke="#C8A082" stroke-width="0.6" stroke-dasharray="2,3" opacity="0.4"/>
+    <!-- 趾蹼缘参考线 -->
+    <line x1="68" y1="50" x2="74" y2="50" stroke="#C8A082" stroke-width="0.8" opacity="0.5"/>
+    <text x="55" y="54" font-size="6" fill="#888">趾蹼缘</text>
+    <!-- 太冲穴：第1·2跖骨结合部前凹陷，约在趾蹼缘上约2横指 -->
+    <circle cx="76" cy="63" r="7" fill="#FF7043" stroke="#BF360C" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="7;10;7" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="130" y="58" font-size="8" fill="#BF360C" font-weight="600">太冲 LR3</text>
+    <line x1="128" y1="60" x2="84" y2="63" stroke="#BF360C" stroke-width="0.8"/>
+    <text x="130" y="68" font-size="7" fill="#555">第1·2跖骨</text>
+    <text x="130" y="77" font-size="7" fill="#555">间，结合部</text>
+    <text x="130" y="86" font-size="7" fill="#555">前凹陷处</text>
+    <!-- 第1跖骨标注 -->
+    <text x="62" y="85" font-size="6.5" fill="#888">第1</text>
+    <text x="62" y="92" font-size="6.5" fill="#888">跖骨</text>
+    <text x="82" y="85" font-size="6.5" fill="#888">第2</text>
+    <text x="82" y="92" font-size="6.5" fill="#888">跖骨</text>
+  </svg>`,
+    name: '太冲穴', meridian: '足厥阴肝经', emoji: '🌿',
+    loc: '足背第1、2跖骨间，趾蹼缘后方凹陷处',
+    func: '疏肝解郁要穴，平肝降火，调经止痛，明目。肝郁气滞一切症状的首选穴。',
+    method: '拇指指腹按揉，力度以酸胀为度，每日3—5分钟。怒气上冲时立即按揉可快速平复。',
+    indication: '肝郁气滞型、乳腺胀痛、痛经、情绪压抑、头胀头痛',
+    pairs: '配期门（肝募穴）疏肝理气；配三阴交调经；配神门养心安神'
+  },
+  zusanli: {
+    svg: `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#E1F5EE;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#085041" font-weight="600">足三里 · 小腿外侧定位</text>
+    <!-- 小腿外侧轮廓 -->
+    <path d="M 75 20 Q 68 25 66 40 Q 64 60 65 85 Q 66 105 70 120 L 115 120 Q 119 105 120 85 Q 121 60 119 40 Q 117 25 110 20 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 膝关节（膝眼） -->
+    <path d="M 68 30 Q 92 22 116 30" fill="none" stroke="#C8A082" stroke-width="1" opacity="0.5"/>
+    <!-- 外膝眼（犊鼻）凹陷 -->
+    <circle cx="92" cy="26" r="4" fill="#E0C8A8" stroke="#A08060" stroke-width="1"/>
+    <text x="148" y="24" font-size="7" fill="#888" text-anchor="middle">外膝眼</text>
+    <line x1="140" y1="24" x2="97" y2="26" stroke="#888" stroke-width="0.7"/>
+    <!-- 胫骨前嵴（内侧骨性隆起线） -->
+    <path d="M 85 32 Q 84 60 83 90 Q 82 108 82 118" fill="none" stroke="#C0A080" stroke-width="1.2" opacity="0.4"/>
+    <text x="60" y="75" font-size="6.5" fill="#888" text-anchor="middle">胫骨</text>
+    <!-- 3寸距离参考线 -->
+    <line x1="126" y1="26" x2="126" y2="54" stroke="#0F6E56" stroke-width="0.8" opacity="0.6"/>
+    <line x1="123" y1="26" x2="129" y2="26" stroke="#0F6E56" stroke-width="0.8" opacity="0.6"/>
+    <line x1="123" y1="54" x2="129" y2="54" stroke="#0F6E56" stroke-width="0.8" opacity="0.6"/>
+    <text x="138" y="42" font-size="7" fill="#0F6E56" text-anchor="middle">3寸</text>
+    <!-- 足三里：外膝眼下3寸，胫骨前嵴外一横指 -->
+    <circle cx="94" cy="54" r="8" fill="#1D9E75" stroke="#085041" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="148" y="50" font-size="8" fill="#085041" font-weight="600">足三里 ST36</text>
+    <line x1="143" y1="52" x2="103" y2="54" stroke="#085041" stroke-width="0.8"/>
+    <text x="148" y="60" font-size="7" fill="#555">外膝眼下3寸</text>
+    <text x="148" y="69" font-size="7" fill="#555">胫骨嵴外</text>
+    <text x="148" y="78" font-size="7" fill="#555">一横指</text>
+  </svg>`,
+    name: '足三里', meridian: '足阳明胃经', emoji: '💪',
+    loc: '小腿外侧，膝盖外侧凹陷（外膝眼）直下3寸，胫骨前嵴外一横指',
+    func: '强壮要穴，补益中气，健脾和胃，扶正祛邪。古语"常灸足三里，胜吃老母鸡"。',
+    method: '拇指按揉每日200下，或艾灸15分钟。按至酸胀感下传至足背为得气。',
+    indication: '气血不足·疲劳·脾胃弱·消化差·免疫力低',
+    pairs: '配中脘健脾和胃；配三阴交益气养血；配血海补血活血'
+  },
+  sanyinjiao: {
+    svg: `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#FBEAF0;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#72243E" font-weight="600">三阴交 · 小腿内侧定位</text>
+    <!-- 小腿内侧轮廓 -->
+    <path d="M 70 18 Q 63 25 62 45 Q 61 70 63 95 Q 65 110 70 120 L 118 120 Q 123 110 125 95 Q 127 70 126 45 Q 125 25 118 18 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 内踝骨性突起 -->
+    <ellipse cx="76" cy="112" rx="10" ry="6" fill="#E0C8A8" stroke="#A08060" stroke-width="1.2"/>
+    <text x="50" y="116" font-size="7" fill="#888" text-anchor="middle">内踝尖</text>
+    <line x1="63" y1="114" x2="65" y2="113" stroke="#888" stroke-width="0.7"/>
+    <!-- 胫骨后缘线 -->
+    <path d="M 106 25 Q 105 60 104 95 Q 103 110 102 118" fill="none" stroke="#C0A080" stroke-width="1" stroke-dasharray="3,2" opacity="0.4"/>
+    <text x="162" y="75" font-size="6.5" fill="#888" text-anchor="middle">胫骨后缘</text>
+    <!-- 3寸参考线（内踝尖上3寸） -->
+    <line x1="130" y1="112" x2="130" y2="94" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <line x1="127" y1="112" x2="133" y2="112" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <line x1="127" y1="94" x2="133" y2="94" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <text x="142" y="104" font-size="7" fill="#993556" text-anchor="middle">3寸</text>
+    <!-- 三阴交：内踝尖上3寸，胫骨后缘 -->
+    <circle cx="100" cy="94" r="8" fill="#E91E8C" stroke="#880E4F" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="50" y="80" font-size="8" fill="#72243E" font-weight="600" text-anchor="middle">三阴交</text>
+    <text x="50" y="89" font-size="7" fill="#555" text-anchor="middle">SP6</text>
+    <line x1="62" y1="85" x2="91" y2="92" stroke="#880E4F" stroke-width="0.8"/>
+    <text x="50" y="99" font-size="7" fill="#555" text-anchor="middle">内踝上3寸</text>
+    <text x="50" y="108" font-size="7" fill="#555" text-anchor="middle">胫骨后缘</text>
+    <!-- 肝脾肾三经标注 -->
+    <text x="100" y="132" text-anchor="middle" font-size="7" fill="#72243E">肝·脾·肾三经交会</text>
+  </svg>`,
+    name: '三阴交', meridian: '足太阴脾经（三经交会）', emoji: '🌸',
+    loc: '小腿内侧，内踝尖上3寸（约四横指），胫骨后缘',
+    func: '肝·脾·肾三条阴经的交会穴。补血调经，健脾利湿，补肾固精。女性气血调养必用穴。',
+    method: '拇指按揉3—5分钟，力度适中；孕妇禁用（可能引起宫缩）。',
+    indication: '月经不调·痛经·失眠·水肿·腰酸·脾胃弱',
+    pairs: '配血海补血调经；配太冲疏肝解郁；配足三里健脾益气'
+  },
+  xuehai: {
+    svg: `<svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#FBEAF0;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#72243E" font-weight="600">血海穴 · 大腿内侧定位</text>
+    <path d="M 65 18 Q 56 28 54 55 Q 52 85 55 110 Q 58 120 65 125 L 135 125 Q 142 120 145 110 Q 148 85 146 55 Q 144 28 135 18 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 髌骨 -->
+    <ellipse cx="100" cy="30" rx="22" ry="12" fill="#E0C8A8" stroke="#A08060" stroke-width="1.2"/>
+    <text x="100" y="31" text-anchor="middle" font-size="7" fill="#7A5C30">髌骨</text>
+    <!-- 髌骨内上缘线 -->
+    <path d="M 78 22 Q 82 18 88 18" fill="none" stroke="#A08060" stroke-width="1" opacity="0.6"/>
+    <text x="42" y="20" font-size="7" fill="#888" text-anchor="middle">髌骨</text>
+    <text x="42" y="28" font-size="7" fill="#888" text-anchor="middle">内上缘</text>
+    <line x1="58" y1="22" x2="77" y2="21" stroke="#888" stroke-width="0.7"/>
+    <!-- 股内侧肌 -->
+    <path d="M 70 25 Q 72 50 73 80" fill="none" stroke="#C0A080" stroke-width="1" stroke-dasharray="3,2" opacity="0.3"/>
+    <!-- 2寸参考线 -->
+    <line x1="148" y1="22" x2="148" y2="46" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <line x1="145" y1="22" x2="151" y2="22" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <line x1="145" y1="46" x2="151" y2="46" stroke="#993556" stroke-width="0.8" opacity="0.6"/>
+    <text x="160" y="36" font-size="7" fill="#993556" text-anchor="middle">2寸</text>
+    <!-- 血海：髌骨内上缘上2寸，股内侧肌隆起处 -->
+    <circle cx="80" cy="46" r="8" fill="#E91E8C" stroke="#880E4F" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="118" y="44" font-size="8" fill="#72243E" font-weight="600" text-anchor="middle">血海 SP10</text>
+    <line x1="105" y1="47" x2="89" y2="47" stroke="#880E4F" stroke-width="0.8"/>
+    <text x="118" y="54" font-size="7" fill="#555" text-anchor="middle">髌骨内上缘上2寸</text>
+    <text x="118" y="63" font-size="7" fill="#555" text-anchor="middle">股内侧肌隆起处</text>
+    <text x="100" y="120" text-anchor="middle" font-size="7" fill="#72243E">活血调经 · 补血要穴</text>
+  </svg>`,
+    name: '血海穴', meridian: '足太阴脾经', emoji: '🩸',
+    loc: '大腿内侧，髌骨内上缘上2寸，股内侧肌隆起处',
+    func: '活血化瘀，调经止痛，补血养血。名如其穴，是气血的"海洋"，女性调血要穴。',
+    method: '拇指按揉，经期结束后重点揉，每次3—5分钟；可配合三阴交同时揉。',
+    indication: '月经不调·痛经·血虚·皮肤瘙痒·湿疹',
+    pairs: '配三阴交补血调经；配足三里益气养血；配地机活血止痛'
+  },
+  zhongwan: {
+    svg: `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#FFF9F0;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#E65100" font-weight="600">中脘穴 · 腹部前正中线定位</text>
+    <!-- 腹部正面轮廓 -->
+    <path d="M 70 18 Q 60 25 58 45 Q 56 70 58 95 Q 60 115 68 128 L 132 128 Q 140 115 142 95 Q 144 70 142 45 Q 140 25 130 18 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 剑突 -->
+    <path d="M 88 22 Q 100 18 112 22" fill="none" stroke="#C0A080" stroke-width="1" opacity="0.6"/>
+    <path d="M 100 22 L 100 30" fill="none" stroke="#C0A080" stroke-width="1.2" stroke-linecap="round"/>
+    <text x="40" y="26" font-size="7" fill="#888" text-anchor="middle">剑突</text>
+    <line x1="55" y1="24" x2="94" y2="25" stroke="#888" stroke-width="0.7"/>
+    <!-- 肋弓 -->
+    <path d="M 65 28 Q 82 20 100 22" fill="none" stroke="#C8A082" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+    <path d="M 135 28 Q 118 20 100 22" fill="none" stroke="#C8A082" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.4"/>
+    <!-- 脐 -->
+    <circle cx="100" cy="88" r="5" fill="#C8A882" stroke="#8D6045" stroke-width="1.2"/>
+    <text x="155" y="90" font-size="7" fill="#888" text-anchor="middle">脐（神阙）</text>
+    <line x1="148" y1="89" x2="106" y2="88" stroke="#888" stroke-width="0.7"/>
+    <!-- 腹正中线 -->
+    <line x1="100" y1="25" x2="100" y2="126" stroke="#C8A082" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.3"/>
+    <!-- 耻骨联合上缘 -->
+    <path d="M 80 125 Q 100 128 120 125" fill="none" stroke="#C0A080" stroke-width="1" opacity="0.5"/>
+    <text x="40" y="128" font-size="7" fill="#888" text-anchor="middle">耻骨上</text>
+    <!-- 寸尺线：脐到剑突 -->
+    <line x1="148" y1="28" x2="148" y2="88" stroke="#E65100" stroke-width="0.8" opacity="0.5"/>
+    <line x1="145" y1="28" x2="151" y2="28" stroke="#E65100" stroke-width="0.8" opacity="0.5"/>
+    <line x1="145" y1="88" x2="151" y2="88" stroke="#E65100" stroke-width="0.8" opacity="0.5"/>
+    <text x="162" y="60" font-size="7" fill="#E65100" text-anchor="middle">8寸</text>
+    <!-- 中脘：脐上4寸 = 8寸中点 -->
+    <circle cx="100" cy="58" r="8" fill="#FF9800" stroke="#E65100" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="52" y="52" font-size="8" fill="#E65100" font-weight="600" text-anchor="middle">中脘 CV12</text>
+    <line x1="65" y1="55" x2="91" y2="58" stroke="#E65100" stroke-width="0.8"/>
+    <text x="52" y="62" font-size="7" fill="#555" text-anchor="middle">前正中线</text>
+    <text x="52" y="71" font-size="7" fill="#555" text-anchor="middle">脐上4寸</text>
+    <text x="100" y="142" text-anchor="middle" font-size="7" fill="#E65100">胃募穴 · 八会穴腑会</text>
+  </svg>`,
+    name: '中脘穴', meridian: '任脉（胃募穴）', emoji: '⚡',
+    loc: '上腹部，脐上4寸（脐与剑突连线中点）',
+    func: '健脾和胃，温中化湿，消食导滞。胃的募穴，中焦气机的枢纽，消化系统问题要穴。',
+    method: '手掌按揉，顺时针100圈（助运化）；艾灸15—20分钟温中补气。饭后1小时不做。',
+    indication: '胃胀·胃酸·消化不良·大便不成型·食欲差',
+    pairs: '配足三里健脾和胃；配天枢调肠通便；配关元温补中下焦'
+  },
+  guanyuan: {
+    svg: `<svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:220px;background:#FAECE7;border-radius:8px;padding:4px">
+    <text x="100" y="12" text-anchor="middle" font-size="8" fill="#712B13" font-weight="600">关元穴 · 下腹部定位</text>
+    <!-- 下腹部轮廓 -->
+    <path d="M 68 18 Q 58 26 56 48 Q 54 72 56 98 Q 58 116 68 126 L 132 126 Q 142 116 144 98 Q 146 72 144 48 Q 142 26 132 18 Z" fill="#FDEBD8" stroke="#C8A082" stroke-width="1"/>
+    <!-- 脐 -->
+    <circle cx="100" cy="35" r="5" fill="#C8A882" stroke="#8D6045" stroke-width="1.2"/>
+    <text x="148" y="37" font-size="7" fill="#888" text-anchor="middle">脐（神阙）</text>
+    <line x1="140" y1="36" x2="106" y2="35" stroke="#888" stroke-width="0.7"/>
+    <!-- 前正中线 -->
+    <line x1="100" y1="20" x2="100" y2="124" stroke="#C8A082" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.3"/>
+    <!-- 耻骨联合上缘 -->
+    <path d="M 78 122 Q 100 126 122 122" fill="none" stroke="#C0A080" stroke-width="1.2" opacity="0.6"/>
+    <text x="40" y="126" font-size="7" fill="#888" text-anchor="middle">耻骨联合</text>
+    <line x1="58" y1="124" x2="76" y2="122" stroke="#888" stroke-width="0.7"/>
+    <!-- 寸尺线：脐到耻骨联合 = 5寸 -->
+    <line x1="148" y1="35" x2="148" y2="122" stroke="#993C1D" stroke-width="0.8" opacity="0.5"/>
+    <line x1="145" y1="35" x2="151" y2="35" stroke="#993C1D" stroke-width="0.8" opacity="0.5"/>
+    <line x1="145" y1="122" x2="151" y2="122" stroke="#993C1D" stroke-width="0.8" opacity="0.5"/>
+    <text x="162" y="82" font-size="7" fill="#993C1D" text-anchor="middle">5寸</text>
+    <!-- 气海（脐下1.5寸）参考 -->
+    <circle cx="100" cy="57" r="4" fill="#81C784" stroke="#388E3C" stroke-width="1" opacity="0.5"/>
+    <text x="56" y="59" font-size="6.5" fill="#388E3C" text-anchor="middle">气海</text>
+    <line x1="67" y1="58" x2="95" y2="57" stroke="#388E3C" stroke-width="0.6"/>
+    <!-- 关元：脐下3寸 -->
+    <circle cx="100" cy="87" r="9" fill="#E64A19" stroke="#BF360C" stroke-width="1.5" opacity="0.9">
+      <animate attributeName="r" values="9;13;9" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="52" y="80" font-size="8" fill="#712B13" font-weight="600" text-anchor="middle">关元 CV4</text>
+    <line x1="67" y1="83" x2="90" y2="87" stroke="#BF360C" stroke-width="0.8"/>
+    <text x="52" y="90" font-size="7" fill="#555" text-anchor="middle">前正中线</text>
+    <text x="52" y="99" font-size="7" fill="#555" text-anchor="middle">脐下3寸</text>
+    <text x="100" y="140" text-anchor="middle" font-size="7" fill="#712B13">小肠募穴 · 元气之所聚</text>
+  </svg>`,
+    name: '关元穴', meridian: '任脉（元气之本）', emoji: '🔥',
+    loc: '下腹部，脐下3寸（脐与耻骨联合连线上1/4处）',
+    func: '培元固本，温肾助阳，调经止带。元气关藏之处，阳虚者艾灸此穴效果显著。',
+    method: '艾灸15—20分钟最佳；或用掌根按揉3—5分钟，感温热为宜。孕妇禁艾灸。',
+    indication: '阳虚畏寒·腰酸肾虚·夜尿频多·月经不调·元气不足',
+    pairs: '配肾俞补肾固本；配命门温阳散寒；配三阴交调经固冲'
+  }
+};
+
+function showPoint(key) {
+  const d = pointsData[key];
+  document.querySelectorAll('.body-point').forEach(p => p.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  
+  const detail = document.getElementById('pointDetail');
+  detail.innerHTML = `
+    <div class="pd-name">${d.emoji} ${d.name} · ${d.meridian}</div>
+    <div style="display:flex;gap:14px;align-items:flex-start;margin:10px 0 4px;flex-wrap:wrap">
+      ${d.svg ? `<div style="flex-shrink:0">${d.svg}</div>` : ''}
+      <div style="flex:1;min-width:160px">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px"><strong>标准定位：</strong>${d.loc}</div>
+        <div class="pd-grid" style="grid-template-columns:1fr">
+          <div class="pd-block">
+            <div class="pd-block-title">功效</div>
+            <div class="pd-block-body">${d.func}</div>
+          </div>
+          <div class="pd-block">
+            <div class="pd-block-title">操作方法</div>
+            <div class="pd-block-body">${d.method}</div>
+          </div>
+          <div class="pd-block">
+            <div class="pd-block-title">适应症状</div>
+            <div class="pd-block-body">${d.indication}</div>
+          </div>
+          <div class="pd-block">
+            <div class="pd-block-title">常用配穴</div>
+            <div class="pd-block-body">${d.pairs}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  detail.classList.add('show');
+  setTimeout(() => detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
+// ===== GROUPS =====
+function showGroup(btn, id) {
+  document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.group-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// ===== SHARE =====
+function copyLink(btn) {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = '✅ 已复制链接！';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = '<span>🔗</span> 复制链接分享';
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(() => {
+    prompt('复制此链接分享：', url);
+  });
+}
+</script>
+</body>
+</html>
